@@ -34,7 +34,9 @@ session_start();
 </head>
 <body>
 <header></header>
-<main></main>
+<main>
+    <?php phpinfo(); ?>
+</main>
 <footer></footer>
 </body>
 </html>

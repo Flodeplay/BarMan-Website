@@ -29,47 +29,57 @@ session_start();
     <title>Mein Barman</title>
 </head>
 <body>
-<ul>
-    <li>
-        <div class="section-title">
-            <h2>Geräte Verwaltung</h2>
+<main>
+    <section class="mw-100 p-0 bg-dark text-light" style="height: calc(100vh - 70vh)">
+        <div class="p-5">
+            <h1>Lorem ipsum</h1>
+            <blockquote>Whatever text ...</blockquote>
         </div>
-        <div class="section-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatum temporibus dicta reprehenderit tempore quisquam consequuntur porro omnis laboriosam praesentium at et sapiente, provident sit! Suscipit recusandae, ab ratione dignissimos.</p>
-        </div>
-    </li>
-    <li class="active">
-        <div class="section-title">
-            <h2>Flüssigkeiten</h2>
-        </div>
-        <div class="section-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
-        </div>
-    </li>
-    <li>
-        <div class="section-title">
-            <h2>Getränke</h2>
-        </div>
-        <div class="section-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe vel facilis quae nihil ad aspernatur ex delectus. Tenetur nulla voluptates similique quos, quia possimus, magnam esse natus quis ipsa.</p>
-        </div>
-    </li>
-    <li>
-        <div class="section-title">
-            <h2>Profilverwaltung</h2>
-        </div>
-        <div class="section-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, optio illo, delectus deleniti animi accusamus. Laboriosam maiores totam provident aliquam. Unde, incidunt amet officia a obcaecati, ducimus at molestiae nemo.</p>
-        </div>
-    </li>
-</ul>
-<script>
-    var section = $('li');
-    function toggleAccordion() {
-        section.removeClass('active');
-        $(this).addClass('active');
-    }
-    section.on('click', toggleAccordion);
-</script>
+    </section>
+    <section>
+        <ul>
+            <li>
+                <div class="section-title">
+                    <h2>Geräte Verwaltung</h2>
+                </div>
+                <div class="section-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatum temporibus dicta reprehenderit tempore quisquam consequuntur porro omnis laboriosam praesentium at et sapiente, provident sit! Suscipit recusandae, ab ratione dignissimos.</p>
+                </div>
+            </li>
+            <li class="active">
+                <div class="section-title">
+                    <h2>Flüssigkeiten</h2>
+                </div>
+                <div class="section-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
+                </div>
+            </li>
+            <li>
+                <div class="section-title">
+                    <h2>Getränke</h2>
+                </div>
+                <div class="section-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe vel facilis quae nihil ad aspernatur ex delectus. Tenetur nulla voluptates similique quos, quia possimus, magnam esse natus quis ipsa.</p>
+                </div>
+            </li>
+            <li>
+                <div class="section-title">
+                    <h2>Profilverwaltung</h2>
+                </div>
+                <div class="section-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, optio illo, delectus deleniti animi accusamus. Laboriosam maiores totam provident aliquam. Unde, incidunt amet officia a obcaecati, ducimus at molestiae nemo.</p>
+                </div>
+            </li>
+        </ul>
+        <script>
+            var section = $('li');
+            function toggleAccordion() {
+                section.removeClass('active');
+                $(this).addClass('active');
+            }
+            section.on('click', toggleAccordion);
+        </script>
+    </section>
+</main>
 </body>
 </html>

@@ -13,12 +13,13 @@ session_start();
     <meta name="keywords" content="barman drinks mixing bartender bar alcohol">
     <meta name="author" content="Manuel Koellner">
     <!-- links -->
-    <!-- tba -->
+    <!-- TODO: tba -->
+    <link rel="author" href="humans.txt">
+    <link rel="license" href="copyright.html">
     <!-- extern stylesheets -->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet" type="text/css">
     <!-- costume stylesheets -->
     <link rel="stylesheet" href="../css/custom/base.css">
     <link rel="stylesheet" href="../css/custom/home-accordion.css">
@@ -32,7 +33,7 @@ session_start();
 <main>
     <section class="mw-100 p-0 bg-dark text-light" style="height: calc(100vh - 70vh)">
         <div class="p-5">
-            <h1>Lorem ipsum</h1>
+            <h1>Willkommen bei deinem Barman, XY</h1>
             <blockquote>Whatever text ...</blockquote>
         </div>
     </section>
@@ -71,6 +72,7 @@ session_start();
                 </div>
             </li>
         </ul>
+        <!--suppress ES6ConvertVarToLetConst -->
         <script>
             var section = $('li');
             function toggleAccordion() {

@@ -1,10 +1,13 @@
+/*noinspection CssUnknownTarget*/
+@import url('https://fonts.googleapis.com/css?family=Lato:300,900');
+
 * {
     box-sizing: border-box;
     /*   border: 1px solid black; */
 }
 
 body {
-    font-family: 'Lato';
+    font-family: 'Lato', serif;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -70,4 +73,16 @@ li .section-content {
     padding: 0;
     opacity: 0;
     transition: all .25s .1s ease-out;
+}
+
+/**
+    TODO: MEDIA QUERIES
+ */
+/* ---- iPhone 6+,7+,8+ Landscape and Portrait ---- */
+@media only screen
+    and (min-device-width: 414px)
+    and (max-device-width: 763px)
+    and (-webkit-max-device-pixel-ratio: 3)
+{
+
 }

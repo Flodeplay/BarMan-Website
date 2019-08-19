@@ -1,4 +1,9 @@
 /* NAVBAR - CSS */
 .bg-dark {
+    transition: 500ms ease;
     background-color: transparent !important;
+    /* background: linear-gradient(#000 30%, #0000) !important; */
+}
+.bg-dark.scrolled {
+    background-color: #10caca !important;
 }

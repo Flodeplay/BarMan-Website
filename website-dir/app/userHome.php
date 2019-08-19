@@ -57,6 +57,11 @@ session_start();
             </form>
         </div>
     </nav>
+    <script>
+        $(window).scroll(function() {
+            $('nav').toggleClass('scrolled', $(this).scrollTop() > 1060);
+        });
+    </script>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Jumbo</h1>

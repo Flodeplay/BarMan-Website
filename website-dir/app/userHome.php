@@ -32,7 +32,10 @@ session_start();
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+            <img src="assets/path/example.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
+            Navbar
+        </a>
         <button class="navbar-toggle" type="button" data-toggle="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggle-icon"></span>
         </button>
@@ -54,6 +57,12 @@ session_start();
             </form>
         </div>
     </nav>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Jumbo</h1>
+            <p class="lead">Lorem ipsum sit dolor ...</p>
+        </div>
+    </div>
 </header>
 <main>
     <section class="mw-100 p-0 bg-dark text-light" style="height: calc(100vh - 70vh)">

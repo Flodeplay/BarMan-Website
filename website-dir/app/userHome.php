@@ -22,6 +22,7 @@ session_start();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <!-- costume stylesheets -->
     <link rel="stylesheet" href="../css/custom/base.css">
+    <link rel="stylesheet" href="/css/custom/nav.css">
     <link rel="stylesheet" href="../css/custom/home-accordion.css">
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -31,6 +32,7 @@ session_start();
 </head>
 <body>
 <header>
+    <!--
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">
             <img src="assets/path/example.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
@@ -62,20 +64,23 @@ session_start();
             $('nav').toggleClass('scrolled', $(this).scrollTop() > 1060);
         });
     </script>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Jumbo</h1>
-            <p class="lead">Lorem ipsum sit dolor ...</p>
+-->
+    <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light">
+        <div class="p-5">
+            <h1>Willkommen bei deinem Barman, XY</h1>
+            <blockquote>Whatever text ...</blockquote>
         </div>
     </div>
 </header>
 <main>
-    <section class="mw-100 p-0 bg-dark text-light" style="height: calc(100vh - 70vh)">
+    <!--
+    <section class="mw-100 p-0 bg-dark text-light">
         <div class="p-5">
             <h1>Willkommen bei deinem Barman, XY</h1>
             <blockquote>Whatever text ...</blockquote>
         </div>
     </section>
+    -->
     <section>
         <ul>
             <li>
@@ -83,7 +88,7 @@ session_start();
                     <h2>Geräte Verwaltung</h2>
                 </div>
                 <div class="section-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatum temporibus dicta reprehenderit tempore quisquam consequuntur porro omnis laboriosam praesentium at et sapiente, provident sit! Suscipit recusandae, ab ratione dignissimos.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
                 </div>
             </li>
             <li class="active">

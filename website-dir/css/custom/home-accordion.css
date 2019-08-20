@@ -84,22 +84,28 @@ li .section-content {
     and (max-device-width: 763px)
     and (-webkit-max-device-pixel-ratio: 3)
 {
+    ul {
+        display: block;
+        min-height: 0;
+    }
     p {
         font-size: 50%;
-    }
-    li.active h2 {
-        transform: rotate(-90deg);
+        display: none;
     }
     li.active p {
         font-size: 100%;
-    }
-    li.active .section-content {
-        transform: none;
+        display: flex;
     }
     li .section-title h2 {
         transform: none;
     }
+    li.active h2 {
+         transform: rotate(-90deg);
+     }
     li .section-content {
         transition: none;
     }
+    li.active .section-content {
+         transform: none;
+     }
 }

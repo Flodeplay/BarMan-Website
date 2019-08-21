@@ -22,7 +22,7 @@ session_start();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <!-- costume stylesheets -->
     <link rel="stylesheet" href="../css/custom/base.css">
-    <link rel="stylesheet" href="/css/custom/nav.css">
+    <link rel="stylesheet" href="../css/custom/nav.css">
     <link rel="stylesheet" href="../css/custom/home-accordion.css">
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -32,15 +32,15 @@ session_start();
 </head>
 <body>
 <header>
-    <!--
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <a class="navbar-brand" href="#">
-            <img src="assets/path/example.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
+            <img src="../assets/bar.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
             Navbar
         </a>
         <button class="navbar-toggle" type="button" data-toggle="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggle-icon"></span>
         </button>
+        <!--
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -58,13 +58,15 @@ session_start();
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
+        -->
     </nav>
     <script>
         $(window).scroll(function() {
-            $('nav').toggleClass('scrolled', $(this).scrollTop() > 1060);
+            $('nav').toggleClass('scrolled', $(this).scrollTop() > 20);
+            $('a').toggleClass('scrolled', $(this).scrollTop() > 20);
+            $('button').toggleClass('scrolled', $(this).scrollTop() > 20);
         });
     </script>
--->
     <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light">
         <div class="p-5">
             <h1>Willkommen bei deinem Barman, XY</h1>

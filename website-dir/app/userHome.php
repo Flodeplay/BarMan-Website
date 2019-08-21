@@ -79,6 +79,7 @@ session_start();
                 </div>
             </li>
             <li class="active">
+            <!-- tbd: use <li class=""> for closed accordion after loading -->
                 <div class="section-title">
                     <h2>Flüssigkeiten</h2>
                 </div>

@@ -100,7 +100,7 @@ session_start();
                     <h2>Profilverwaltung</h2>
                 </div>
                 <div class="section-content">
-                    <div class="container p-5">
+                    <div class="container">
                         <h2>Profilverwaltung</h2>
                         <blockquote>
                             <i>Hier kannst du deine persönlichen Daten ändern, erweitern oder auch löschen. Außerdem kannst du hier sehen, was wir über dich wissen, falls du Fragen dazu hast, kannst du weiter unten ein Kontakformular ausfüllen und uns dein Anliegen mitteilen :)</i>

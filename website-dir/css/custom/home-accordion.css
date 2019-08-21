@@ -64,6 +64,7 @@ li.active .section-content {
     opacity: 1;
     transform: scaleX(1);
     color: #E74C3C;
+    padding: 10px;
 }
 li .section-title {
     flex: 1;
@@ -106,6 +107,7 @@ li .section-content {
     ul {
         display: block;
         min-height: 0;
+        max-height: none;
     }
     p {
         font-size: 50%;
@@ -118,13 +120,16 @@ li .section-content {
     li .section-title h2 {
         transform: none;
     }
+    /*
     li.active h2 {
          transform: rotate(-90deg);
      }
+     */
     li .section-content {
         transition: none;
     }
     li.active .section-content {
-         transform: none;
+        transform: none;
+        padding: 0;
      }
 }

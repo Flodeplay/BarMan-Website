@@ -32,39 +32,24 @@ session_start();
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light text-light fixed-top">
         <a class="navbar-brand" href="#">
-            <img src="../assets/bar.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
+            <img src="../assets/bar.png" width="30" height="30" class="d-inline-block align-top" alt="">
             Navbar
         </a>
-        <button class="navbar-toggle" type="button" data-toggle="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggle-icon"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <!--
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder"Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Features</a>
+            </div>
         </div>
-        -->
     </nav>
     <script>
         $(window).scroll(function() {
             $('nav').toggleClass('scrolled', $(this).scrollTop() > 20);
-            $('a').toggleClass('scrolled', $(this).scrollTop() > 20);
-            $('button').toggleClass('scrolled', $(this).scrollTop() > 20);
         });
     </script>
     <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light">
@@ -114,7 +99,88 @@ session_start();
                     <h2>Profilverwaltung</h2>
                 </div>
                 <div class="section-content">
+                    <div class="container p-5">
+                        <h2>Profilverwaltung</h2>
+                        <br>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputForename">Vorname</label>
+                                    <input type="text" class="form-control" id="inputForename" placeholder="Max">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputSurname">Nachname</label>
+                                    <input type="text" class="form-control" id="inputSurname" placeholder="Mustermann">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail">E-Mail</label>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPwd">Passwort</label>
+                                    <input type="password" class="form-control" id="inputPwd" placeholder="your password">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputAddress">Adresse</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Musterstrasse 10">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPhone">Telefon <span style="font-family:arial;font-weight:lighter;font-size:95%;">&numero;</span></label>
+                                    <input type="tel" pattern="[\+]\d{2}[\ ]\d{3}[\ ]\d{3}[\ ]\d{4}" class="form-control" id="inputPhone" placeholder="+43 676 123 1234">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-5">
+                                    <label for="inputCity">Stadt</label>
+                                    <input type="text" class="form-control" id="inputCity" placeholder="Wien">
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="inputCountry">Land</label>
+                                    <input type="text" class="form-control" id="inputCountry" placeholder="Österreich">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputZip">PLZ</label>
+                                    <input type="number" pattern="[0-9]{4}" class="form-control" id="inputZip" placeholder="1050">
+                                </div>
+                            </div>
+                            <br>
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#saveChangesModal">Änderungen speichern</button>
+                            <!-- FIXME: Modal-saveChanges -->
+                            <div class="modal fade" id="saveChangesModal" tabindex="-1" role="dialog" aria-labelledby="saveChangesModalTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="saveChangesModalTitle">Änderungen speichern</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                                            <button type="button" class="btn btn-primary">Speichern</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Vor- und Nachname</span>
+                        </div>
+                        <input type="text" aria-label="forename" class="form-control">
+                        <input type="text" aria-label="surname" class="form-control">
+                    </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, optio illo, delectus deleniti animi accusamus. Laboriosam maiores totam provident aliquam. Unde, incidunt amet officia a obcaecati, ducimus at molestiae nemo.</p>
+                  -->
                 </div>
             </li>
         </ul>

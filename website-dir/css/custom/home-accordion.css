@@ -14,6 +14,11 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+/**
+*   TODO: tbd
+*   Accordion active with h2 on the site rotated or not? --> more space without || solution could be to put it at the top or more to the left site!
+*/
+
 ul {
     display: flex;
     min-height: 100vh;
@@ -44,8 +49,18 @@ li.active {
 li.active h2 {
     color: #E74C3C;
 }
+
+/* solution without headline when active */
+li.active .section-title {
+    display: none;
+}
+
 li.active .section-content {
     flex: 4;
+
+    /* solution without headline when active */
+    display: flex;
+
     opacity: 1;
     transform: scaleX(1);
     color: #E74C3C;
@@ -67,7 +82,11 @@ li .section-title h2 {
 }
 li .section-content {
     flex: 1;
-    display: flex;
+    /*display: flex;*/
+
+    /* solution without headline when active */
+    display: none;
+
     align-items: center;
     margin: 0;
     padding: 0;

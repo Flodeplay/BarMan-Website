@@ -32,7 +32,7 @@ session_start();
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light text-light fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="#">
             <img src="../assets/bar.png" width="30" height="30" class="d-inline-block align-top" alt="">
             Navbar
@@ -49,12 +49,12 @@ session_start();
     </nav>
     <script>
         $(window).scroll(function() {
-            $('nav').toggleClass('scrolled', $(this).scrollTop() > 20);
+            $('nav a').toggleClass('scrolled', $(this).scrollTop() > 300);
         });
     </script>
     <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light">
         <div class="p-5">
-            <h1>Willkommen bei deinem Barman, XY</h1>
+            <h1>Willkommen bei deinem Barman, <i>XY</i></h1>
             <blockquote>Whatever text ...</blockquote>
         </div>
     </div>
@@ -101,6 +101,9 @@ session_start();
                 <div class="section-content">
                     <div class="container p-5">
                         <h2>Profilverwaltung</h2>
+                        <blockquote>
+                            <i>Hier kannst du deine persönlichen Daten ändern, erweitern oder auch löschen. Außerdem kannst du hier sehen, was wir über dich wissen, falls du Fragen dazu hast, kannst du weiter unten ein Kontakformular ausfüllen und uns dein Anliegen mitteilen :)</i>
+                        </blockquote>
                         <br>
                         <form>
                             <div class="form-row">
@@ -169,6 +172,32 @@ session_start();
                                     </div>
                                 </div>
                             </div>
+                            <br><hr><br>
+                            <div>
+                                <h4>Anliegen und Fragen</h4>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <blockquote>
+                                                <i>Hast du eine konkrete Frage oder ein Problem mit deinem Profil, dem Barman oder hast du sogar einen Fehler auf unserer Website gefunden, dann würden wir uns sehr darüber freuen, wenn du uns eine Nachricht schreibst, damit wir dir weiterhelfen können. Wenn du denkst, dass es sich bei deiner Frage um eine allgemeine Frage handelt, dann würden wir dir empfehlen unser FAQ zu dursuchen!</i>
+                                            </blockquote>
+                                        </div>
+                                        <div class="col-md-4 my-auto">
+                                            <button type="button" class="btn btn-primary btn-block">Kontakformular ausfüllen</button>
+                                            <button type="button" class="btn btn-primary btn-block">FAQ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- TODO: open CONTACTFORM in Modal/PopUp -->
+                            <!-- TODO: integrate input-group to contactform-modal
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="contactform-wrapping">Betreff</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Fragen zu meinem Profil" aria-label="Subject" aria-describedby="contactform-wrapping">
+                            </div>
+                        -->
                         </form>
                     </div>
                     <!--

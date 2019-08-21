@@ -1,9 +1,10 @@
 /* NAVBAR - CSS */
-nav {
+nav a, nav button {
     transition: 500ms ease;
     background-color: transparent !important;
+    color: white !important;
     /* background: linear-gradient(#000 30%, #0000) !important; */
 }
 .scrolled {
-    color: #10caca !important;
+    color: black !important;
 }

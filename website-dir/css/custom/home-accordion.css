@@ -8,6 +8,8 @@
 
 body {
     font-family: 'Lato', serif;
+    /*background-color: #343a40 !important;*/
+    background: linear-gradient(to bottom, #343a40 -10%, #87014f 100%);
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -27,6 +29,15 @@ ul {
     padding: 0;
     overflow: hidden;
     list-style-type: none;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    transition: all .7s ease;
+    box-shadow: 0px -4px 20px 0px #343a40;
+}
+.ulScrolled {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    transition: all .7s ease;
 }
 
 li {
@@ -34,20 +45,22 @@ li {
     display: flex;
     align-items: stretch;
     padding: 20px;
-    background: #E74C3C;
+    /*background: #E74C3C;*/
+    background: #65013b;
     cursor: pointer;
     transition: all .5s ease;
 }
 li:hover {
-    background: #e53f2e;
+    /*background: #e53f2e;*/
+    background: #87014F;
 }
 li.active {
     flex: 5;
-    background: #fff;
+    background: #f2f2f2;
     cursor: default;
 }
 li.active h2 {
-    color: #E74C3C;
+    color: #65013b;
 }
 
 /* solution without headline when active */
@@ -63,7 +76,7 @@ li.active .section-content {
 
     opacity: 1;
     transform: scaleX(1);
-    color: #E74C3C;
+    color: #65013b;
     padding: 10px;
 }
 li .section-title {
@@ -93,6 +106,9 @@ li .section-content {
     padding: 0;
     opacity: 0;
     transition: all .25s .1s ease-out;
+}
+li blockquote {
+    color: #2E4147;
 }
 
 #infoSite {

@@ -26,6 +26,7 @@ session_start();
     <link rel="stylesheet" href="../css/custom/home-accordion.css">
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
     <!-- favicon -->
     <!-- tba -->
     <title>Mein Barman</title>
@@ -34,8 +35,8 @@ session_start();
 <header>
     <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="#">
-            <img src="../assets/bar.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Navbar
+            <img src="../assets/bar.png" width="30" height="30" class="d-inline-block align-center" alt="">
+            <span>Barman</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,10 +50,11 @@ session_start();
     </nav>
     <script>
         $(window).scroll(function() {
-            $('nav a').toggleClass('scrolled', $(this).scrollTop() > 300);
+            $('nav a').toggleClass('scrolled', $(this).scrollTop() > 200);
+            $('ul').toggleClass('ulScrolled', $(this).scrollTop() > 200);
         });
     </script>
-    <div class="jumbotron jumbotron-fluid m-0 bg-dark text-light">
+    <div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light">
         <div class="p-5">
             <h1>Willkommen bei deinem Barman, <i>XY</i></h1>
             <blockquote>Whatever text ...</blockquote>
@@ -120,68 +122,70 @@ session_start();
                         </blockquote>
                         <br>
                         <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputForename">Vorname</label>
-                                    <input type="text" class="form-control" id="inputForename" placeholder="Max">
+                            <div class="pl-5 pr-5">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputForename">Vorname</label>
+                                        <input type="text" class="form-control" id="inputForename" placeholder="Max">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputSurname">Nachname</label>
+                                        <input type="text" class="form-control" id="inputSurname" placeholder="Mustermann">
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputSurname">Nachname</label>
-                                    <input type="text" class="form-control" id="inputSurname" placeholder="Mustermann">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail">E-Mail</label>
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPwd">Passwort</label>
+                                        <input type="password" class="form-control" id="inputPwd" placeholder="your password">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail">E-Mail</label>
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress">Adresse</label>
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="Musterstrasse 10">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPhone">Telefon <span style="font-family:arial;font-weight:lighter;font-size:95%;">&numero;</span></label>
+                                        <input type="tel" pattern="[\+]\d{2}[\ ]\d{3}[\ ]\d{3}[\ ]\d{4}" class="form-control" id="inputPhone" placeholder="+43 676 123 1234">
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPwd">Passwort</label>
-                                    <input type="password" class="form-control" id="inputPwd" placeholder="your password">
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <label for="inputCity">Stadt</label>
+                                        <input type="text" class="form-control" id="inputCity" placeholder="Wien">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="inputCountry">Land</label>
+                                        <input type="text" class="form-control" id="inputCountry" placeholder="Österreich">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="inputZip">PLZ</label>
+                                        <input type="number" pattern="[0-9]{4}" class="form-control" id="inputZip" placeholder="1050">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputAddress">Adresse</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Musterstrasse 10">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPhone">Telefon <span style="font-family:arial;font-weight:lighter;font-size:95%;">&numero;</span></label>
-                                    <input type="tel" pattern="[\+]\d{2}[\ ]\d{3}[\ ]\d{3}[\ ]\d{4}" class="form-control" id="inputPhone" placeholder="+43 676 123 1234">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-5">
-                                    <label for="inputCity">Stadt</label>
-                                    <input type="text" class="form-control" id="inputCity" placeholder="Wien">
-                                </div>
-                                <div class="form-group col-md-5">
-                                    <label for="inputCountry">Land</label>
-                                    <input type="text" class="form-control" id="inputCountry" placeholder="Österreich">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="inputZip">PLZ</label>
-                                    <input type="number" pattern="[0-9]{4}" class="form-control" id="inputZip" placeholder="1050">
-                                </div>
-                            </div>
-                            <br>
-                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#saveChangesModal">Änderungen speichern</button>
-                            <!-- FIXME: Modal-saveChanges -->
-                            <div class="modal fade" id="saveChangesModal" tabindex="-1" role="dialog" aria-labelledby="saveChangesModalTitle" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="saveChangesModalTitle">Änderungen speichern</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                                            <button type="button" class="btn btn-primary">Speichern</button>
+                                <br>
+                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#saveChangesModal">Änderungen speichern</button>
+                                <!-- FIXME: Modal-saveChanges -->
+                                <div class="modal fade" id="saveChangesModal" tabindex="-1" role="dialog" aria-labelledby="saveChangesModalTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="saveChangesModalTitle">Änderungen speichern</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                                                <button type="button" class="btn btn-primary">Speichern</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -214,16 +218,6 @@ session_start();
                         -->
                         </form>
                     </div>
-                    <!--
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Vor- und Nachname</span>
-                        </div>
-                        <input type="text" aria-label="forename" class="form-control">
-                        <input type="text" aria-label="surname" class="form-control">
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, optio illo, delectus deleniti animi accusamus. Laboriosam maiores totam provident aliquam. Unde, incidunt amet officia a obcaecati, ducimus at molestiae nemo.</p>
-                  -->
                 </div>
             </li>
         </ul>

@@ -33,10 +33,9 @@ session_start();
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="#">
-            <img src="../assets/bar.png" width="30" height="30" class="d-inline-block align-center" alt="">
-            <span>Barman</span>
+            <img src="../assets/bar.png" height="30" class="d-inline-block align-center" alt=""> Barman
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -55,9 +54,14 @@ session_start();
         });
     </script>
     <div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light">
-        <div class="p-5">
-            <h1>Willkommen bei deinem Barman, <i>XY</i></h1>
-            <blockquote>Whatever text ...</blockquote>
+        <div class="pl-5 pr-5 d-flex bd-highlight">
+            <div class="align-self-center p-2 w-100 bd-highlight">
+                <h1>Willkommen bei deinem Barman, <i>XY</i></h1>
+                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</blockquote>
+            </div>
+            <div class="align-self-center p-2 flex-shrink-1 bd-highlight">
+                <img style="border-radius: 20px; float: right" src="../assets/bar.png" height="100px"/>
+            </div>
         </div>
     </div>
 </header>
@@ -73,9 +77,6 @@ session_start();
     <section>
         <ul>
             <li id="infoSite" class="active">
-                <div class="section-title">
-                    <h2>Info-Site</h2>
-                </div>
                 <div class="section-content">
                     <div class="container">
                         <h2>Info Seite</h2>

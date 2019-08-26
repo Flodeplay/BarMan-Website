@@ -16,11 +16,15 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+.jumbotron blockquote {
+    width: 60%;
+    padding-left: 10px;
+}
+
 /**
 *   TODO: tbd
 *   Accordion active with h2 on the site rotated or not? --> more space without || solution could be to put it at the top or more to the left site!
 */
-
 ul {
     display: flex;
     min-height: 100vh;

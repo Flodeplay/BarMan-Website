@@ -95,6 +95,10 @@ li .section-content {
     transition: all .25s .1s ease-out;
 }
 
+#infoSite {
+    pointer-events: none;
+}
+
 /**
     TODO: MEDIA QUERIES
  */

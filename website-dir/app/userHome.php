@@ -79,6 +79,7 @@ session_start();
                         <h2>Info Seite</h2>
                         <br>
                         <blockquote>Hier stehen Informationen ...</blockquote>
+                        <p>TODO/IDEA: add a flow diagram which describes the settings to the user</p>
                     </div>
                 </div>
             </li>
@@ -192,7 +193,7 @@ session_start();
                                     <div class="row">
                                         <div class="col-md-8">
                                             <blockquote>
-                                                <i>Hast du eine konkrete Frage oder ein Problem mit deinem Profil, dem Barman oder hast du sogar einen Fehler auf unserer Website gefunden, dann würden wir uns sehr darüber freuen, wenn du uns eine Nachricht schreibst, damit wir dir weiterhelfen können. Wenn du denkst, dass es sich bei deiner Frage um eine allgemeine Frage handelt, dann würden wir dir empfehlen unser FAQ zu dursuchen!</i>
+                                                <i>Hast du eine konkrete Frage oder ein Problem mit deinem Profil, dem Barman oder hast du sogar einen Fehler auf unserer Website gefunden, dann würden wir uns sehr darüber freuen, wenn du uns eine Nachricht schreibst, damit wir dir weiterhelfen können. Wenn du denkst, dass es sich bei deiner Frage um eine allgemeine Frage handelt, dann würden wir dir empfehlen einen kurzen Blick in unser FAQ zu werfen!</i>
                                             </blockquote>
                                         </div>
                                         <div class="col-md-4 my-auto">

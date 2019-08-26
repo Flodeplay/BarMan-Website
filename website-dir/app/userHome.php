@@ -70,6 +70,18 @@ session_start();
     -->
     <section>
         <ul>
+            <li id="infoSite" class="active">
+                <div class="section-title">
+                    <h2>Info-Site</h2>
+                </div>
+                <div class="section-content">
+                    <div class="container">
+                        <h2>Info Seite</h2>
+                        <br>
+                        <blockquote>Hier stehen Informationen ...</blockquote>
+                    </div>
+                </div>
+            </li>
             <li>
                 <div class="section-title">
                     <h2>Geräte Verwaltung</h2>
@@ -78,7 +90,7 @@ session_start();
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
                 </div>
             </li>
-            <li class="active">
+            <li>
             <!-- tbd: use <li class=""> for closed accordion after loading -->
                 <div class="section-title">
                     <h2>Flüssigkeiten</h2>
@@ -218,6 +230,10 @@ session_start();
         <script>
             var section = $('li');
             function toggleAccordion() {
+                var x = document.getElementById('infoSite');
+                if (window.getComputedStyle(x).display != 'none') {
+                    x.style.display = 'none';
+                }
                 section.removeClass('active');
                 $(this).addClass('active');
             }

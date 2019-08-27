@@ -21,9 +21,9 @@ session_start();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <!-- costume stylesheets -->
-    <link rel="stylesheet" href="../css/custom/wave.css">
     <link rel="stylesheet" href="../css/custom/base.css">
     <link rel="stylesheet" href="../css/custom/nav.css">
+    <link rel="stylesheet" href="../css/custom/wave.css">
     <link rel="stylesheet" href="../css/custom/user-home.css">
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -50,8 +50,8 @@ session_start();
     </nav>
     <script>
         $(window).scroll(function() {
-            $('nav a').toggleClass('scrolled', $(this).scrollTop() > 200);
-            $('ul').toggleClass('ulScrolled', $(this).scrollTop() > 200);
+            $('nav a').toggleClass('scrolled', $(this).scrollTop() > 300);
+            $('ul').toggleClass('ulScrolled', $(this).scrollTop() > 465);
         });
     </script>
     <div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light sec">
@@ -65,9 +65,10 @@ session_start();
             </div>
         </div>
         <br>
-        <div class="wave">
-        </div>
+        <div class="wave"></div>
     </div>
+    <!-- to be deleted -->
+    <div class="waveBox"></div>
 </header>
 <main>
     <!--

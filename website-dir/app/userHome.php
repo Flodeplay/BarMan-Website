@@ -23,7 +23,7 @@ session_start();
     <!-- costume stylesheets -->
     <link rel="stylesheet" href="../css/custom/base.css">
     <link rel="stylesheet" href="../css/custom/nav.css">
-    <link rel="stylesheet" href="../css/custom/home-accordion.css">
+    <link rel="stylesheet" href="../css/custom/user-home.css">
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.js"></script>
@@ -78,6 +78,7 @@ session_start();
     <section>
         <ul>
             <li id="infoSite" class="active">
+                <!-- tba: daily message -->
                 <div class="section-content">
                     <div class="container">
                         <h2>Info Seite</h2>
@@ -96,7 +97,6 @@ session_start();
                 </div>
             </li>
             <li>
-            <!-- tbd: use <li class=""> for closed accordion after loading -->
                 <div class="section-title">
                     <h2>Flüssigkeiten</h2>
                 </div>

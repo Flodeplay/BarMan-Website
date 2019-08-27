@@ -21,6 +21,7 @@ session_start();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <!-- costume stylesheets -->
+    <link rel="stylesheet" href="../css/custom/wave.css">
     <link rel="stylesheet" href="../css/custom/base.css">
     <link rel="stylesheet" href="../css/custom/nav.css">
     <link rel="stylesheet" href="../css/custom/user-home.css">
@@ -53,6 +54,10 @@ session_start();
             $('ul').toggleClass('ulScrolled', $(this).scrollTop() > 200);
         });
     </script>
+    <section class="sec">
+        <div class="wave">
+        </div>
+    </section>
     <div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light">
         <div class="pl-5 pr-5 d-flex bd-highlight">
             <div class="align-self-center p-2 w-100 bd-highlight">

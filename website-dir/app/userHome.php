@@ -21,6 +21,7 @@ session_start();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <!-- costume stylesheets -->
+    <link rel="stylesheet" href="../css/custom/wave.css">
     <link rel="stylesheet" href="../css/custom/base.css">
     <link rel="stylesheet" href="../css/custom/nav.css">
     <link rel="stylesheet" href="../css/custom/user-home.css">
@@ -53,7 +54,7 @@ session_start();
             $('ul').toggleClass('ulScrolled', $(this).scrollTop() > 200);
         });
     </script>
-    <div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light">
+    <div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light sec">
         <div class="pl-5 pr-5 d-flex bd-highlight">
             <div class="align-self-center p-2 w-100 bd-highlight">
                 <h1>Willkommen bei deinem Barman, <i>XY</i></h1>
@@ -63,7 +64,9 @@ session_start();
                 <img style="border-radius: 20px; float: right" src="../assets/users/Manuel.jpg" height="100px"/>
             </div>
         </div>
-        <div></div>
+        <br>
+        <div class="wave">
+        </div>
     </div>
 </header>
 <main>
@@ -90,7 +93,7 @@ session_start();
             </li>
             <li>
                 <div class="section-title">
-                    <h2>Geräte Verwaltung</h2>
+                    <h2 class="display-4">Geräte Verwaltung</h2>
                 </div>
                 <div class="section-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
@@ -98,7 +101,7 @@ session_start();
             </li>
             <li>
                 <div class="section-title">
-                    <h2>Flüssigkeiten</h2>
+                    <h2 class="display-4">Flüssigkeiten</h2>
                 </div>
                 <div class="section-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
@@ -106,7 +109,7 @@ session_start();
             </li>
             <li>
                 <div class="section-title">
-                    <h2>Getränke</h2>
+                    <h2 class="display-4">Getränke</h2>
                 </div>
                 <div class="section-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe vel facilis quae nihil ad aspernatur ex delectus. Tenetur nulla voluptates similique quos, quia possimus, magnam esse natus quis ipsa.</p>
@@ -114,7 +117,7 @@ session_start();
             </li>
             <li>
                 <div class="section-title">
-                    <h2>Profilverwaltung</h2>
+                    <h2 class="display-4">Profilverwaltung</h2>
                 </div>
                 <div class="section-content">
                     <div class="container">

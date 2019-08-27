@@ -54,11 +54,7 @@ session_start();
             $('ul').toggleClass('ulScrolled', $(this).scrollTop() > 200);
         });
     </script>
-    <section class="sec">
-        <div class="wave">
-        </div>
-    </section>
-    <div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light">
+    <div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light sec">
         <div class="pl-5 pr-5 d-flex bd-highlight">
             <div class="align-self-center p-2 w-100 bd-highlight">
                 <h1>Willkommen bei deinem Barman, <i>XY</i></h1>
@@ -68,7 +64,9 @@ session_start();
                 <img style="border-radius: 20px; float: right" src="../assets/users/Manuel.jpg" height="100px"/>
             </div>
         </div>
-        <div></div>
+        <br>
+        <div class="wave">
+        </div>
     </div>
 </header>
 <main>

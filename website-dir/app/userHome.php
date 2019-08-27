@@ -35,7 +35,7 @@ session_start();
 <header>
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="#">
-            <img src="../assets/bar.png" height="30" class="d-inline-block align-center" alt=""> Barman
+            <img src="../assets/bar.png" height="30px" class="d-inline-block align-center" alt=""> Barman
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -60,9 +60,10 @@ session_start();
                 <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</blockquote>
             </div>
             <div class="align-self-center p-2 flex-shrink-1 bd-highlight">
-                <img style="border-radius: 20px; float: right" src="../assets/bar.png" height="100px"/>
+                <img style="border-radius: 20px; float: right" src="../assets/users/Manuel.jpg" height="100px"/>
             </div>
         </div>
+        <div></div>
     </div>
 </header>
 <main>

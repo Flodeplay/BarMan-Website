@@ -9,7 +9,9 @@
 body {
     font-family: 'Lato', serif;
     /*background-color: #343a40 !important;*/
-    background: linear-gradient(to bottom, #343a40 -10%, #87014f 100%);
+    /*background: linear-gradient(to bottom, #343a40 -10%, #87014f 100%);*/
+    /*background: linear-gradient(to top, #343a40 10%, #87014f 160%);*/
+    background: linear-gradient(to bottom, #000000 -15%, #87014f 40%);
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

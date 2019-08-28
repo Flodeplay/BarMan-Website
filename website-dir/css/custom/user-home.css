@@ -1,13 +1,9 @@
-/*noinspection CssUnknownTarget*/
-@import url('https://fonts.googleapis.com/css?family=Lato:300,900');
-
 * {
     box-sizing: border-box;
     /*   border: 1px solid black; */
 }
 
 body {
-    font-family: 'Lato', serif;
     /*background-color: #343a40 !important;*/
     /*background: linear-gradient(to bottom, #343a40 -10%, #87014f 100%);*/
     /*background: linear-gradient(to top, #343a40 10%, #87014f 160%);*/

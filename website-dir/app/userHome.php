@@ -97,7 +97,14 @@ session_start();
                     <h2 class="display-4">Geräte Verwaltung</h2>
                 </div>
                 <div class="section-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
+                    <div class="container">
+                        <h2>Geräte-Verwaltung</h2>
+                        <blockquote>
+                            <i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus ...</i>
+                        </blockquote>
+                        <br>
+
+                    </div>
                 </div>
             </li>
             <li>
@@ -174,7 +181,14 @@ session_start();
                                     </div>
                                 </div>
                                 <br>
-                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#saveChangesModal">Änderungen speichern</button>
+                                <div class="btnContainer d-flex bd-highlight">
+                                    <div class="align-self-center w-100 bd-highlight">
+                                        <p class="m-0">Änderungen speichern?</p>
+                                    </div>
+                                    <div class="align-self-center flex-shrink-1 bd-highlight">
+                                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#saveChangesModal"><i class="fas fa-check"></i></button>
+                                    </div>
+                                </div>
                                 <!-- FIXME: Modal-saveChanges -->
                                 <div class="modal fade" id="saveChangesModal" tabindex="-1" role="dialog" aria-labelledby="saveChangesModalTitle" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

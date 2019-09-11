@@ -94,22 +94,47 @@ session_start();
             </li>
             <li>
                 <div class="section-title">
-                    <h2 class="display-4">Geräte Verwaltung</h2>
+                    <h2 class="">Geräte Verwaltung</h2>
                 </div>
                 <div class="section-content">
                     <div class="container">
                         <h2>Geräte-Verwaltung</h2>
                         <blockquote>
-                            <i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus ...</i>
+                            <i>
+                                Um dich mit einem Barman zu verbinden, sind hier die notwendigen Felder auszufüllen. Du kannst aber auch, mit deinem Smartphone oder deinem Tablet, den QR-Code direkt von einem Barman scannen, um die Felder automatisch auszufüllen.
+                                Solltest du Probleme beim Verbinden mit dem Barman haben, dann wende dich bitte an unser Support-Team!
+                            </i>
                         </blockquote>
                         <br>
-
+                        <form>
+                            <div class="pl-5 pr-5">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputForename">Geräte-Nummer</label>
+                                        <input type="number" class="form-control" id="inputDeviceNo" placeholder="129-120-130">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputSurname">Geräte-Passwort</label>
+                                        <input type="password" class="form-control" id="inputDevicePwd" placeholder="devicePassword">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="btnContainer d-flex bd-highlight">
+                                <div class="align-self-center w-100 bd-highlight">
+                                    <p class="m-0">Änderungen speichern?</p>
+                                </div>
+                                <div class="align-self-center flex-shrink-1 bd-highlight">
+                                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#saveChangesModal"><i class="fas fa-check"></i></button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </li>
             <li>
                 <div class="section-title">
-                    <h2 class="display-4">Flüssigkeiten</h2>
+                    <h2 class="">Flüssigkeiten</h2>
                 </div>
                 <div class="section-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
@@ -117,7 +142,7 @@ session_start();
             </li>
             <li>
                 <div class="section-title">
-                    <h2 class="display-4">Getränke</h2>
+                    <h2 class="">Getränke</h2>
                 </div>
                 <div class="section-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe vel facilis quae nihil ad aspernatur ex delectus. Tenetur nulla voluptates similique quos, quia possimus, magnam esse natus quis ipsa.</p>
@@ -125,7 +150,7 @@ session_start();
             </li>
             <li>
                 <div class="section-title">
-                    <h2 class="display-4">Profilverwaltung</h2>
+                    <h2 class="">Profilverwaltung</h2>
                 </div>
                 <div class="section-content">
                     <div class="container">

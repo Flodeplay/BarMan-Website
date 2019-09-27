@@ -206,11 +206,15 @@ session_start();
                                     </div>
                                 </div>
                                 <br>
-                                <div class="btnContainer d-flex bd-highlight">
-                                    <div class="align-self-center w-100 bd-highlight">
+                                <button class="btn btn-block btnContainer d-flex">
+                                    <p class="m-0 w-100 align-self-center">Änderungen speichern?</p>
+                                    <div class="align-self-center flex-shrink-1"><i class="fas fa-check"></i></div>
+                                </button>
+                                <div class="btn btnContainer d-flex">
+                                    <div class="align-self-center w-100">
                                         <p class="m-0">Änderungen speichern?</p>
                                     </div>
-                                    <div class="align-self-center flex-shrink-1 bd-highlight">
+                                    <div class="align-self-center flex-shrink-1">
                                         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#saveChangesModal"><i class="fas fa-check"></i></button>
                                     </div>
                                 </div>

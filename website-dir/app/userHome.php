@@ -28,6 +28,7 @@ session_start();
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/inputmask/jquery.inputmask.js"></script>
     <!-- favicons -->
     <!-- tba -->
     <title>Mein Barman</title>
@@ -111,7 +112,10 @@ session_start();
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputForename">Geräte-Nummer</label>
-                                        <input type="number" class="form-control" id="inputDeviceNo" placeholder="129-120-130">
+                                        <input type="text" class="form-control" id="inputDeviceNo" data-inputmask="'mask': '999-999-999'" placeholder="129-120-130">
+                                        <script>
+                                            $(":input").inputmask();
+                                        </script>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputSurname">Geräte-Passwort</label>
@@ -179,7 +183,7 @@ session_start();
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPwd">Passwort</label>
-                                        <input type="password" class="form-control" id="inputPwd" placeholder="your password">
+                                        <input type="password" class="form-control" id="inputPwd" pattern=".{6,}" placeholder="your password">
                                     </div>
                                 </div>
                                 <div class="form-row">

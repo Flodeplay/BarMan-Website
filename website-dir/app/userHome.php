@@ -108,7 +108,7 @@ session_start();
                         </blockquote>
                         <br>
                         <form>
-                            <div class="pl-5 pr-5">
+                            <div class="pl-5 pr-5 w-75 m-auto">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputForename">Geräte-Nummer</label>
@@ -122,17 +122,17 @@ session_start();
                                         <input type="password" class="form-control" id="inputDevicePwd" placeholder="devicePassword">
                                     </div>
                                 </div>
-                            </div>
-                            <br>
-                            <button class="btn btn-block btnContainer d-flex">
-                                <p class="m-0 w-100 align-self-center">Verbinden/Koppeln</p>
-                                <div class="align-self-center flex-shrink-1">
+                                <br>
+                                <button class="btn btn-block btnContainer d-flex">
+                                    <p class="m-0 w-100 align-self-center">Verbinden/Koppeln</p>
+                                    <div class="align-self-center flex-shrink-1">
                                     <span class="fa-stack fa-md">
                                         <i class="fas fa-circle fa-stack-2x icon-background"></i>
-                                        <i class="fas fa-check fa-stack-1x"></i>
+                                        <i class="fas fa-link fa-stack-1x"></i>
                                     </span>
-                                </div>
-                            </button>
+                                    </div>
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>

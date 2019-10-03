@@ -4,7 +4,11 @@
 * {
     font-family: 'Lato', serif;
 }
-
+/* Disables scrolling
+body {
+    overflow: hidden;
+}
+ */
 input:focus {
     border-color: #00C2B3 !important;
     box-shadow: 0 0 0 0.2rem rgba(0,194,179,0.3) !important;

@@ -29,6 +29,7 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script src="../js/inputmask/jquery.inputmask.js"></script>
+    <script src="../js/readForm.js"></script>
     <!-- favicons -->
     <!-- tba -->
     <title>Mein Barman</title>
@@ -123,7 +124,7 @@ session_start();
                                     </div>
                                 </div>
                                 <br>
-                                <button class="btn btn-block btnContainer d-flex">
+                                <button class="btn btn-block btnContainer d-flex" onclick="linkDevice()">
                                     <p class="m-0 w-100 align-self-center">Verbinden/Koppeln</p>
                                     <div class="align-self-center flex-shrink-1">
                                     <span class="fa-stack fa-md">
@@ -211,7 +212,7 @@ session_start();
                                     </div>
                                 </div>
                                 <br>
-                                <button class="btn btn-block btnContainer d-flex">
+                                <button class="btn btn-block btnContainer d-flex" onclick="safeProfileData()">
                                     <p class="m-0 w-100 align-self-center">Änderungen speichern?</p>
                                     <div class="align-self-center flex-shrink-1">
                                         <span class="fa-stack fa-md">

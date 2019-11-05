@@ -1,19 +1,29 @@
-//testfunction
-function safeProfileData() {
-    let forename = readInput('inputForename');
-    let surname = readInput('inputSurname');
-    let email = readInput('inputEmail');
-    let pw = readInput('inputPwd');
-    let address = readInput('inputAddress');
-    let phonenr = readInput('inputPhone');
-    let city = readInput('inputCity');
-    let country = readInput('inputCountry');
-    let zip = readInput('inputZip');
-    if(email.includes('@')) {
-        console.log(forename, surname, email, pw, address, phonenr, city, country, zip);
+function readProfileData() {
+    let profileData = [];
+    profileData[0] = readInput('inputForename');
+    profileData[1] = readInput('inputSurname');
+    profileData[2] = readInput('inputEmail');
+    profileData[3] = readInput('inputPwd');
+    profileData[4] = readInput('inputAddress');
+    profileData[5] = readInput('inputPhone');
+    profileData[6] = readInput('inputCity');
+    profileData[7] = readInput('inputCountry');
+    profileData[8] = readInput('inputZip');
+
+    return profileData;
+}
+
+function verifyProfileData() {
+    let profileData = readProfileData();
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profileData[2])) {
+        return true;
     } else {
-        console.error('Email must contain "@"');
+        return false;
     }
+}
+
+function writeProfileData() {
+    
 }
 
 function linkDevice() {

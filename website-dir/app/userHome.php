@@ -124,7 +124,7 @@ session_start();
                                     </div>
                                 </div>
                                 <br>
-                                <button class="btn btn-block btnContainer d-flex" onclick="linkDevice()">
+                                <button type="button" class="btn btn-block btnContainer d-flex" onclick="linkDevice()">
                                     <p class="m-0 w-100 align-self-center">Verbinden/Koppeln</p>
                                     <div class="align-self-center flex-shrink-1">
                                     <span class="fa-stack fa-md">
@@ -212,7 +212,7 @@ session_start();
                                     </div>
                                 </div>
                                 <br>
-                                <button class="btn btn-block btnContainer d-flex" onclick="safeProfileData()">
+                                <button type="button" class="btn btn-block btnContainer d-flex" onclick="safeProfileData()">
                                     <p class="m-0 w-100 align-self-center">Änderungen speichern?</p>
                                     <div class="align-self-center flex-shrink-1">
                                         <span class="fa-stack fa-md">

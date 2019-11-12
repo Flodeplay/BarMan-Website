@@ -4,11 +4,6 @@ function readProfileData() {
     profileData[1] = readInput('inputSurname');
     profileData[2] = readInput('inputEmail');
     profileData[3] = readInput('inputPwd');
-    profileData[4] = readInput('inputAddress');
-    profileData[5] = readInput('inputPhone');
-    profileData[6] = readInput('inputCity');
-    profileData[7] = readInput('inputCountry');
-    profileData[8] = readInput('inputZip');
 
     return profileData;
 }
@@ -21,21 +16,16 @@ function verifyProfileData(profileData) {
     }
 }
 
-function writeProfileData() {
+function updateUser() {
     let profileData = readProfileData();
     if(verifyProfileData(profileData)) {
-        createProfilePost(profileData);
+        createUserUpdatePost(profileData);
     }
-}
-
-function readUserByID() {
-    createRequestUserByID("1");
 }
 
 function linkDevice() {
     let nr = readInput('inputDeviceNo');
     let pw = readInput('inputDevicePwd');
-    console.log(nr, pw);
 }
 
 function readInput(id) {

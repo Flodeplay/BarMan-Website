@@ -13,8 +13,7 @@ function readProfileData() {
     return profileData;
 }
 
-function verifyProfileData() {
-    let profileData = readProfileData();
+function verifyProfileData(profileData) {
     if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profileData[2])) {
         return true;
     } else {
@@ -23,7 +22,14 @@ function verifyProfileData() {
 }
 
 function writeProfileData() {
-    
+    let profileData = readProfileData();
+    if(verifyProfileData(profileData)) {
+        createProfilePost(profileData);
+    }
+}
+
+function readUserByID() {
+    createRequestUserByID("1");
 }
 
 function linkDevice() {

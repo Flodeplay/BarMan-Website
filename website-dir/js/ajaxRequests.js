@@ -1,8 +1,9 @@
 function createProfilePost(profileData) {
     $.ajax({
-        url: "request.php",
-        method: "POST",
+        url: "php/request.php",
+        method: "GET",
         data: {
+            action: "",
             forename: profileData[0],
             surname: profileData[1],
             email: profileData[2],
@@ -13,8 +14,9 @@ function createProfilePost(profileData) {
             country: profileData[7],
             zip: profileData[8]
         },
-        success: function (data) {
-
+        success: function (response) {
+            console.log("Success", response);
+            /*
             if (data !== 'success') {
                 $('#error_message').html(data);
             } else {
@@ -27,7 +29,27 @@ function createProfilePost(profileData) {
                 setTimeout(function () {
                     $('#success_message').fadeOut('Slow');
                 }, 20000);
-            }
+            }*/
+        },
+        error: function (response) {
+            console.log("Error", response)
+        }
+    });
+}
+
+function createRequestUserByID(u_id) {
+    $.ajax({
+        url: "php/request.php",
+        method: "GET",
+        data: {
+            action: "requestUserByID",
+            u_id: u_id
+        },
+        success: function (response) {
+            console.log("Success", response);
+        },
+        error: function (response) {
+            console.log("Error", response);
         }
     });
 }

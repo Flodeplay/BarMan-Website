@@ -52,6 +52,7 @@ function establishDB()
 
 }
 
+// TODO remove useless functions from thrifter!
 
 /**
  * gibt die Posts von einem user zurück

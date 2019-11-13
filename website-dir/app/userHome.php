@@ -125,7 +125,7 @@ session_start();
                                     </div>
                                 </div>
                                 <br>
-                                <button type="button" class="btn btn-block btnContainer d-flex" onclick="linkDevice()">
+                                <button type="button" class="btn btn-block btnContainer d-flex" onclick="checkDeviceConn()">
                                     <p class="m-0 w-100 align-self-center">Verbinden/Koppeln</p>
                                     <div class="align-self-center flex-shrink-1">
                                     <span class="fa-stack fa-md">

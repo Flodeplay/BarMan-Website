@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
+<div class="form-outer">
+    <div id="error-message" class="text-danger"></div>
+    <form name="login" action="../app/login.php" method="post" onsubmit="return checkLogin()">
+        <span id="forename_text" class="register-input">Vorname</span>
+        <input type="text" name="forename_text" class="form-control register-input" placeholder="Vorname" aria-label="forename">
+        <span id="surname_text" class="register-input">Nachname</span>
+        <input type="text" name="surname_text" class="form-control register-input" placeholder="Nachname" aria-label="surname">
+        <span id="email_text">E-Mail</span>
+        <input type="email" name="email" class="form-control" placeholder="Username@picknmix.at"
+               aria-label="Email">
+        <span id="password_text">Passwort</span>
+        <input type="password" name="pwd" class="form-control" placeholder="*******" aria-label="Passwort">
+        <hr>
+        <div class="login-buttons">
+            <button type="button" class="btn rounded-pill btn-warning my-1 change-login">
+                <span class="text-white">Brauchst du ein Konto?</span>
+            </button>
+            <button type="submit" name="submit" value="login" class="btn btn-danger rounded-pill  my-1 login-input">
+                <span class="text-white">Login</span>
 
-</body>
-</html>
+            </button>
+            <button type="submit" name="submit" value="reg" class="btn btn-danger rounded-pill  my-1 register-input">
+                <span class="text-white">Registrieren</span>
+
+            </button>
+        </div>
+    </form>
+</div>
+<script src="../js/login.js"></script>

@@ -8,7 +8,7 @@
 function checkSession()
 {
     if (!isset($_SESSION["u_user"])) {
-        header("Location: login.php");
+        header("Location: ../login.php");
     }
 
 }

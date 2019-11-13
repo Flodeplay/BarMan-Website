@@ -64,10 +64,10 @@ $(".change-login").click(function () {
     login = !login;
     resetlogin();
     if(login){
-        $(".change-login p").text = "Doch lieber Anmelden";
+        $(".change-login span").text = "Doch lieber Anmelden";
     }
     else{
-        $(".change-login p").text = "Brauchst du ein Konto";
+        $(".change-login span").text = "Brauchst du ein Konto";
     }
     $(".register-input").toggle();
     $(".login-input").toggle();

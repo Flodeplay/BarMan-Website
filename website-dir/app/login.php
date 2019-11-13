@@ -1,8 +1,7 @@
 <?php
-error_reporting(5);
+error_reporting(0);
 session_start();
 //checkSession();
-include_once "php/funcs.inc.php"
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -13,6 +12,7 @@ include_once "php/funcs.inc.php"
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="barman drinks mixing bartender bar alcohol">
     <meta name="author" content="Manuel Koellner">
+
     <!-- extern stylesheets -->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -51,94 +51,84 @@ include_once "php/funcs.inc.php"
     });
 </script>
 
-<div class="jumbotron jumbotron-fluid m-0 bg-transparent sec" style="height: 100vh;">
-    <div class="row  justify-content-center">
-        <div class="col-md-4">
-            <div class="align-self-center p-2 w-100 bd-highlight text-light">
-                <h1>Willkommen bei BarMan!</h1>
-                <blockquote>Hier kannst du dich anmelden und Registrieren</blockquote>
-            </div>
+<div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light sec" style="height: 100vh;">
+    <div class="pl-5 pr-5 d-flex bd-highlight">
+        <div class="align-self-center p-2 w-100 bd-highlight">
+            <h1>Willkommen bei BarMan!</h1>
+            <blockquote>Hier kannst du dich anmelden und Registrieren</blockquote>
         </div>
-        <div class="col-md-4 bg-white shadow-lg">
-            <?php
-            if (isset($_POST["submit"])) {
-                try {
-                    $conn = establishDB();
-                } catch (Exception $e) {
-                    echo $e->getMessage();
-                }
-                try {
-                    if ($conn) {
-                        switch ($_POST["submit"]) {
-                            case "login":
-                                $email = mysqli_real_escape_string($conn, $_POST["email"]);
-                                $pwd = hash("sha384", $_POST["pwd"], FALSE);
-                                $query = mysqli_query($conn, "SELECT * FROM u_users WHERE u_email = '$email' AND u_password LIKE '$pwd';");
-                                if (mysqli_num_rows($query) == 1) {
-                                    $data = mysqli_fetch_assoc($query);
-                                    $user_local = new user($data["u_id"], $data["u_forename"], $data["u_surname"], $data["u_email"], $data["u_image"]);
-                                    $_SESSION["u_user"] = $user_local;
-                                    echo "<div class='w-100 d-flex flex-column align-items-center justify-content-center'>";
-                                    echo "<div class='mx-auto my-3'><i class=\"fas fa-spinner fa-spin fa-4x\"></i></div>";
-                                    echo "<div>Sie werden gleich weitergeleitet</div>";
-                                    echo
-                                    "<script type='text/javascript'>
-                                window.location.href = 'userHome.php';
-                                </script></div>";
-                                } else {
-                                    echo "<h4 class='mb-3 text-danger'>Passwort Oder Benutzername ist Falsch!</h4>";
-                                    exit(file_get_contents('../html/login.html'));
-                                }
-                                break;
-                            case "reg":
-                                try {
-                                    $email = filter_var(mysqli_real_escape_string($conn, $_POST["email"]), FILTER_VALIDATE_EMAIL);
-                                    $forename = mysqli_real_escape_string($conn, $_POST["forename"]);
-                                    $surname = mysqli_real_escape_string($conn, $_POST["surname"]);
-                                    $pwd = mysqli_real_escape_string($conn, $_POST["pwd"]);
-                                    $pwd = hash("sha384", $_POST["pwd"], FALSE);
-                                    ///Testet Ob Username vorhanden
-                                    if (isUserbyName($username) || isUserbyEmail($email)) {
-                                        throw new Exception("Username or Email existiert bereits");
-                                    }
-
-                                    mysqli_query($conn, "INSERT INTO u_users (u_forename, u_surname, u_email, u_password) VALUES ('$forename','$forename','$username','$email','$pwd');");
-                                    $query = mysqli_query($conn, "SELECT * FROM u_users WHERE u_username = '$username' AND u_password LIKE '$pwd';");
-                                    if (mysqli_num_rows($query) == 1) {
-                                        $data = mysqli_fetch_assoc($query);
-                                        $user_local = new user($data["u_id"], $data["u_forename"], $data["u_surname"], $data["u_email"], $data["u_image"]);
-                                        $_SESSION["u_user"] = $user_local;
-                                        echo "<div class='w-100 d-flex flex-column align-items-center justify-content-center'>";
-                                        echo "<div class='mx-auto my-3'><i class=\"fas fa-spinner fa-spin fa-4x\"></i></div>";
-                                        echo "<div>Sie werden gleich weitergeleitet</div>";
-                                        echo
-                                        "<script type='text/javascript'>
-                                window.location.href = 'userHome.php';
-                                </script></div>";
-                                    }
-                                } catch (Exception $e) {
-                                    echo "<h4 class='mb-3 text-danger'>" . $e->getMessage() . " Please register again!</h4>";
-                                    exit(file_get_contents('../html/login.html'));
-                                }
-                                break;
-                            default:
-                                throw new Exception("Formular malformed");
-                        }
-                        mysqli_close($conn);
-                        $conn = null;
-                    } else {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                }catch (Exception $e){
-                    echo "<h4 class='mb-3 text-danger'>" . $e->getMessage() . " Please register again!</h4>";
-                }
-            } else {
-                echo file_get_contents('../html/login.html');
+        <?php
+        if (isset($_POST["submit"])) {
+            try {
+                $conn = establishDB();
+            } catch (Exception $e) {
+                echo $e->getMessage();
             }
-            ?>
-        </div>
+            if ($conn) {
+                switch ($_POST["submit"]) {
+                    case "login":
+                        $email = mysqli_real_escape_string($conn, $_POST["email"]);
+                        $pwd = hash("sha384", $_POST["pwd"], FALSE);
+                        $query = mysqli_query($conn, "SELECT * FROM u_users WHERE u_email = '$email' AND u_password LIKE '$pwd';");
+                        if (mysqli_num_rows($query) == 1) {
+                            $data = mysqli_fetch_assoc($query);
+                            $user_local = new user($data["u_id"], $data["u_forename"], $data["u_surname"], $data["u_email"], $data["u_image"]);
+                            $_SESSION["u_user"] = $user_local;
+                            echo "<div class='w-100 d-flex flex-column align-items-center justify-content-center'>";
+                            echo "<div class='mx-auto my-3'><i class=\"fas fa-spinner fa-spin fa-4x\"></i></div>";
+                            echo "<div>Sie werden gleich weitergeleitet</div>";
+                            echo
+                            "<script type='text/javascript'>
+                                window.location.href = 'userHome.php';
+                                </script></div>";
+                        } else {
+                            echo "<h4 class='mb-3 text-danger'>Passwort Oder Benutzername ist Falsch!</h4>";
+                            exit(file_get_contents('../html/login.html'));
+                        }
+                        break;
+                    case "reg":
+                        try {
+                            $email = filter_var(mysqli_real_escape_string($conn, $_POST["email"]), FILTER_VALIDATE_EMAIL);
+                            $forename = mysqli_real_escape_string($conn, $_POST["forename"]);
+                            $surname = mysqli_real_escape_string($conn, $_POST["surname"]);
+                            $pwd = mysqli_real_escape_string($conn, $_POST["pwd"]);
+                            $pwd = hash("sha384", $_POST["pwd"], FALSE);
+                            ///Testet Ob Username vorhanden
+                            if (isUserbyName($username) || isUserbyEmail($email)) {
+                                throw new Exception("Username or Email existiert bereits");
+                            }
+
+                            mysqli_query($conn, "INSERT INTO u_users (u_forename, u_surname, u_email, u_password) VALUES ('$forename','$forename','$username','$email','$pwd');");
+                            $query = mysqli_query($conn, "SELECT * FROM u_users WHERE u_username = '$username' AND u_password LIKE '$pwd';");
+                            if (mysqli_num_rows($query) == 1) {
+                                $data = mysqli_fetch_assoc($query);
+                                $user_local = new user($data["u_id"], $data["u_forename"], $data["u_surname"], $data["u_email"], $data["u_image"]);
+                                $_SESSION["u_user"] = $user_local;
+                                echo "<div class='w-100 d-flex flex-column align-items-center justify-content-center'>";
+                                echo "<div class='mx-auto my-3'><i class=\"fas fa-spinner fa-spin fa-4x\"></i></div>";
+                                echo "<div>Sie werden gleich weitergeleitet</div>";
+                                echo
+                                "<script type='text/javascript'>
+                                window.location.href = 'userHome.php';
+                                </script></div>";
+                            }
+                        } catch (Exception $e) {
+                            echo "<h4 class='mb-3 text-danger'>" . $e->getMessage() . " Please register again!</h4>";
+                            exit(file_get_contents('../html/login.html'));
+                        }
+                        break;
+                }
+                mysqli_close($conn);
+                $conn = null;
+            } else {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+        } else {
+            echo file_get_contents('../html/login.html');
+        }
+        ?>
     </div>
     <div class="wave"></div>
-    </div>
+</div>
 </body>
 </html>

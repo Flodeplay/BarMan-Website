@@ -28,10 +28,10 @@ function createDeviceConnCheck(deviceConnData) {
             surname: deviceConnData[1]
         },
         success: function (response) {
-            console.log(response);
+            return response;
         },
         error: function (response) {
-            console.log(response);
+            console.error(response);
         }
     });
 }

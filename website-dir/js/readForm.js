@@ -42,16 +42,20 @@ function readDeviceConn() {
 
 function verifyDeviceConn(deviceConnData) {
     let verifyBool = true;
-    if(deviceConnData[1].length < 8) {
+    if(deviceConnData[0].length < 14) {
+        verifyBool = false;
+    }
+    if(deviceConnData[1].length < 6) {
         verifyBool = false;
     }
     return verifyBool;
 }
 
 function checkDeviceConn() {
+    console.log("test");
     let deviceConnData = readDeviceConn();
     if(verifyDeviceConn(deviceConnData)) {
-        createDeviceConnCheck(deviceConnData);
+        console.log(createDeviceConnCheck(deviceConnData));
     }
 }
 

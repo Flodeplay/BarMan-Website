@@ -18,7 +18,7 @@ switch ($action) {
         updateUserByID($u_id, $forename, $surname, $email, $pwd);
         break;
     case "getDeviceByParam":
-        getDeviceByParam($d_key, $d_pin);
+        getDeviceByParam($d_key, $d_pin, $u_id);
         break;
 }
 
@@ -38,16 +38,26 @@ function updateUserByID($u_id, $forename, $surname, $email, $pwd)
     }
 }
 
-function getDeviceByParam($d_key, $d_pin) {
+function getDeviceByParam($d_key, $d_pin, $u_id) {
     $conn = establishDB();
-    $sql = 'SELECT d_id, d_key, d_pin FROM d_devices WHERE d_key = "' . $d_key . '", AND d_pin = "' . $d_pin . '";';
+    $sql = 'SELECT * FROM d_devices;';
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            echo "d_id: " . $row["d_id"]. " - d_key: " . $row["d_key"]. " - d_pin: " . $row["d_pin"];
+            if($row['d_pin'] == $d_pin && $row['d_key'] == $d_key) {
+                echo 'Login successful.';
+                $sql = 'UPDATE d_devices SET d_u_id = "' . $u_id . '" WHERE d_id = 1;';
+                if ($conn->query($sql) === TRUE) {
+                    echo "\r\nUserID in device has been updated.";
+                } else {
+                    echo "\r\nError updating UserID in device: " . $conn->error;
+                }
+            } else {
+                echo 'Login credentials wrong.';
+            }
         }
     } else {
-        echo "0 results";
+        echo "No device in database";
     }
     $conn->close();
 }

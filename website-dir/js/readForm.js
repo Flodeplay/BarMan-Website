@@ -34,7 +34,7 @@ function updateUser() {
 
 function readDeviceConn() {
     let deviceConnData = [];
-    deviceConnData[0] = readInput('inputDeviceNo');
+    deviceConnData[0] = readInput('inputDeviceNo').replace(new RegExp("-", "g"), '');
     deviceConnData[1] = readInput('inputDevicePwd');
 
     return deviceConnData;
@@ -42,7 +42,7 @@ function readDeviceConn() {
 
 function verifyDeviceConn(deviceConnData) {
     let verifyBool = true;
-    if(deviceConnData[0].length < 14) {
+    if(deviceConnData[0].length < 12) {
         verifyBool = false;
     }
     if(deviceConnData[1].length < 6) {
@@ -52,10 +52,9 @@ function verifyDeviceConn(deviceConnData) {
 }
 
 function checkDeviceConn() {
-    console.log("test");
     let deviceConnData = readDeviceConn();
     if(verifyDeviceConn(deviceConnData)) {
-        console.log(createDeviceConnCheck(deviceConnData));
+        createDeviceConnCheck(deviceConnData);
     }
 }
 

@@ -6,13 +6,13 @@ $action = isset($_POST['action']) ? $_POST['action'] : null;
 
 $u_id = "1"; //$_SESSION['u_user']->u_id; TODO
 
-$forename = isset($_POST['forename']) ? $_POST['forename'] : null;
-$surname = isset($_POST['surname']) ? $_POST['surname'] : null;
-$email = isset($_POST['email']) ? $_POST['email'] : null;
-$pwd = isset($_POST['pwd']) ? $_POST['pwd'] : null;
+$forename = isset($_POST['u_forename']) ? $_POST['u_forename'] : null;
+$surname = isset($_POST['u_surname']) ? $_POST['u_surname'] : null;
+$email = isset($_POST['u_email']) ? $_POST['u_email'] : null;
+$pwd = isset($_POST['u_pwd']) ? $_POST['u_pwd'] : null;
 
-$d_key = isset($_POST['pwd']) ? $_POST['pwd'] : null;
-$d_pin = isset($_POST['pwd']) ? $_POST['pwd'] : null;
+$d_key = isset($_POST['d_key']) ? $_POST['d_key'] : null;
+$d_pin = isset($_POST['d_pin']) ? $_POST['d_pin'] : null;
 switch ($action) {
     case "updateUserByID":
         updateUserByID($u_id, $forename, $surname, $email, $pwd);
@@ -22,11 +22,11 @@ switch ($action) {
         break;
 }
 
-function updateUserByID($u_id, $forename, $surname, $email, $pwd)
+function updateUserByID($u_id, $u_forename, $u_surname, $u_email, $u_pwd)
 {
     if (isset($u_id)) {
         $conn = establishDB();
-        $sql = 'UPDATE u_users SET u_forename = "' . $forename . '", u_surname = "' . $surname . '", u_email = "' . $email . '", u_password = "' . $pwd . '" WHERE u_id = "'. $u_id . '";';
+        $sql = 'UPDATE u_users SET u_forename = "' . $u_forename . '", u_surname = "' . $u_surname . '", u_email = "' . $u_email . '", u_password = "' . $u_pwd . '" WHERE u_id = "'. $u_id . '";';
         if ($conn->query($sql) === TRUE) {
             echo "Record updated successfully";
         } else {
@@ -39,13 +39,14 @@ function updateUserByID($u_id, $forename, $surname, $email, $pwd)
 }
 
 function getDeviceByParam($d_key, $d_pin, $u_id) {
+    echo "Device Checkup:";
     $conn = establishDB();
     $sql = 'SELECT * FROM d_devices;';
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             if($row['d_pin'] == $d_pin && $row['d_key'] == $d_key) {
-                echo 'Login successful.';
+                echo "\r\nLogin successful.";
                 $sql = 'UPDATE d_devices SET d_u_id = "' . $u_id . '" WHERE d_id = 1;';
                 if ($conn->query($sql) === TRUE) {
                     echo "\r\nUserID in device has been updated.";
@@ -53,7 +54,7 @@ function getDeviceByParam($d_key, $d_pin, $u_id) {
                     echo "\r\nError updating UserID in device: " . $conn->error;
                 }
             } else {
-                echo 'Login credentials wrong.';
+                echo "\r\nLogin credentials wrong.";
             }
         }
     } else {

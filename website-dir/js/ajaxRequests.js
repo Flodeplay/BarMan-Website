@@ -4,10 +4,10 @@ function createUserUpdate(profileData) {
         method: "POST",
         data: {
             action: "updateUserByID",
-            forename: profileData[0],
-            surname: profileData[1],
-            email: profileData[2],
-            pwd: profileData[3],
+            u_forename: profileData[0],
+            u_surname: profileData[1],
+            u_email: profileData[2],
+            u_pwd: profileData[3],
         },
         success: function (response) {
             console.log(response);
@@ -24,14 +24,14 @@ function createDeviceConnCheck(deviceConnData) {
         method: "POST",
         data: {
             action: "getDeviceByParam",
-            forename: deviceConnData[0],
-            surname: deviceConnData[1]
+            d_key: deviceConnData[0],
+            d_pin: deviceConnData[1]
         },
         success: function (response) {
             console.log(response);
         },
         error: function (response) {
-            console.log(response);
+            console.error(response);
         }
     });
 }

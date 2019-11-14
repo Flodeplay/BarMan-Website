@@ -114,14 +114,14 @@ session_start();
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputForename">Geräte-Nummer</label>
-                                        <input type="text" class="form-control" id="inputDeviceNo" data-inputmask="'mask': '999-999-999'" placeholder="129-120-130">
+                                        <input type="text" class="form-control" id="inputDeviceNo" data-inputmask="'mask': '9999-9999-9999'" placeholder="1292-1203-1306" value="193101163196">
                                         <script>
                                             $(":input").inputmask();
                                         </script>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputSurname">Geräte-Passwort</label>
-                                        <input type="password" class="form-control" id="inputDevicePwd" placeholder="devicePassword">
+                                        <input type="password" class="form-control" id="inputDevicePwd" placeholder="devicePassword" value="123456">
                                     </div>
                                 </div>
                                 <br>

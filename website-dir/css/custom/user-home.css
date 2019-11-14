@@ -23,7 +23,7 @@ body {
 *   TODO: tbd
 *   Accordion active with h2 on the site rotated or not? --> more space without || solution could be to put it at the top or more to the left site!
 */
-ul {
+section ul {
     display: flex;
     min-height: 100vh;
     max-height: 100vh;
@@ -42,7 +42,7 @@ ul {
     transition: all .7s ease;
 }
 
-li {
+section li {
     flex: 1;
     display: flex;
     align-items: stretch;
@@ -52,25 +52,25 @@ li {
     cursor: pointer;
     transition: all .5s ease;
 }
-li:hover {
+section li:hover {
     /*background: #e53f2e;*/
     background: #87014F;
 }
-li.active {
+section li.active {
     flex: 5;
     background: #f2f2f2;
     cursor: default;
 }
-li.active h2 {
+section li.active h2 {
     color: #65013b;
 }
 
 /* solution without headline when active */
-li.active .section-title {
+section li.active .section-title {
     display: none;
 }
 
-li.active .section-content {
+section li.active .section-content {
     flex: 4;
 
     /* solution without headline when active */
@@ -81,7 +81,7 @@ li.active .section-content {
     color: #65013b;
     padding: 10px;
 }
-li .section-title {
+section li .section-title {
     flex: 1;
     display: flex;
     align-items: center;
@@ -91,26 +91,30 @@ li .section-title {
     text-align: center;
     color: white;
 }
-li .section-title h2 {
+section li .section-title h2 {
     margin: 0;
     transform: rotate(-90deg);
     white-space: nowrap;
 }
-li .section-content {
+section li .section-content {
     flex: 1;
     /*display: flex;*/
 
     /* solution without headline when active */
     display: none;
-
+    font-size: 15px;
     align-items: center;
     margin: 0;
     padding: 0;
     opacity: 0;
     transition: all .25s .1s ease-out;
 }
-li blockquote {
+section li blockquote {
     color: #2E4147;
+}
+
+.form-group {
+    margin-bottom: 8px !important;
 }
 
 #infoSite {
@@ -123,10 +127,10 @@ li blockquote {
 /* ---- iPhone 6+,7+,8+ Landscape and Portrait ---- */
 @media only screen
     and (min-device-width: 414px)
-    and (max-device-width: 763px)
+    and (max-device-width: 736px)
     and (-webkit-max-device-pixel-ratio: 3)
 {
-    ul {
+    .horizontal-list ul {
         display: block;
         min-height: 0;
         max-height: none;
@@ -135,11 +139,11 @@ li blockquote {
         font-size: 50%;
         display: none;
     }
-    li.active p {
+    .horizontal-list li.active p {
         font-size: 100%;
         display: flex;
     }
-    li .section-title h2 {
+    .horizontal-list li .section-title h2 {
         transform: none;
     }
     /*
@@ -147,10 +151,10 @@ li blockquote {
          transform: rotate(-90deg);
      }
      */
-    li .section-content {
+    .horizontal-list li .section-content {
         transition: none;
     }
-    li.active .section-content {
+    .horizontal-list li.active .section-content {
         transform: none;
         padding: 0;
      }

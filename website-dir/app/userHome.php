@@ -37,9 +37,11 @@ session_start();
 </head>
 <body>
 <header>
+    <!--
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="#">
-            <img src="../assets/bar.png" height="30px" class="d-inline-block align-center" alt=""> Barman
+            <img src="../assets/bar.png" height="30px" class="d-inline-block align-center" alt="">
+            Barman
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,6 +51,38 @@ session_start();
                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="#">Features</a>
             </div>
+        </div>
+    </nav>
+    -->
+    <nav class="navbar navbar-expand-lg">
+        <span class="navbar-brand mb-0 h1">Barman</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
+            <button class="btnContainer">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+            <button class="btn btn-block btnContainer d-flex">
+                <p class="m-0 w-100 align-self-center">Logout</p>
+                <div class="align-self-center flex-shrink-1">
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                        <i class="fas fa-sign-out-alt fa-stack-1x"></i>
+                    </span>
+                </div>
+            </button>
         </div>
     </nav>
     <script>
@@ -82,7 +116,7 @@ session_start();
         </div>
     </section>
     -->
-    <section>
+    <section class="horizontal-list">
         <ul>
             <li id="infoSite" class="active">
                 <!-- tba: daily message -->
@@ -165,7 +199,6 @@ session_start();
                         <blockquote>
                             <i>Hier kannst du deine persönlichen Daten ändern, erweitern oder auch löschen. Außerdem kannst du hier sehen, was wir über dich wissen, falls du Fragen dazu hast, kannst du weiter unten ein Kontakformular ausfüllen und uns dein Anliegen mitteilen :)</i>
                         </blockquote>
-                        <br>
                         <form>
                             <div class="pl-5 pr-5">
                                 <div class="form-row">
@@ -198,7 +231,12 @@ session_start();
                                         <input type="tel" pattern="[\+]\d{2}[\ ]\d{3}[\ ]\d{3}[\ ]\d{4}" class="form-control" id="inputPhone" placeholder="+43 676 123 1234">
                                     </div>
                                 </div>
+                                <!--
                                 <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label for="inputZip">PLZ</label>
+                                        <input type="number" pattern="[0-9]{4}" class="form-control" id="inputZip" placeholder="1050">
+                                    </div>
                                     <div class="form-group col-md-5">
                                         <label for="inputCity">Stadt</label>
                                         <input type="text" class="form-control" id="inputCity" placeholder="Wien">
@@ -207,11 +245,8 @@ session_start();
                                         <label for="inputCountry">Land</label>
                                         <input type="text" class="form-control" id="inputCountry" placeholder="Österreich">
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="inputZip">PLZ</label>
-                                        <input type="number" pattern="[0-9]{4}" class="form-control" id="inputZip" placeholder="1050">
-                                    </div>
                                 </div>
+                                -->
                                 <br>
                                 <button type="button" class="btn btn-block btnContainer d-flex" onclick="updateUser()">
                                     <p class="m-0 w-100 align-self-center">Änderungen speichern?</p>
@@ -255,7 +290,7 @@ session_start();
                                         </div>
                                         <div class="col-md-4 my-auto">
                                             <button class="btn btn-block btnContainer d-flex">
-                                                <p class="m-0 w-100 align-self-center">Kontaktformular ausfüllen</p>
+                                                <p class="m-0 w-100 align-self-center">Kontaktformular</p>
                                                 <div class="align-self-center flex-shrink-1">
                                                     <span class="fa-stack fa-md">
                                                         <i class="fas fa-circle fa-stack-2x icon-background"></i>

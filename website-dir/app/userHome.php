@@ -221,6 +221,7 @@ session_start();
                                         <input type="password" class="form-control" id="inputPwd" pattern=".{6,}" placeholder="your password">
                                     </div>
                                 </div>
+                                <!--
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputAddress">Adresse</label>
@@ -231,7 +232,6 @@ session_start();
                                         <input type="tel" pattern="[\+]\d{2}[\ ]\d{3}[\ ]\d{3}[\ ]\d{4}" class="form-control" id="inputPhone" placeholder="+43 676 123 1234">
                                     </div>
                                 </div>
-                                <!--
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
                                         <label for="inputZip">PLZ</label>

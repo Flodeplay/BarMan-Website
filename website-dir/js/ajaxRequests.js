@@ -35,3 +35,36 @@ function createDeviceConnCheck(deviceConnData) {
         }
     });
 }
+
+function createLiquidUpdate() {
+    $.ajax({
+        url: "php/request.php",
+        method: "POST",
+        data: {
+            action: "updateLiquidBy",
+            u_forename: profileData[0]
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log(response);
+        }
+    });
+}
+
+function createBeveragesUpdate() {
+    $.ajax({
+        url: "php/request.php",
+        method: "POST",
+        data: {
+            action: "updateBeverageBy",
+            u_forename: profileData[0]
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log(response);
+        }
+    });
+}

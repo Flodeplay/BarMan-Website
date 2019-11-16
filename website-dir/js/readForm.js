@@ -58,6 +58,50 @@ function checkDeviceConn() {
     }
 }
 
+function readLiquids() {
+    let liquidData = [];
+    liquidData[0] = readInput('');
+
+    return liquidData;
+}
+
+function verifyLiquids(liquidData) {
+    let verifyBool = true;
+    if(false) {
+        verifyBool = false;
+    }
+    return verifyBool;
+}
+
+function updateLiquids() {
+    let liquidData = readLiquids();
+    if(verifyDeviceConn(liquidData)) {
+        createLiquidUpdate(liquidData);
+    }
+}
+
+function readBeverages() {
+    let beverageData = [];
+    beverageData[0] = readInput('');
+
+    return beverageData;
+}
+
+function verifyBeverages(beverageData) {
+    let verifyBool = true;
+    if(false) {
+        verifyBool = false;
+    }
+    return verifyBool;
+}
+
+function updateBeverages() {
+    let beverageData = readBeverages();
+    if(verifyDeviceConn(beverageData)) {
+        createLiquidUpdate(beverageData);
+    }
+}
+
 function readInput(id) {
     return $('#' + id).val();
 }

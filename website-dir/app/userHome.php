@@ -178,7 +178,58 @@ session_start();
                     <h2 class="">Flüssigkeiten</h2>
                 </div>
                 <div class="section-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
+                    <div class="container">
+                        <h2>Getränkeprofile</h2>
+                        <blockquote>
+                            <i>Hier kannst du Profile mit Getränken anlegen, welche du dann dem Barman zuweisen kannst.</i>
+                        </blockquote>
+                        <h3>Profile</h3>
+                        <form>
+                            <div class="pl-5 pr-5">
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="sel-profile">Wähle dein Profil:</label>
+                                        <select class="form-control" id="sel-profile">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4 my-auto">
+                                        <button class="btn btn-block btnContainer d-flex">
+                                            <p class="m-0 w-100 align-self-center">Profil festlegen</p>
+                                            <div class="align-self-center flex-shrink-1">
+                                                <span class="fa-stack fa-md">
+                                                    <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                    <i class="fas fa-pencil-alt fa-stack-1x"></i>
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="sel-profile">Neues Profil anlegen</label>
+                                        <input type="text" class="form-control" id="inputProfileName" placeholder="Profil-Name">
+                                    </div>
+                                    <div class="form-group col-md-4 my-auto">
+                                        <button class="btn btn-block btnContainer d-flex">
+                                            <p class="m-0 w-100 align-self-center">Neues Profil</p>
+                                            <div class="align-self-center flex-shrink-1">
+                                                <span class="fa-stack fa-md">
+                                                    <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                    <i class="fas fa-pencil-alt fa-stack-1x"></i>
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        <h3>Getränke</h3>
+                    </div>
                 </div>
             </li>
             <li>

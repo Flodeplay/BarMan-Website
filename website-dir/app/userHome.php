@@ -71,11 +71,8 @@ session_start();
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
             </ul>
-            <button class="btnContainer">
-                <i class="fas fa-sign-out-alt"></i>
-            </button>
             <button class="btn btn-block btnContainer d-flex">
-                <p class="m-0 w-100 align-self-center">Logout</p>
+                <p class="m-0 w-100 p-0 align-self-center" style="padding-left: 2px !important">Logout</p>
                 <div class="align-self-center flex-shrink-1">
                     <span class="fa-stack fa-sm">
                         <i class="fas fa-circle fa-stack-2x icon-background"></i>
@@ -175,7 +172,7 @@ session_start();
             </li>
             <li>
                 <div class="section-title">
-                    <h2 class="">Flüssigkeiten</h2>
+                    <h2 class="">Getränkeprofile</h2>
                 </div>
                 <div class="section-content">
                     <div class="container">
@@ -229,12 +226,42 @@ session_start();
                         </form>
                         <br>
                         <h3>Getränke</h3>
+                        <form>
+                            <div class="pl-5 pr-5">
+                                <div class="form-row">
+                                    <label for="sel-profile">Wähle dein Getränk:</label>
+                                    <select class="form-control" id="sel-profile">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="sel-profile">Neues Getränk erstellen</label>
+                                        <input type="text" class="form-control" id="inputProfileName" placeholder="Profil-Name">
+                                    </div>
+                                    <div class="form-group col-md-4 my-auto">
+                                        <button class="btn btn-block btnContainer d-flex">
+                                            <p class="m-0 w-100 align-self-center">Getränk erstellen</p>
+                                            <div class="align-self-center flex-shrink-1">
+                                                <span class="fa-stack fa-md">
+                                                    <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                    <i class="fas fa-pencil-alt fa-stack-1x"></i>
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </li>
             <li>
                 <div class="section-title">
-                    <h2 class="">Getränke</h2>
+                    <h2 class="">Flüssigkeiten</h2>
                 </div>
                 <div class="section-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe vel facilis quae nihil ad aspernatur ex delectus. Tenetur nulla voluptates similique quos, quia possimus, magnam esse natus quis ipsa.</p>

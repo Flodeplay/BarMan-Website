@@ -186,11 +186,17 @@ session_start();
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="sel-profile">Wähle dein Profil:</label>
-                                        <select class="form-control" id="sel-profile">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                        <select id="sel-profile" name="profile" class="form-control">
+                                            <option disabled selected value> -- wähle dein Profil -- </option>
+                                            <?php
+                                            //FIXME @Jasper change query params and echo/return values
+                                            /*
+                                            $sql = mysqli_query(establishDB(), "SELECT col_id, col_name FROM col_colors");
+                                            while ($row = $sql->fetch_assoc()){
+                                                echo "<option value=\"". $row['col_id']. "\">" . $row['col_name'] . "</option>";
+                                            }
+                                            */
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4 my-auto">
@@ -230,11 +236,17 @@ session_start();
                             <div class="pl-5 pr-5">
                                 <div class="form-row">
                                     <label for="sel-profile">Wähle dein Getränk:</label>
-                                    <select class="form-control" id="sel-profile">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
+                                    <select id="sel-beverage" name="beverage" class="form-control">
+                                        <option disabled selected value> -- wähle dein Getränk -- </option>
+                                        <?php
+                                        //FIXME @Jasper change query params and echo/return values
+                                        /*
+                                        $sql = mysqli_query(establishDB(), "SELECT col_id, col_name FROM col_colors");
+                                        while ($row = $sql->fetch_assoc()){
+                                            echo "<option value=\"". $row['col_id']. "\">" . $row['col_name'] . "</option>";
+                                        }
+                                        */
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="form-row">

@@ -62,13 +62,16 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Geräte</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">Getränke</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profil</a>
                 </li>
             </ul>
             <button class="btn btn-block btnContainer d-flex">
@@ -92,7 +95,7 @@ session_start();
         <div class="pl-5 pr-5 d-flex bd-highlight">
             <div class="align-self-center p-2 w-100 bd-highlight">
                 <h1>Willkommen bei deinem Barman, <i>XY</i></h1>
-                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</blockquote>
+                <blockquote>Mix dir deine Getränke wie nie zuvor! Stelle all deine Lieblingsgetränke nach Belieben zusammen und lass sie dir ohne weiteren Stress von einem <u>BarMan</u> zusammenmischen!</blockquote>
             </div>
             <div class="align-self-center p-2 flex-shrink-1 bd-highlight">
                 <img style="border-radius: 20px; float: right" src="../assets/users/Manuel.jpg" height="100px"/>

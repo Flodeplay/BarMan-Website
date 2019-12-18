@@ -17,6 +17,18 @@ nav button {
     padding-top: 5px !important;
     padding-bottom: 5px !important;
 }
+#navbarText {
+    padding-left: 20px;
+}
+.navbar-brand {
+    font-size: 150% !important;
+    vertical-align: top !important;
+    letter-spacing: 1px;
+    font-weight: lighter;
+}
+.nav-link:hover {
+    color: #00C2B3;
+}
 .scrolled {
     color: black !important;
 }

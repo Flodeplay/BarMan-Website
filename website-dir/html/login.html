@@ -1,27 +1,49 @@
-<div class="form-outer">
+<div class="form-outer p-4 pt-5">
     <div id="error-message" class="text-danger"></div>
-    <form name="login" action="../app/login.php" method="post" onsubmit="return checkLogin()">
-        <span id="forename_text" class="register-input">Vorname</span>
-        <input type="text" name="forename_text" class="form-control register-input" placeholder="Vorname" aria-label="forename">
-        <span id="surname_text" class="register-input">Nachname</span>
-        <input type="text" name="surname_text" class="form-control register-input" placeholder="Nachname" aria-label="surname">
-        <span id="email_text">E-Mail</span>
-        <input type="email" name="email" class="form-control" placeholder="Username@picknmix.at"
-               aria-label="Email">
-        <span id="password_text">Passwort</span>
-        <input type="password" name="pwd" class="form-control" placeholder="*******" aria-label="Passwort">
-        <hr>
-        <div class="login-buttons">
-            <button type="button" class="btn rounded-pill btn-warning my-1 change-login">
-                <span class="text-white">Brauchst du ein Konto?</span>
+    <form name="login" action="../app/login.php" method="post" class="form" onsubmit="return checkLogin()">
+        <div class="form">
+            <div class="form-group">
+                <label for="inputForename" class="register-input">Vorname</label>
+                <input type="text" class="form-control register-input" id="inputForename" placeholder="Max">
+            </div>
+            <div class="form-group">
+                <label for="inputSurname" class="register-input">Nachname</label>
+                <input type="text" class="form-control register-input" id="inputSurname" placeholder="Mustermann">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">E-Mail</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+            </div>
+            <div class="form-group">
+                <label for="inputPwd">Passwort</label>
+                <input type="password" class="form-control" id="inputPwd" pattern=".{6,}" placeholder="your password">
+            </div>
+        </div>
+        <div class="login-buttons row ">
+            <button type="button" class="btn btn-block btnContainer d-flex change-login col-6 m-2" >
+                <p class="m-0 w-100 align-self-center">Brauchst du ein Konto?</p>
             </button>
-            <button type="submit" name="submit" value="login" class="btn btn-danger rounded-pill  my-1 login-input">
-                <span class="text-white">Login</span>
-
+            <button type="submit" name="submit" value="login" class="btn btn-block btnContainer login-input col-5 m-2">
+                <div class="d-flex w-100">
+                    <p class="m-0 w-100 align-self-center">Anmelden</p>
+                    <div class="align-self-center flex-shrink-1">
+                                            <span class="fa-stack fa-md">
+                                                <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                <i class="fas fa-check fa-stack-1x"></i>
+                                            </span>
+                    </div>
+                </div>
             </button>
-            <button type="submit" name="submit" value="reg" class="btn btn-danger rounded-pill  my-1 register-input">
-                <span class="text-white">Registrieren</span>
-
+            <button type="submit" name="submit" value="reg" class="btn btn-block btnContainer register-input col-5 m-2">
+                <div class="d-flex w-100">
+                    <p class="m-0 w-100 align-self-center">Registrieren</p>
+                    <div class="align-self-center flex-shrink-1">
+                                            <span class="fa-stack fa-md">
+                                                <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                <i class="fas fa-check fa-stack-1x"></i>
+                                            </span>
+                    </div>
+                </div>
             </button>
         </div>
     </form>

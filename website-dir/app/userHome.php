@@ -20,8 +20,7 @@ session_start();
     <link rel="license" href="copyright.html">
     <!-- extern stylesheets -->
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <!-- costume stylesheets -->
     <link rel="stylesheet" href="../css/custom/base.css">
@@ -59,14 +58,13 @@ session_start();
     -->
     <nav class="navbar navbar-expand-lg">
         <span class="navbar-brand mb-0 h1">Barman</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Geräte</a>
@@ -201,8 +199,8 @@ session_start();
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="sel-profile">Wähle dein Profil:</label>
-                                        <select id="sel-profile" name="profile" class="form-control" onchange="readBeveragesByProfile(this.value)">
-                                            <option disabled selected value> -- wähle dein Profil --</option>
+                                        <select id="sel-profile" name="profile" class="form-control">
+                                            <option disabled selected value> -- wähle dein Profil -- </option>
                                             <?php
                                             try {
                                                 $mysqli = establishDB();

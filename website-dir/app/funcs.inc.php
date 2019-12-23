@@ -40,12 +40,14 @@ function isSession()
  */
 function establishDB()
 {
-        require_once '../config/config-local.php';
-        $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME);
-        if ($conn) {
-            return $conn;
-        } else {
-            throw new Exception("Connection with Database could not be accomplished!");
-        }
-
+    require_once 'config/config-local.php';
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    if ($conn) {
+        return $conn;
+    } else {
+        throw new Exception("Connection with Database could not be accomplished!");
+    }
 }

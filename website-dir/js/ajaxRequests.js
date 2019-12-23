@@ -1,6 +1,6 @@
 function createUserUpdate(profileData) {
     $.ajax({
-        url: "php/request.php",
+        url: "request.php",
         method: "POST",
         data: {
             action: "updateUserByID",
@@ -10,17 +10,14 @@ function createUserUpdate(profileData) {
             u_pwd: profileData[3],
         },
         success: function (response) {
-            console.log(response);
-        },
-        error: function (response) {
-            console.log(response);
+            console.error(response);
         }
     });
 }
 
 function createDeviceConnCheck(deviceConnData) {
     $.ajax({
-        url: "php/request.php",
+        url: "request.php",
         method: "POST",
         data: {
             action: "getDeviceByParam",
@@ -28,43 +25,65 @@ function createDeviceConnCheck(deviceConnData) {
             d_pin: deviceConnData[1]
         },
         success: function (response) {
-            console.log(response);
-        },
-        error: function (response) {
             console.error(response);
         }
     });
 }
 
-function createLiquidUpdate() {
+function createBeveragesByProfileRead(p_id) {
     $.ajax({
-        url: "php/request.php",
+        url: "request.php",
         method: "POST",
         data: {
-            action: "updateLiquidBy",
-            u_forename: profileData[0]
+            action: "readBeveragesByProfile",
+            p_id: p_id
         },
         success: function (response) {
-            console.log(response);
-        },
-        error: function (response) {
-            console.log(response);
+            document.getElementById('sel-beverage').innerHTML = "<option disabled selected value> -- wähle dein Getränk --</option>";
+            document.getElementById('sel-beverage').innerHTML += response;
         }
     });
 }
 
-function createBeveragesUpdate() {
+function createProfileInsert(p_title) {
     $.ajax({
-        url: "php/request.php",
+        url: "request.php",
         method: "POST",
         data: {
-            action: "updateBeverageBy",
-            u_forename: profileData[0]
-        success: function (response) {
-            console.log(response);
+            action: "insertProfile",
+            p_title: p_title
         },
-        error: function (response) {
-            console.log(response);
+        success: function (response) {
+            console.error(response);
+        }
+    });
+}
+
+function createBeverageInsert(b_name, p_id) {
+    $.ajax({
+        url: "request.php",
+        method: "POST",
+        data: {
+            action: "insertBeverage",
+            b_name: b_name,
+            p_id: p_id
+        },
+        success: function (response) {
+            console.error(response);
+        }
+    });
+}
+
+function createBarmanFKUpdate(d_p_id) {
+    $.ajax({
+        url: "request.php",
+        method: "POST",
+        data: {
+            action: "updateBarmanFK",
+            d_p_id: d_p_id
+        },
+        success: function (response) {
+            console.error(response);
         }
     });
 }

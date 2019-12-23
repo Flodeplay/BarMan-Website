@@ -1,5 +1,7 @@
 <?php
-error_reporting(0);
+error_reporting(E_ALL);
+include_once "request.php";
+include_once "funcs.inc.php";
 session_start();
 //checkSession();
 ?>
@@ -18,7 +20,8 @@ session_start();
     <link rel="license" href="copyright.html">
     <!-- extern stylesheets -->
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <!-- costume stylesheets -->
     <link rel="stylesheet" href="../css/custom/base.css">
@@ -56,7 +59,8 @@ session_start();
     -->
     <nav class="navbar navbar-expand-lg">
         <span class="navbar-brand mb-0 h1">Barman</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -83,7 +87,7 @@ session_start();
         </div>
     </nav>
     <script>
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             $('nav a').toggleClass('scrolled', $(this).scrollTop() > 300);
             $('ul').toggleClass('ulScrolled', $(this).scrollTop() > 465);
         });
@@ -92,7 +96,10 @@ session_start();
         <div class="pl-5 pr-5 d-flex bd-highlight">
             <div class="align-self-center p-2 w-100 bd-highlight">
                 <h1>Willkommen bei deinem Barman, <i>XY</i></h1>
-                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</blockquote>
+                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius
+                    nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi
+                    consequuntur possimus repellat necessitatibus!
+                </blockquote>
             </div>
             <div class="align-self-center p-2 flex-shrink-1 bd-highlight">
                 <img style="border-radius: 20px; float: right" src="../assets/users/Manuel.jpg" height="100px"/>
@@ -135,8 +142,11 @@ session_start();
                         <h2>Geräte-Verwaltung</h2>
                         <blockquote>
                             <i>
-                                Um dich mit einem Barman zu verbinden, sind hier die notwendigen Felder auszufüllen. Du kannst aber auch, mit deinem Smartphone oder deinem Tablet, den QR-Code direkt von einem Barman scannen, um die Felder automatisch auszufüllen.
-                                Solltest du Probleme beim Verbinden mit dem Barman haben, dann wende dich bitte an unser Support-Team!
+                                Um dich mit einem Barman zu verbinden, sind hier die notwendigen Felder auszufüllen. Du
+                                kannst aber auch, mit deinem Smartphone oder deinem Tablet, den QR-Code direkt von einem
+                                Barman scannen, um die Felder automatisch auszufüllen.
+                                Solltest du Probleme beim Verbinden mit dem Barman haben, dann wende dich bitte an unser
+                                Support-Team!
                             </i>
                         </blockquote>
                         <br>
@@ -145,18 +155,22 @@ session_start();
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputForename">Geräte-Nummer</label>
-                                        <input type="text" class="form-control" id="inputDeviceNo" data-inputmask="'mask': '9999-9999-9999'" placeholder="1292-1203-1306" value="193101163196">
+                                        <input type="text" class="form-control" id="inputDeviceNo"
+                                               data-inputmask="'mask': '9999-9999-9999'" placeholder="1292-1203-1306"
+                                               value="193101163196">
                                         <script>
                                             $(":input").inputmask();
                                         </script>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputSurname">Geräte-Passwort</label>
-                                        <input type="password" class="form-control" id="inputDevicePwd" placeholder="devicePassword" value="123456">
+                                        <input type="password" class="form-control" id="inputDevicePwd"
+                                               placeholder="devicePassword" value="123456">
                                     </div>
                                 </div>
                                 <br>
-                                <button type="button" class="btn btn-block btnContainer d-flex" onclick="checkDeviceConn()">
+                                <button type="button" class="btn btn-block btnContainer d-flex"
+                                        onclick="checkDeviceConn()">
                                     <p class="m-0 w-100 align-self-center">Verbinden/Koppeln</p>
                                     <div class="align-self-center flex-shrink-1">
                                     <span class="fa-stack fa-md">
@@ -178,7 +192,8 @@ session_start();
                     <div class="container">
                         <h2>Getränkeprofile</h2>
                         <blockquote>
-                            <i>Hier kannst du Profile mit Getränken anlegen, welche du dann dem Barman zuweisen kannst.</i>
+                            <i>Hier kannst du Profile mit Getränken anlegen, welche du dann dem Barman zuweisen
+                                kannst.</i>
                         </blockquote>
                         <h3>Profile</h3>
                         <form>
@@ -186,21 +201,29 @@ session_start();
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="sel-profile">Wähle dein Profil:</label>
-                                        <select id="sel-profile" name="profile" class="form-control">
-                                            <option disabled selected value> -- wähle dein Profil -- </option>
+                                        <select id="sel-profile" name="profile" class="form-control" onchange="readBeveragesByProfile(this.value)">
+                                            <option disabled selected value> -- wähle dein Profil --</option>
                                             <?php
-                                            //FIXME @Jasper change query params and echo/return values
-                                            /*
-                                            $sql = mysqli_query(establishDB(), "SELECT col_id, col_name FROM col_colors");
-                                            while ($row = $sql->fetch_assoc()){
-                                                echo "<option value=\"". $row['col_id']. "\">" . $row['col_name'] . "</option>";
+                                            try {
+                                                $mysqli = establishDB();
+                                                $sql = 'SELECT * FROM p_profiles;';
+                                                $result = $mysqli->query($sql);
+
+                                                if ($result->num_rows > 0) {
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        echo "<option value=\"" . $row['p_id'] . "\">" . $row['p_title'] . "</option>";
+                                                    }
+                                                } else {
+                                                    echo "no result while fetching profiles";
+                                                }
+                                            } catch (Exception $e) {
+                                                echo $e;
                                             }
-                                            */
                                             ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4 my-auto">
-                                        <button class="btn btn-block btnContainer d-flex">
+                                        <button class="btn btn-block btnContainer d-flex" onclick="updateBarmanFK()">
                                             <p class="m-0 w-100 align-self-center">Profil festlegen</p>
                                             <div class="align-self-center flex-shrink-1">
                                                 <span class="fa-stack fa-md">
@@ -214,10 +237,11 @@ session_start();
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="sel-profile">Neues Profil anlegen</label>
-                                        <input type="text" class="form-control" id="inputProfileName" placeholder="Profil-Name">
+                                        <input type="text" class="form-control" id="inputProfileName"
+                                               placeholder="Profil-Name">
                                     </div>
                                     <div class="form-group col-md-4 my-auto">
-                                        <button class="btn btn-block btnContainer d-flex">
+                                        <button class="btn btn-block btnContainer d-flex" onclick="writeProfile()">
                                             <p class="m-0 w-100 align-self-center">Neues Profil</p>
                                             <div class="align-self-center flex-shrink-1">
                                                 <span class="fa-stack fa-md">
@@ -237,25 +261,17 @@ session_start();
                                 <div class="form-row">
                                     <label for="sel-profile">Wähle dein Getränk:</label>
                                     <select id="sel-beverage" name="beverage" class="form-control">
-                                        <option disabled selected value> -- wähle dein Getränk -- </option>
-                                        <?php
-                                        //FIXME @Jasper change query params and echo/return values
-                                        /*
-                                        $sql = mysqli_query(establishDB(), "SELECT col_id, col_name FROM col_colors");
-                                        while ($row = $sql->fetch_assoc()){
-                                            echo "<option value=\"". $row['col_id']. "\">" . $row['col_name'] . "</option>";
-                                        }
-                                        */
-                                        ?>
+                                        <option disabled selected value> -- wähle dein Getränk --</option>
                                     </select>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="sel-profile">Neues Getränk erstellen</label>
-                                        <input type="text" class="form-control" id="inputProfileName" placeholder="Profil-Name">
+                                        <input type="text" class="form-control" id="inputBeverageName"
+                                               placeholder="Getränk-Name">
                                     </div>
                                     <div class="form-group col-md-4 my-auto">
-                                        <button class="btn btn-block btnContainer d-flex">
+                                        <button class="btn btn-block btnContainer d-flex" onclick="writeBeverage()">
                                             <p class="m-0 w-100 align-self-center">Getränk erstellen</p>
                                             <div class="align-self-center flex-shrink-1">
                                                 <span class="fa-stack fa-md">
@@ -276,7 +292,9 @@ session_start();
                     <h2 class="">Flüssigkeiten</h2>
                 </div>
                 <div class="section-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe vel facilis quae nihil ad aspernatur ex delectus. Tenetur nulla voluptates similique quos, quia possimus, magnam esse natus quis ipsa.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe vel facilis quae nihil
+                        ad aspernatur ex delectus. Tenetur nulla voluptates similique quos, quia possimus, magnam esse
+                        natus quis ipsa.</p>
                 </div>
             </li>
             <li>
@@ -287,7 +305,9 @@ session_start();
                     <div class="container">
                         <h2>Profilverwaltung</h2>
                         <blockquote>
-                            <i>Hier kannst du deine persönlichen Daten ändern, erweitern oder auch löschen. Außerdem kannst du hier sehen, was wir über dich wissen, falls du Fragen dazu hast, kannst du weiter unten ein Kontakformular ausfüllen und uns dein Anliegen mitteilen :)</i>
+                            <i>Hier kannst du deine persönlichen Daten ändern, erweitern oder auch löschen. Außerdem
+                                kannst du hier sehen, was wir über dich wissen, falls du Fragen dazu hast, kannst du
+                                weiter unten ein Kontakformular ausfüllen und uns dein Anliegen mitteilen :)</i>
                         </blockquote>
                         <form>
                             <div class="pl-5 pr-5">
@@ -298,17 +318,20 @@ session_start();
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputSurname">Nachname</label>
-                                        <input type="text" class="form-control" id="inputSurname" placeholder="Mustermann">
+                                        <input type="text" class="form-control" id="inputSurname"
+                                               placeholder="Mustermann">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail">E-Mail</label>
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+                                        <input type="email" class="form-control" id="inputEmail"
+                                               placeholder="example@gmail.com">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPwd">Passwort</label>
-                                        <input type="password" class="form-control" id="inputPwd" pattern=".{6,}" placeholder="your password">
+                                        <input type="password" class="form-control" id="inputPwd" pattern=".{6,}"
+                                               placeholder="your password">
                                     </div>
                                 </div>
                                 <!--
@@ -348,12 +371,15 @@ session_start();
                                     </div>
                                 </button>
                                 <!-- FIXME: Modal-saveChanges -->
-                                <div class="modal fade" id="saveChangesModal" tabindex="-1" role="dialog" aria-labelledby="saveChangesModalTitle" aria-hidden="true">
+                                <div class="modal fade" id="saveChangesModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="saveChangesModalTitle" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="saveChangesModalTitle">Änderungen speichern</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <h5 class="modal-title" id="saveChangesModalTitle">Änderungen
+                                                    speichern</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -361,21 +387,31 @@ session_start();
                                                 ...
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Abbrechen
+                                                </button>
                                                 <button type="button" class="btn btn-primary">Speichern</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <br><hr><br>
+                            <br>
+                            <hr>
+                            <br>
                             <div>
                                 <h4>Anliegen und Fragen</h4>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-8">
                                             <blockquote>
-                                                <i>Hast du eine konkrete Frage oder ein Problem mit deinem Profil, dem Barman oder hast du sogar einen Fehler auf unserer Website gefunden, dann würden wir uns sehr darüber freuen, wenn du uns eine Nachricht schreibst, damit wir dir weiterhelfen können. Wenn du denkst, dass es sich bei deiner Frage um eine allgemeine Frage handelt, dann würden wir dir empfehlen einen kurzen Blick in unser FAQ zu werfen!</i>
+                                                <i>Hast du eine konkrete Frage oder ein Problem mit deinem Profil, dem
+                                                    Barman oder hast du sogar einen Fehler auf unserer Website gefunden,
+                                                    dann würden wir uns sehr darüber freuen, wenn du uns eine Nachricht
+                                                    schreibst, damit wir dir weiterhelfen können. Wenn du denkst, dass
+                                                    es sich bei deiner Frage um eine allgemeine Frage handelt, dann
+                                                    würden wir dir empfehlen einen kurzen Blick in unser FAQ zu
+                                                    werfen!</i>
                                             </blockquote>
                                         </div>
                                         <div class="col-md-4 my-auto">
@@ -418,6 +454,7 @@ session_start();
         <!--suppress ES6ConvertVarToLetConst -->
         <script>
             var section = $('li');
+
             function toggleAccordion() {
                 var x = document.getElementById('infoSite');
                 if (window.getComputedStyle(x).display != 'none') {
@@ -426,6 +463,7 @@ session_start();
                 section.removeClass('active');
                 $(this).addClass('active');
             }
+
             section.on('click', toggleAccordion);
         </script>
     </section>

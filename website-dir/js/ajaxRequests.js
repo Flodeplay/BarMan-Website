@@ -54,7 +54,9 @@ function createProfileInsert(p_title) {
             p_title: p_title
         },
         success: function (response) {
-            console.error(response);
+            if (response != "") {
+                console.error(response);
+            }
         }
     });
 }

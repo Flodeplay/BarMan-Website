@@ -199,7 +199,7 @@ session_start();
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="sel-profile">Wähle dein Profil:</label>
-                                        <select id="sel-profile" name="profile" class="form-control">
+                                        <select id="sel-profile" name="profile" class="form-control" onchange="readBeveragesByProfile(this.value)">
                                             <option disabled selected value> -- wähle dein Profil -- </option>
                                             <?php
                                             try {

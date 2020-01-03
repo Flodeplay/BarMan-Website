@@ -151,6 +151,21 @@ $user = $_SESSION['u_user'];
                             </i>
                         </blockquote>
                         <br>
+                        <?php
+                            try {
+                                $mysqli = establishDB();
+                                $sql = 'SELECT d_key FROM d_devices WHERE d_u_id = '. $user->u_id .';';
+                                $result = $mysqli->query($sql);
+                                if ($result->num_rows > 0) {
+                                    $row = $result->fetch_assoc();
+                                    echo "<h2>Verbundenes Gerät</h2>";
+                                    echo "<blockquote>Key: ". $row['d_key']. "</blockquote><br>";
+                                }
+                            } catch (Exception $e) {
+                                echo $e;
+                            }
+                        ?>
+                        <h2>Neues Gerät verbinden</h2>
                         <form>
                             <div class="pl-5 pr-5 w-75 m-auto">
                                 <div class="form-row">

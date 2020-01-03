@@ -2,8 +2,11 @@
 error_reporting(E_ALL);
 include_once "request.php";
 include_once "funcs.inc.php";
+include_once "classes/user.php";
 session_start();
-//checkSession();
+checkSession();
+/** @var user $user */
+$user = $_SESSION['u_user'];
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -96,12 +99,12 @@ session_start();
     <div class="jumbotron jumbotron-fluid m-0 bg-transparent text-light sec">
         <div class="pl-5 pr-5 d-flex bd-highlight">
             <div class="align-self-center p-2 w-100 bd-highlight">
-                <h1>Willkommen bei deinem Barman, <i>XY</i></h1>
+                <h1>Hallo <?php echo $user->u_forename ?>,<br> Willkommen bei deinem Barman</h1>
                 <blockquote>Mix dir deine Getränke wie nie zuvor! Stelle all deine Lieblingsgetränke nach Belieben zusammen und lass sie dir ohne weiteren Stress von einem <u>BarMan</u> zusammenmischen!</blockquote>
             </div>
-            <div class="align-self-center p-2 flex-shrink-1 bd-highlight">
+            <!--<div class="align-self-center p-2 flex-shrink-1 bd-highlight">
                 <img style="border-radius: 20px; float: right" src="../assets/users/Manuel.jpg" height="100px"/>
-            </div>
+            </div>-->
         </div>
         <br>
         <div class="wave"></div>
@@ -312,19 +315,19 @@ session_start();
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputForename">Vorname</label>
-                                        <input type="text" class="form-control" id="inputForename" placeholder="Max">
+                                        <input type="text" class="form-control" id="inputForename" placeholder="<?php echo $user->u_forename ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputSurname">Nachname</label>
                                         <input type="text" class="form-control" id="inputSurname"
-                                               placeholder="Mustermann">
+                                               placeholder="<?php echo $user->u_surname ?>">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail">E-Mail</label>
                                         <input type="email" class="form-control" id="inputEmail"
-                                               placeholder="example@gmail.com">
+                                               placeholder="<?php echo $user->u_email ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPwd">Passwort</label>

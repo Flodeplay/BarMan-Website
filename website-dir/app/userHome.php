@@ -17,10 +17,6 @@ $user = $_SESSION['u_user'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="barman drinks mixing bartender bar alcohol">
     <meta name="author" content="Manuel Koellner">
-    <!-- links -->
-    <!-- TODO: tba -->
-    <link rel="author" href="humans.txt">
-    <link rel="license" href="copyright.html">
     <!-- extern stylesheets -->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -154,12 +150,15 @@ $user = $_SESSION['u_user'];
                         <?php
                             try {
                                 $mysqli = establishDB();
-                                $sql = 'SELECT d_key FROM d_devices WHERE d_u_id = '. $user->u_id .';';
+                                $sql = 'SELECT d_key,p_title FROM d_devices
+                                    inner join p_profiles pp on d_devices.d_p_id = pp.p_id
+                                    WHERE d_u_id = '. $user->u_id .';';
                                 $result = $mysqli->query($sql);
                                 if ($result->num_rows > 0) {
                                     $row = $result->fetch_assoc();
                                     echo "<h2>Verbundenes Gerät</h2>";
-                                    echo "<blockquote>Key: ". $row['d_key']. "</blockquote><br>";
+                                    echo "<blockquote>Key: ". $row['d_key']. "<br>";
+                                    echo "Verbundenes Profil: ".$row['p_title']."</blockquote><br>";
                                 }
                             } catch (Exception $e) {
                                 echo $e;

@@ -32,20 +32,11 @@ include "classes/user.php";
     <title>Login</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg ">
-    <a class="navbar-brand" href="#">
-        <img src="../assets/bar.png" height="30px" class="d-inline-block align-center" alt=""> Barman
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg">
+    <span class="navbar-brand mb-0 h1">Barman</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-        </div>
-    </div>
 </nav>
 <script>
     $(window).scroll(function () {

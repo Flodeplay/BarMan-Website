@@ -1,3 +1,10 @@
+function alertBottom(){
+    $(".myAlert-bottom").show();
+    setTimeout(function(){
+        $(".myAlert-bottom").hide();
+    }, 2000);
+}
+
 function createUserUpdate(profileData) {
     $.ajax({
         url: "request.php",
@@ -41,6 +48,21 @@ function createBeveragesByProfileRead(p_id) {
         success: function (response) {
             document.getElementById('sel-beverage').innerHTML = "<option disabled selected value> -- wähle dein Getränk --</option>";
             document.getElementById('sel-beverage').innerHTML += response;
+            readBeveragesByProfile();
+        }
+    });
+}
+
+function createProfilesByUserRead() {
+    $.ajax({
+        url: "request.php",
+        method: "POST",
+        data: {
+            action: "readProfilesByUser"
+        },
+        success: function (response) {
+            document.getElementById('sel-profile').innerHTML = "<option disabled selected value> -- wähle dein Profil -- </option>";
+            document.getElementById('sel-profile').innerHTML += response;
         }
     });
 }
@@ -57,6 +79,8 @@ function createProfileInsert(p_title) {
             if (response != "") {
                 console.error(response);
             }
+            readProfilesByUser();
+            alertBottom();
         }
     });
 }
@@ -71,7 +95,10 @@ function createBeverageInsert(b_name, p_id) {
             p_id: p_id
         },
         success: function (response) {
-            console.error(response);
+            if (response != "") {
+                console.error(response);
+            }
+            readBeveragesByProfile()
         }
     });
 }

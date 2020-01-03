@@ -1,4 +1,7 @@
 <?php
+error_reporting(5);
+include_once "classes/user.php";
+session_start();
 //checkSession();
 require 'funcs.inc.php';
 
@@ -28,13 +31,16 @@ switch ($action) {
     case "updateBarmanFK":
         updateBarmanFK();
         break;
+    case "readProfilesByUser":
+        readProfilesByUser();
+        break;
 }
 
 function updateUserByID()
 {
     try {
         $mysqli = establishDB();
-        $u_id = 1; //$_SESSION['u_user']->u_id; TODO
+        $u_id = $_SESSION['u_user']->u_id;
         $u_forename = isset($_POST['u_forename']) ? $_POST['u_forename'] : null;
         $u_surname = isset($_POST['u_surname']) ? $_POST['u_surname'] : null;
         $u_email = isset($_POST['u_email']) ? $_POST['u_email'] : null;
@@ -106,7 +112,7 @@ function insertProfile()
     try {
         $mysqli = establishDB();
         $p_title = isset($_POST['p_title']) ? $_POST['p_title'] : null;
-        $p_u_id = 1; //$_SESSION['u_user']->u_id; TODO
+        $p_u_id = $_SESSION['u_user']->u_id;
         $sql = "INSERT INTO p_profiles (p_title, p_u_id) VALUES (?, ?);";
 
         if (!($stmt = $mysqli->prepare($sql))) {
@@ -133,22 +139,32 @@ function insertBeverage()
         $mysqli = establishDB();
         $b_name = isset($_POST['b_name']) ? $_POST['b_name'] : null;
         $p_id = isset($_POST['p_id']) ? $_POST['p_id'] : null;
-        $sql = "INSERT INTO b_beverages (b_name) VALUES (?);";
-        $sql .= "INSERT INTO pb_profilebeverages (pb_p_id, pb_b_id) VALUES (?, LAST_INSERT_ID());";
+        $sqlBeverages = "INSERT INTO b_beverages (b_name) VALUES (?);";
+        $sqlLookup = "INSERT INTO pb_profilebeverages (pb_p_id, pb_b_id) VALUES (?, ?);";
 
-        if (!($stmt = $mysqli->prepare($sql))) {
+        if (!($stmtBeverages = $mysqli->prepare($sqlBeverages))) {
             echo "Insert Beverage:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
         }
-
-        if (!$stmt->bind_param("ss", $b_name, $p_id)) {
-            echo "Insert Beverage:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        if (!$stmtBeverages->bind_param("s", $b_name)) {
+            echo "Insert Beverage:\r\nBinding parameters failed: (" . $stmtBeverages->errno . ")\r\n" . $stmtBeverages->error;
+        }
+        if (!$stmtBeverages->execute()) {
+            echo "Insert Beverage:\r\nExecute failed: (" . $stmtBeverages->errno . ")\r\n" . $stmtBeverages->error;
         }
 
-        if (!$stmt->execute()) {
-            echo "Insert Beverage:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        $new_id = $mysqli->insert_id;
+        if (!($stmtLookup = $mysqli->prepare($sqlLookup))) {
+            echo "Insert Beverage Lookup:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+        }
+        if (!$stmtLookup->bind_param("ss", $p_id, $new_id)) {
+            echo "Insert Beverage Lookup:\r\nBinding parameters failed: (" . $stmtLookup->errno . ")\r\n" . $stmtLookup->error;
+        }
+        if (!$stmtLookup->execute()) {
+            echo "Insert Beverage Lookup:\r\nExecute failed: (" . $stmtLookup->errno . ")\r\n" . $stmtLookup->error;
         }
 
-        $stmt->close();
+        $stmtBeverages->close();
+        $stmtLookup->close();
     } catch (Exception $e) {
         throw new Exception($e);
     }
@@ -176,5 +192,39 @@ function updateBarmanFK()
         $stmt->close();
     } catch (Exception $e) {
         throw new Exception($e);
+    }
+}
+
+function readProfilesByUser() {
+    try {
+        $mysqli = establishDB();
+        $u_id = $_SESSION['u_user']->u_id;
+        $sql = 'SELECT * FROM p_profiles WHERE p_u_id = ?;';
+
+        if (!($stmt = $mysqli->prepare($sql))) {
+            echo "Read Profiles:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+        }
+
+        if (!$stmt->bind_param("s", $u_id)) {
+            echo "Read Profiles:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+
+        if (!$stmt->execute()) {
+            echo "Read Profiles:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value=\"" . $row['p_id'] . "\">" . $row['p_title'] . "</option>";
+            }
+        } else {
+            echo "no result while fetching profiles for user " . $u_id;
+        }
+
+        $stmt->close();
+    } catch (Exception $e) {
+        echo $e;
     }
 }

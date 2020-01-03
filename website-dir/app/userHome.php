@@ -1,10 +1,10 @@
 <?php
-error_reporting(E_ALL);
+error_reporting(5);
 include_once "request.php";
 include_once "funcs.inc.php";
 include_once "classes/user.php";
 session_start();
-checkSession();
+//checkSession();
 /** @var user $user */
 $user = $_SESSION['u_user'];
 ?>
@@ -19,7 +19,8 @@ $user = $_SESSION['u_user'];
     <meta name="author" content="Manuel Koellner">
     <!-- extern stylesheets -->
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <!-- costume stylesheets -->
     <link rel="stylesheet" href="../css/custom/base.css">
@@ -35,6 +36,14 @@ $user = $_SESSION['u_user'];
     <!-- favicons -->
     <!-- tba -->
     <title>Mein Barman</title>
+    <script>
+        $(document).ready(function () {
+            //Prevents the page from reloading when jQuery buttons are pressed! Author: Jasper
+            $("button").click(function (event) {
+                event.preventDefault();
+            });
+        });
+    </script>
 </head>
 <body>
 <header>
@@ -57,7 +66,8 @@ $user = $_SESSION['u_user'];
     -->
     <nav class="navbar navbar-expand-lg">
         <span class="navbar-brand mb-0 h1">Barman</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -96,7 +106,9 @@ $user = $_SESSION['u_user'];
         <div class="pl-5 pr-5 d-flex bd-highlight">
             <div class="align-self-center p-2 w-100 bd-highlight">
                 <h1>Hallo <?php echo $user->u_forename ?>,<br> Willkommen bei deinem Barman</h1>
-                <blockquote>Mix dir deine Getränke wie nie zuvor! Stelle all deine Lieblingsgetränke nach Belieben zusammen und lass sie dir ohne weiteren Stress von einem <u>BarMan</u> zusammenmischen!</blockquote>
+                <blockquote>Mix dir deine Getränke wie nie zuvor! Stelle all deine Lieblingsgetränke nach Belieben
+                    zusammen und lass sie dir ohne weiteren Stress von einem <u>BarMan</u> zusammenmischen!
+                </blockquote>
             </div>
             <!--<div class="align-self-center p-2 flex-shrink-1 bd-highlight">
                 <img style="border-radius: 20px; float: right" src="../assets/users/Manuel.jpg" height="100px"/>
@@ -148,21 +160,21 @@ $user = $_SESSION['u_user'];
                         </blockquote>
                         <br>
                         <?php
-                            try {
-                                $mysqli = establishDB();
-                                $sql = 'SELECT d_key,p_title FROM d_devices
+                        try {
+                            $mysqli = establishDB();
+                            $sql = 'SELECT d_key,p_title FROM d_devices
                                     inner join p_profiles pp on d_devices.d_p_id = pp.p_id
-                                    WHERE d_u_id = '. $user->u_id .';';
-                                $result = $mysqli->query($sql);
-                                if ($result->num_rows > 0) {
-                                    $row = $result->fetch_assoc();
-                                    echo "<h2>Verbundenes Gerät</h2>";
-                                    echo "<blockquote>Key: ". $row['d_key']. "<br>";
-                                    echo "Verbundenes Profil: ".$row['p_title']."</blockquote><br>";
-                                }
-                            } catch (Exception $e) {
-                                echo $e;
+                                    WHERE d_u_id = ' . $user->u_id . ';';
+                            $result = $mysqli->query($sql);
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                echo "<h2>Verbundenes Gerät</h2>";
+                                echo "<blockquote>Key: " . $row['d_key'] . "<br>";
+                                echo "Verbundenes Profil: " . $row['p_title'] . "</blockquote><br>";
                             }
+                        } catch (Exception $e) {
+                            echo $e;
+                        }
                         ?>
                         <h2>Neues Gerät verbinden</h2>
                         <form>
@@ -211,30 +223,17 @@ $user = $_SESSION['u_user'];
                                 kannst.</i>
                         </blockquote>
                         <h3>Profile</h3>
+                        <script>
+                            readProfilesByUser();
+                        </script>
                         <form>
                             <div class="pl-5 pr-5">
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="sel-profile">Wähle dein Profil:</label>
-                                        <select id="sel-profile" name="profile" class="form-control" onchange="readBeveragesByProfile(this.value)">
-                                            <option disabled selected value> -- wähle dein Profil -- </option>
-                                            <?php
-                                            try {
-                                                $mysqli = establishDB();
-                                                $sql = 'SELECT * FROM p_profiles;';
-                                                $result = $mysqli->query($sql);
-
-                                                if ($result->num_rows > 0) {
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        echo "<option value=\"" . $row['p_id'] . "\">" . $row['p_title'] . "</option>";
-                                                    }
-                                                } else {
-                                                    echo "no result while fetching profiles";
-                                                }
-                                            } catch (Exception $e) {
-                                                echo $e;
-                                            }
-                                            ?>
+                                        <select id="sel-profile" name="profile" class="form-control"
+                                                onchange="readBeveragesByProfile()">
+                                            <option disabled selected value> -- wähle dein Profil --</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4 my-auto">
@@ -266,6 +265,7 @@ $user = $_SESSION['u_user'];
                                             </div>
                                         </button>
                                     </div>
+                                    <div id="alert_placeholder"></div>
                                 </div>
                             </div>
                         </form>
@@ -329,7 +329,8 @@ $user = $_SESSION['u_user'];
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputForename">Vorname</label>
-                                        <input type="text" class="form-control" id="inputForename" placeholder="<?php echo $user->u_forename ?>">
+                                        <input type="text" class="form-control" id="inputForename"
+                                               placeholder="<?php echo $user->u_forename ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputSurname">Nachname</label>
@@ -469,6 +470,7 @@ $user = $_SESSION['u_user'];
         <!--suppress ES6ConvertVarToLetConst -->
         <script>
             var section = $('li');
+
             function toggleAccordion() {
                 var x = document.getElementById('infoSite');
                 if (window.getComputedStyle(x).display != 'none') {
@@ -477,9 +479,14 @@ $user = $_SESSION['u_user'];
                 section.removeClass('active');
                 $(this).addClass('active');
             }
+
             section.on('click', toggleAccordion);
         </script>
     </section>
 </main>
 </body>
+<div class="alertSuccess-bottom alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Indicates a successful or positive action.
+</div>
 </html>

@@ -2,11 +2,9 @@ function verifyUser(profileData) {
     let verifyBool = true;
     let reg = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
     if (reg.test(profileData[2])) {
-        console.log("Email")
         verifyBool = false;
     }
     if (profileData[3].length < 8 && profileData[3].length != 0) {
-        console.log("pw")
         verifyBool = false;
     }
     return verifyBool;
@@ -54,13 +52,18 @@ function updateLiquids() {
 }
 */
 
-function readBeveragesByProfile(p_id) {
-    createBeveragesByProfileRead(p_id)
+function readProfilesByUser() {
+    createProfilesByUserRead();
+}
+
+function readBeveragesByProfile() {
+    let p_id = $("#sel-profile").val();
+    createBeveragesByProfileRead(p_id);
 }
 
 function verifyWriteProfile(p_title) {
     let verifyBool = true;
-    if (p_title.length < 3 && p_title.length > 255) {
+    if (p_title.length < 3 || p_title.length > 255) {
         verifyBool = false;
     }
     return verifyBool;
@@ -87,7 +90,7 @@ function verifyWriteBeverage(b_name, p_id) {
 function writeBeverage() {
     let b_name = readInput('inputBeverageName');
     let p_id = $("#sel-profile").val();
-    if (verifyWriteBeverage(b_name)) {
+    if (verifyWriteBeverage(b_name, p_id)) {
         createBeverageInsert(b_name, p_id);
     }
 }

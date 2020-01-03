@@ -9,9 +9,20 @@ body {
     overflow: hidden;
 }
  */
+.row {
+    margin: 0;
+}
 input:focus, select:focus {
     border-color: #00C2B3 !important;
     box-shadow: 0 0 0 0.2rem rgba(0,194,179,0.3) !important;
+}
+.input-wrong {
+    border: #87014f 1.5px solid !important;
+    color: #87014f !important;
+}
+
+.input-wrong + label {
+    color: #87014f !important;
 }
 
 .btnContainer {
@@ -28,12 +39,13 @@ input:focus, select:focus {
     -ms-transition: background-color 400ms linear;
     transition: background-color 400ms linear;
 }
-.btnContainer p {
+.btnContainer p,.btnContainer span {
     color: white;
     text-align: left;
     padding-left: 10px;
     font-size: 15px;
 }
+
 /*
 .btnContainer button {
     border-radius: 50%;

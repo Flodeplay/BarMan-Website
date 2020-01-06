@@ -1,7 +1,14 @@
-function alertBottom(){
-    $(".myAlert-bottom").show();
-    setTimeout(function(){
-        $(".myAlert-bottom").hide();
+function alertProfile() {
+    $(".alertSuccess.profile").show();
+    setTimeout(function () {
+        $(".alertSuccess.profile").hide();
+    }, 2000);
+}
+
+function alertBeverage() {
+    $(".alertSuccess.beverage").show();
+    setTimeout(function () {
+        $(".alertSuccess.beverage").hide();
     }, 2000);
 }
 
@@ -17,7 +24,9 @@ function createUserUpdate(profileData) {
             u_pwd: profileData[3],
         },
         success: function (response) {
-            console.error(response);
+            if (response != "") {
+                console.error(response);
+            }
         }
     });
 }
@@ -27,12 +36,14 @@ function createDeviceConnCheck(deviceConnData) {
         url: "request.php",
         method: "POST",
         data: {
-            action: "getDeviceByParam",
+            action: "checkDeviceConn",
             d_key: deviceConnData[0],
-            d_pin: deviceConnData[1]
+            d_pin: deviceConnData[1],
         },
         success: function (response) {
-            console.error(response);
+            if (response != "") {
+                console.error(response);
+            }
         }
     });
 }
@@ -48,7 +59,6 @@ function createBeveragesByProfileRead(p_id) {
         success: function (response) {
             document.getElementById('sel-beverage').innerHTML = "<option disabled selected value> -- wähle dein Getränk --</option>";
             document.getElementById('sel-beverage').innerHTML += response;
-            readBeveragesByProfile();
         }
     });
 }
@@ -78,9 +88,10 @@ function createProfileInsert(p_title) {
         success: function (response) {
             if (response != "") {
                 console.error(response);
+            } else {
+                readProfilesByUser();
+                alertProfile();
             }
-            readProfilesByUser();
-            alertBottom();
         }
     });
 }
@@ -97,13 +108,15 @@ function createBeverageInsert(b_name, p_id) {
         success: function (response) {
             if (response != "") {
                 console.error(response);
+            } else {
+                readBeveragesByProfile();
+                alertBeverage();
             }
-            readBeveragesByProfile()
         }
     });
 }
 
-function createBarmanFKUpdate(d_p_id) {
+function createBarmanProfileFKUpdate(d_p_id) {
     $.ajax({
         url: "request.php",
         method: "POST",
@@ -112,7 +125,9 @@ function createBarmanFKUpdate(d_p_id) {
             d_p_id: d_p_id
         },
         success: function (response) {
-            console.error(response);
+            if (response != "") {
+                console.error(response);
+            }
         }
     });
 }

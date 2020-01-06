@@ -168,7 +168,7 @@ and (-webkit-max-device-pixel-ratio: 3) {
     }
 }
 
-.alertSuccess-bottom {
+.alertSuccess {
     position: fixed;
     bottom: 5px;
     left: 2%;

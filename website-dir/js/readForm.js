@@ -95,9 +95,9 @@ function writeBeverage() {
     }
 }
 
-function updateBarmanFK() {
+function updateBarmanProfileFK() {
     let d_p_id = $("#sel-profile").val();
-    createBarmanFKUpdate(d_p_id);
+    createBarmanProfileFKUpdate(d_p_id);
 }
 
 function updateBeverages() {

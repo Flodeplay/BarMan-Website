@@ -10,8 +10,8 @@ switch ($action) {
     case "updateUserByID":
         updateUserByID();
         break;
-    case "getDeviceByParam":
-        getDeviceByParam();
+    case "checkDeviceConn":
+        checkDeviceConn();
         break;
     case "updateLiquidBy":
         updateLiquidBy();
@@ -49,7 +49,7 @@ function updateUserByID()
                     SET u_forename = ?, 
                     u_surname = ?, 
                     u_email = ?, 
-                    u_password = ?, 
+                    u_password = ?
                     WHERE u_id = ?;';
 
         if (!($stmt = $mysqli->prepare($sql))) {
@@ -67,6 +67,57 @@ function updateUserByID()
         $stmt->close();
     } catch (Exception $e) {
         throw new Exception($e);
+    }
+}
+
+function checkDeviceConn()
+{
+    try {
+        $mysqli = establishDB();
+        $d_key = isset($_POST['d_key']) ? $_POST['d_key'] : null;
+        $d_pin = isset($_POST['d_pin']) ? $_POST['d_pin'] : null;
+        $sql = 'SELECT * FROM d_devices
+                WHERE d_key = ?
+                AND d_pin = ?;';
+        if (!($stmt = $mysqli->prepare($sql))) {
+            echo "Fetching Device Data:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+        }
+
+        if (!$stmt->bind_param("ss", $d_key, $d_pin)) {
+            echo "Fetching Device Data:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+
+        if (!$stmt->execute()) {
+            echo "Fetching Device Data:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $u_id = $_SESSION['u_user']->u_id;
+                $sql = 'UPDATE d_devices 
+                    SET d_u_id = ? 
+                    WHERE d_id = ?;';
+                if (!($stmt = $mysqli->prepare($sql))) {
+                    echo "Updating UserID as FK:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+                }
+
+                if (!$stmt->bind_param("ss", $u_id, $row['d_id'])) {
+                    echo "Updating UserID as FK:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+                }
+
+                if (!$stmt->execute()) {
+                    echo "Updating UserID as FK:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+                }
+            }
+        } else {
+            echo "no result while fetching device data for device. Device key or pin incorrect.";
+        }
+
+        $stmt->close();
+    } catch (Exception $e) {
+        echo $e;
     }
 }
 
@@ -95,7 +146,7 @@ function readBeveragesByProfile()
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo "<option value=\"" . $row['b_id'] . "\">" . $row['b_name'] . "</option>";
+                echo "<option value=\"" . urldecode($row['b_id']) . "\">" . urldecode($row['b_name']) . "</option>";
             }
         } else {
             echo "no result while fetching beverages for profile " . $p_id;
@@ -195,7 +246,8 @@ function updateBarmanFK()
     }
 }
 
-function readProfilesByUser() {
+function readProfilesByUser()
+{
     try {
         $mysqli = establishDB();
         $u_id = $_SESSION['u_user']->u_id;
@@ -217,7 +269,7 @@ function readProfilesByUser() {
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo "<option value=\"" . $row['p_id'] . "\">" . $row['p_title'] . "</option>";
+                echo "<option value=\"" . urldecode($row['p_id']) . "\">" . urldecode($row['p_title']) . "</option>";
             }
         } else {
             echo "no result while fetching profiles for user " . $u_id;

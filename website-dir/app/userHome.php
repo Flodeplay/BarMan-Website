@@ -237,7 +237,7 @@ $user = $_SESSION['u_user'];
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4 my-auto">
-                                        <button class="btn btn-block btnContainer d-flex" onclick="updateBarmanFK()">
+                                        <button class="btn btn-block btnContainer d-flex" onclick="updateBarmanProfileFK()">
                                             <p class="m-0 w-100 align-self-center">Profil festlegen</p>
                                             <div class="align-self-center flex-shrink-1">
                                                 <span class="fa-stack fa-md">
@@ -485,8 +485,10 @@ $user = $_SESSION['u_user'];
     </section>
 </main>
 </body>
-<div class="alertSuccess-bottom alert alert-success">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success!</strong> Indicates a successful or positive action.
+<div class="alertSuccess profile alert alert-success">
+    <strong>Success!</strong> Profile successfully added to your Account!
+</div>
+<div class="alertSuccess beverage alert alert-success">
+    <strong>Success!</strong> Beverage successfully added to the selected Profile!
 </div>
 </html>

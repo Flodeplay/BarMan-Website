@@ -92,31 +92,31 @@ function checkDeviceConn()
         }
 
         $result = mysqli_stmt_get_result($stmt);
+        $stmt->close();
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
+                $delete_p = NULL;
                 $u_id = $_SESSION['u_user']->u_id;
-                $sql = 'UPDATE d_devices 
-                    SET d_u_id = ? 
-                    WHERE d_id = ?;';
+                $sql = 'UPDATE d_devices SET d_u_id = ?, d_p_id = ? WHERE d_id = ?;';
                 if (!($stmt = $mysqli->prepare($sql))) {
                     echo "Updating UserID as FK:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
                 }
 
-                if (!$stmt->bind_param("ss", $u_id, $row['d_id'])) {
+                if (!$stmt->bind_param("sss", $u_id, $delete_p, $row['d_id'])) {
                     echo "Updating UserID as FK:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
                 }
 
                 if (!$stmt->execute()) {
                     echo "Updating UserID as FK:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
                 }
+                $stmt->close();
             }
         } else {
             echo "no result while fetching device data for device. Device key or pin incorrect.";
         }
-
-        $stmt->close();
-    } catch (Exception $e) {
+    } catch
+    (Exception $e) {
         echo $e;
     }
 }

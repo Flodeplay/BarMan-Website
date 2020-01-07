@@ -59,6 +59,8 @@ function createBeveragesByProfileRead(p_id) {
         success: function (response) {
             document.getElementById('sel-beverage').innerHTML = "<option disabled selected value> -- wähle dein Getränk --</option>";
             document.getElementById('sel-beverage').innerHTML += response;
+            document.getElementById('sel-beverageLiquid').innerHTML = "<option disabled selected value> -- wähle dein Getränk --</option>";
+            document.getElementById('sel-beverageLiquid').innerHTML += response;
         }
     });
 }

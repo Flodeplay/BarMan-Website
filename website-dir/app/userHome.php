@@ -237,7 +237,8 @@ $user = $_SESSION['u_user'];
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4 my-auto">
-                                        <button class="btn btn-block btnContainer d-flex" onclick="updateBarmanProfileFK()">
+                                        <button class="btn btn-block btnContainer d-flex"
+                                                onclick="updateBarmanProfileFK()">
                                             <p class="m-0 w-100 align-self-center">Profil festlegen</p>
                                             <div class="align-self-center flex-shrink-1">
                                                 <span class="fa-stack fa-md">
@@ -265,7 +266,6 @@ $user = $_SESSION['u_user'];
                                             </div>
                                         </button>
                                     </div>
-                                    <div id="alert_placeholder"></div>
                                 </div>
                             </div>
                         </form>
@@ -274,14 +274,14 @@ $user = $_SESSION['u_user'];
                         <form>
                             <div class="pl-5 pr-5">
                                 <div class="form-row">
-                                    <label for="sel-profile">Wähle dein Getränk:</label>
+                                    <label for="sel-beverage">Wähle dein Getränk:</label>
                                     <select id="sel-beverage" name="beverage" class="form-control">
                                         <option disabled selected value> -- wähle dein Getränk --</option>
                                     </select>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
-                                        <label for="sel-profile">Neues Getränk erstellen</label>
+                                        <label for="sel-beverage">Neues Getränk erstellen</label>
                                         <input type="text" class="form-control" id="inputBeverageName"
                                                placeholder="Getränk-Name">
                                     </div>
@@ -307,9 +307,119 @@ $user = $_SESSION['u_user'];
                     <h2 class="">Flüssigkeiten</h2>
                 </div>
                 <div class="section-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe vel facilis quae nihil
-                        ad aspernatur ex delectus. Tenetur nulla voluptates similique quos, quia possimus, magnam esse
-                        natus quis ipsa.</p>
+                    <div class="container">
+                        <h2>Flüssigkeiten</h2>
+                        <blockquote>
+                            <i>Hier kannst du dem BarMan mitteilen, welche Flüssigkeiten du ihm für das Mischen von
+                                Getränken bereit stellst und allen erstellten Getränken die verwendeten Flüssigkeiten
+                                zuweisen.</i>
+                        </blockquote>
+                        <h3>Behälter</h3>
+                        <div class="row">
+                            <div class="col">
+                                <label>vorne links</label>
+                                <input type="text" class="form-control" id="inputFrontL"
+                                       placeholder="Flüssigkeit">
+                            </div>
+                            <div class="col">
+                                <label>vorne rechts</label>
+                                <input type="text" class="form-control" id="inputFrontR"
+                                       placeholder="Flüssigkeit">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>hinten links</label>
+                                <input type="text" class="form-control" id="inputBackL"
+                                       placeholder="Flüssigkeit">
+                            </div>
+                            <div class="col">
+                                <label>hinten rechts</label>
+                                <input type="text" class="form-control" id="inputBackR"
+                                       placeholder="Flüssigkeit">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="form-group col-md-4 my-auto">
+                                <button class="btn btn-block btnContainer d-flex"
+                                        onclick="updateBarmanProfileFK()">
+                                    <p class="m-0 w-100 align-self-center">Flüssigkeiten aktualisieren</p>
+                                    <div class="align-self-center flex-shrink-1">
+                                                <span class="fa-stack fa-md">
+                                                    <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                    <i class="fas fa-pencil-alt fa-stack-1x"></i>
+                                                </span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <br>
+                        <h3>Getränkeinhalt</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="sel-beverage">Wähle dein Getränk:</label>
+                                    <select id="sel-beverage" name="beverage" class="form-control">
+                                        <option disabled selected value> -- wähle dein Getränk --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                               value="option1">
+                                        <label class="form-check-label" for="inlineCheckbox1">1</label>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" id="amountFrontL"
+                                           placeholder="Menge">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-h" type="checkbox" id="inlineCheckbox2"
+                                               value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">2</label>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" id="amountFrontR"
+                                           placeholder="Menge">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                               value="option3">
+                                        <label class="form-check-label" for="inlineCheckbox3">3</label>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" id="amountBackL"
+                                           placeholder="Menge">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox4"
+                                               value="option4">
+                                        <label class="form-check-label" for="inlineCheckbox4">4</label>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" id="amountBackR"
+                                           placeholder="Menge">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </li>
             <li>

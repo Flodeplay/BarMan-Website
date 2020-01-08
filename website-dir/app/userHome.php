@@ -4,7 +4,7 @@ include_once "request.php";
 include_once "funcs.inc.php";
 include_once "classes/user.php";
 session_start();
-//checkSession();
+checkSession();
 /** @var user $user */
 $user = $_SESSION['u_user'];
 ?>
@@ -163,14 +163,20 @@ $user = $_SESSION['u_user'];
                         try {
                             $mysqli = establishDB();
                             $sql = 'SELECT d_key,p_title FROM d_devices
-                                    inner join p_profiles pp on d_devices.d_p_id = pp.p_id
+                                    left outer join p_profiles pp on d_devices.d_p_id = pp.p_id
                                     WHERE d_u_id = ' . $user->u_id . ';';
                             $result = $mysqli->query($sql);
                             if ($result->num_rows > 0) {
                                 $row = $result->fetch_assoc();
                                 echo "<h2>Verbundenes Gerät</h2>";
                                 echo "<blockquote>Key: " . $row['d_key'] . "<br>";
-                                echo "Verbundenes Profil: " . $row['p_title'] . "</blockquote><br>";
+                                if(!empty($row['p_title'])){
+                                    echo "Verbundenes Profil: " . $row['p_title'] . "</blockquote><br>";
+                                }
+                                else{
+                                    echo "Verbundenes Profil: Du musst noch ein Profil festlegen</blockquote><br>";
+                                }
+
                             }
                         } catch (Exception $e) {
                             echo $e;
@@ -228,9 +234,10 @@ $user = $_SESSION['u_user'];
                         </script>
                         <form>
                             <div class="pl-5 pr-5">
+                                <h4>Aktives Profil am BarMan:</h4>
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
-                                        <label for="sel-profile">Wähle dein Profil:</label>
+                                        <label for="sel-profile">Wähle aktives Profil für deinen BarMan:</label>
                                         <select id="sel-profile" name="profile" class="form-control"
                                                 onchange="readBeveragesByProfile()">
                                             <option disabled selected value> -- wähle dein Profil --</option>
@@ -249,7 +256,9 @@ $user = $_SESSION['u_user'];
                                         </button>
                                     </div>
                                 </div>
+                                <h4 class="mt-4">Erstelle ein neues Profil:</h4>
                                 <div class="form-row">
+
                                     <div class="form-group col-md-8">
                                         <label for="sel-profile">Neues Profil anlegen</label>
                                         <input type="text" class="form-control" id="inputProfileName"
@@ -595,10 +604,4 @@ $user = $_SESSION['u_user'];
     </section>
 </main>
 </body>
-<div class="alertSuccess profile alert alert-success">
-    <strong>Success!</strong> Profile successfully added to your Account!
-</div>
-<div class="alertSuccess beverage alert alert-success">
-    <strong>Success!</strong> Beverage successfully added to the selected Profile!
-</div>
 </html>

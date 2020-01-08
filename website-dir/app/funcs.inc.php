@@ -8,7 +8,7 @@
 function checkSession()
 {
     if (!isset($_SESSION["u_user"])) {
-        header("Location: ../login.php");
+        header("Location: login.php");
     }
 
 }
@@ -42,6 +42,7 @@ function establishDB()
 {
     require_once 'config/config-server.php';
     $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME);
+    mysqli_query($conn,"SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

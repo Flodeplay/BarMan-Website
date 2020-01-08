@@ -1,15 +1,20 @@
-function alertProfile() {
-    $(".alertSuccess.profile").show();
+function alertSuccess(message) {
+    $("body").append("<div class=\"alertSuccess alert alert-success\">\n" +
+                        "    <strong>Success!</strong> "+message+" \n" +
+                    "</div>");
+    $(".alertSuccess").show();
     setTimeout(function () {
-        $(".alertSuccess.profile").hide();
-    }, 2000);
+        $(".alertSuccess.profile").remove();
+    }, 4000);
 }
-
-function alertBeverage() {
-    $(".alertSuccess.beverage").show();
+function alertFailed(message) {
+    $("body").append("<div class=\"alertFailed alert alert-danger\">\n" +
+                    "    <strong>Failed!</strong> "+message+"\n" +
+                    "</div>");
+    $(".alertFailed").show();
     setTimeout(function () {
-        $(".alertSuccess.beverage").hide();
-    }, 2000);
+        $(".alertFailed.device").remove();
+    }, 4000);
 }
 
 function createUserUpdate(profileData) {
@@ -26,6 +31,7 @@ function createUserUpdate(profileData) {
         success: function (response) {
             if (response != "") {
                 console.error(response);
+                alertFailed(response);
             }
         }
     });
@@ -42,7 +48,10 @@ function createDeviceConnCheck(deviceConnData) {
         },
         success: function (response) {
             if (response != "") {
-                console.error(response);
+                console.log(response);
+                alertFailed("Bitte überprüfe nochmal deine Eingabe");
+            }else{
+                alertSuccess("Dein Gerät ist jetzt mit deinem Konto verbunden")
             }
         }
     });
@@ -90,9 +99,10 @@ function createProfileInsert(p_title) {
         success: function (response) {
             if (response != "") {
                 console.error(response);
+                alertFailed(response)
             } else {
                 readProfilesByUser();
-                alertProfile();
+                alertSuccess("Profile successfully added to your Account!")
             }
         }
     });
@@ -110,9 +120,10 @@ function createBeverageInsert(b_name, p_id) {
         success: function (response) {
             if (response != "") {
                 console.error(response);
+                alertFailed(response);
             } else {
                 readBeveragesByProfile();
-                alertBeverage();
+                alertSuccess("Beverage successfully added to the selected Profile!");
             }
         }
     });
@@ -129,6 +140,10 @@ function createBarmanProfileFKUpdate(d_p_id) {
         success: function (response) {
             if (response != "") {
                 console.error(response);
+                alertFailed(response);
+            }
+            else{
+                alertSuccess("Beverage successfully added to the selected Profile!")
             }
         }
     });

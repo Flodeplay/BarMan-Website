@@ -15,13 +15,12 @@ class user
      * @param $u_email
      * @param $u_image
      */
-    public function __construct($u_id, $u_forename, $u_surname, $u_email, $u_image)
+    public function __construct($u_id, $u_forename, $u_surname, $u_email)
     {
         $this->u_id = $u_id;
         $this->u_forename = $u_forename;
         $this->u_surname = $u_surname;
         $this->u_email = $u_email;
-        $this->u_image = $u_image;
     }
 
 

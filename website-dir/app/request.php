@@ -1,9 +1,10 @@
 <?php
 error_reporting(5);
 include_once "classes/user.php";
-session_start();
-//checkSession();
 require 'funcs.inc.php';
+session_start();
+checkSession();
+
 
 $action = isset($_POST['action']) ? $_POST['action'] : null;
 switch ($action) {
@@ -39,32 +40,62 @@ switch ($action) {
 function updateUserByID()
 {
     try {
+        /** @var user $user */
+        $user = $_SESSION['u_user'];
         $mysqli = establishDB();
-        $u_id = $_SESSION['u_user']->u_id;
-        $u_forename = isset($_POST['u_forename']) ? $_POST['u_forename'] : null;
-        $u_surname = isset($_POST['u_surname']) ? $_POST['u_surname'] : null;
-        $u_email = isset($_POST['u_email']) ? $_POST['u_email'] : null;
-        $u_pwd = isset($_POST['u_pwd']) ? $_POST['u_pwd'] : null;
-        $sql = 'UPDATE u_users 
+        $u_id = $user->u_id;
+        $u_forename = (isset($_POST['u_forename']) && !empty($_POST['u_forename'])) ? $_POST['u_forename'] : $user->u_forename;
+        $u_surname = (isset($_POST['u_surname'])&& !empty($_POST['u_surname'])) ? $_POST['u_surname'] : $user->u_surname;
+        $u_email = (isset($_POST['u_email'])&& !empty($_POST['u_email'])) ? $_POST['u_email'] : $user->u_email;
+        if(isset($_POST['u_pwd'])&& !empty($_POST['u_pwd'])){
+            $u_pwd = hash("sha384", $_POST['u_pwd'], FALSE);
+            $sql = 'UPDATE u_users 
                     SET u_forename = ?, 
                     u_surname = ?, 
                     u_email = ?, 
                     u_password = ?
                     WHERE u_id = ?;';
+        }else{
+            $sql = 'UPDATE u_users 
+                    SET u_forename = ?, 
+                    u_surname = ?, 
+                    u_email = ?
+                    WHERE u_id = ?;';
+        }
+
 
         if (!($stmt = $mysqli->prepare($sql))) {
             echo "Update User:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
         }
-
-        if (!$stmt->bind_param("sssss", $u_forename, $u_surname, $u_email, $u_pwd, $u_id)) {
-            echo "Update User:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        if(isset($_POST['u_pwd'])&& !empty($_POST['u_pwd'])){
+            if (!$stmt->bind_param("sssss", $u_forename, $u_surname, $u_email, $u_pwd, $u_id)) {
+                echo "Update User:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+            }
         }
+        else{
+            if (!$stmt->bind_param("ssss", $u_forename, $u_surname, $u_email, $u_id)) {
+                echo "Update User:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+            }
+        }
+
 
         if (!$stmt->execute()) {
             echo "Update User:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
         }
-
         $stmt->close();
+        $sql = "SELECT * FROM u_users WHERE u_id = ".$_SESSION["u_user"]->u_id.";";
+        if (!($stmt = $mysqli->prepare($sql))) {
+            echo "Update User:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+        }
+        if (!$stmt->execute()) {
+            echo "Update User:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+        $result = mysqli_stmt_get_result($stmt);
+        if ($result->num_rows == 1) {
+            $data = $result->fetch_assoc();
+            $user_local = new user($data["u_id"], $data["u_forename"], $data["u_surname"], $data["u_email"]);
+            $_SESSION["u_user"] = $user_local;
+        }
     } catch (Exception $e) {
         throw new Exception($e);
     }

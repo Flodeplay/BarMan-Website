@@ -49,9 +49,9 @@ function createDeviceConnCheck(deviceConnData) {
         success: function (response) {
             if (response != "") {
                 console.log(response);
-                alertFailed("Bitte überprüfe nochmal deine Eingabe");
+                alertFailed("Bitte überprüfe nocheinmal deine Eingabe!");
             }else{
-                alertSuccess("Dein Gerät ist jetzt mit deinem Konto verbunden")
+                alertSuccess("Dein Gerät ist jetzt mit deinem Account verbunden!")
             }
         }
     });
@@ -68,8 +68,8 @@ function createBeveragesByProfileRead(p_id) {
         success: function (response) {
             document.getElementById('sel-beverage').innerHTML = "<option disabled selected value> -- wähle dein Getränk --</option>";
             document.getElementById('sel-beverage').innerHTML += response;
-            document.getElementById('sel-beverageLiquid').innerHTML = "<option disabled selected value> -- wähle dein Getränk --</option>";
-            document.getElementById('sel-beverageLiquid').innerHTML += response;
+            document.getElementById('sel-beverage-liquids').innerHTML = "<option disabled selected value> -- wähle dein Getränk --</option>";
+            document.getElementById('sel-beverage-liquids').innerHTML += response;
         }
     });
 }
@@ -116,7 +116,7 @@ function createProfileInsert(p_title) {
                 alertFailed(response)
             } else {
                 readProfilesByUser();
-                alertSuccess("Profile successfully added to your Account!")
+                alertSuccess("Das Profil wurde erfolgreich hinzugefügt!")
             }
         }
     });
@@ -137,7 +137,7 @@ function createBeverageInsert(b_name, p_id) {
                 alertFailed(response);
             } else {
                 readBeveragesByProfile();
-                alertSuccess("Beverage successfully added to the selected Profile!");
+                alertSuccess("Das Getränk wurde erfolgreich hinzugefügt!");
             }
         }
     });
@@ -157,7 +157,7 @@ function createBarmanProfileFKUpdate(d_p_id) {
                 alertFailed(response);
             }
             else{
-                alertSuccess("Beverage successfully added to the selected Profile!")
+                alertSuccess("Das Profil wurde erfolgreich als aktives Profil gesetzt!")
             }
         }
     });
@@ -177,7 +177,28 @@ function createInsertLiquid(l_data) {
                 alertFailed(response);
             }
             else{
-                alertSuccess("Liquids successfully added to your Account!")
+                alertSuccess("Die Flüssigkeiten wurden erfolgreich deinem Account hinzugefügt!")
+            }
+        }
+    });
+}
+
+function createUpdateBeverageById(b_id, l_data) {
+    $.ajax({
+        url: "request.php",
+        method: "POST",
+        data: {
+            action: "updateBeverageById",
+            b_id: b_id,
+            l_data: l_data
+        },
+        success: function (response) {
+            if (response != "") {
+                console.error(response);
+                alertFailed(response);
+            }
+            else{
+                alertSuccess("Das Getränk wurde erfolgreich aktualisiert!")
             }
         }
     });

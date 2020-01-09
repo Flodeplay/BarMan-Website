@@ -100,6 +100,16 @@ function updateBarmanProfileFK() {
     createBarmanProfileFKUpdate(d_p_id);
 }
 
+function updateBeverageById() {
+    let b_id = $("#sel-beverage-liquids").val();
+    let liquidArr = [];
+    liquidArr[0] = {"Name": readInput('tick-1'), "Amount": readInput('input-1')};
+    liquidArr[1] = {"Name": readInput('tick-2'), "Amount": readInput('input-1')};
+    liquidArr[2] = {"Name": readInput('tick-3'), "Amount": readInput('input-1')};
+    liquidArr[3] = {"Name": readInput('tick-4'), "Amount": readInput('input-1')};
+    createUpdateBeverageById(b_id, liquidArr);
+}
+
 function insertLiquid() {
     let l_data = [];
     l_data[0] = readInput('inputFrontL');

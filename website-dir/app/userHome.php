@@ -85,15 +85,15 @@ $user = $_SESSION['u_user'];
                     <a class="nav-link" href="#">Profil</a>
                 </li>
             </ul>
-                    <a class="btn btnContainer d-flex" href="logout.php">
-                        <p class="m-0 mr-2 w-100 p-0 align-self-center" style="padding-left: 2px !important">Logout</p>
-                        <div class="align-self-center flex-shrink-1">
+            <a class="btn btnContainer d-flex" href="logout.php">
+                <p class="m-0 mr-2 w-100 p-0 align-self-center" style="padding-left: 2px !important">Logout</p>
+                <div class="align-self-center flex-shrink-1">
                             <span class="fa-stack fa-sm">
                                 <i class="fas fa-circle fa-stack-2x icon-background"></i>
                                 <i class="fas fa-sign-out-alt fa-stack-1x"></i>
                             </span>
-                        </div>
-                    </a>
+                </div>
+            </a>
         </div>
     </nav>
     <script>
@@ -137,15 +137,20 @@ $user = $_SESSION['u_user'];
                     <div class="container">
                         <h2>Info Seite</h2>
                         <h3>1. Gerät Koppeln</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
+                            "Geräte Verwaltung" machen.</p>
                         <h3>2. Profil Erstellen</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
+                            "Geräte Verwaltung" machen.</p>
                         <h3>3. Getränke hinzufügen</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
+                            "Geräte Verwaltung" machen.</p>
                         <h3>4. Flüssigkeiten verwalten</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
+                            "Geräte Verwaltung" machen.</p>
                         <h3>5. Getränke zu Flüssigkeiten hinzufügen</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
+                            "Geräte Verwaltung" machen.</p>
 
                     </div>
                 </div>
@@ -178,10 +183,9 @@ $user = $_SESSION['u_user'];
                                 $row = $result->fetch_assoc();
                                 echo "<h2>Verbundenes Gerät</h2>";
                                 echo "<blockquote>Key: " . $row['d_key'] . "<br>";
-                                if(!empty($row['p_title'])){
+                                if (!empty($row['p_title'])) {
                                     echo "Verbundenes Profil: " . $row['p_title'] . "</blockquote><br>";
-                                }
-                                else{
+                                } else {
                                     echo "Verbundenes Profil: Du musst noch ein Profil festlegen</blockquote><br>";
                                 }
 
@@ -258,7 +262,7 @@ $user = $_SESSION['u_user'];
                                             <div class="align-self-center flex-shrink-1">
                                                 <span class="fa-stack fa-md">
                                                     <i class="fas fa-circle fa-stack-2x icon-background"></i>
-                                                    <i class="fas fa-pencil-alt fa-stack-1x"></i>
+                                                    <i class="fas fa-cog fa-stack-1x"></i>
                                                 </span>
                                             </div>
                                         </button>
@@ -291,10 +295,24 @@ $user = $_SESSION['u_user'];
                         <form>
                             <div class="pl-5 pr-5">
                                 <div class="form-row">
-                                    <label for="sel-beverage">Wähle dein Getränk:</label>
-                                    <select id="sel-beverage" name="beverage" class="form-control">
-                                        <option disabled selected value> -- wähle dein Getränk --</option>
-                                    </select>
+                                    <div class="form-group col-md-8 my-auto">
+                                        <label for="sel-beverage">Wähle dein Getränk:</label>
+                                        <select id="sel-beverage" name="beverage" class="form-control">
+                                            <option disabled selected value> -- wähle dein Getränk --</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4 my-auto">
+                                        <button class="btn btn-block btnContainer d-flex"
+                                                onclick="deleteBeverageByName()">
+                                            <p class="m-0 w-100 align-self-center">Getränk löschen</p>
+                                            <div class="align-self-center flex-shrink-1">
+                                                <span class="fa-stack fa-md">
+                                                    <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                    <i class="fas fa-trash-alt fa-stack-1x"></i>
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
@@ -363,24 +381,23 @@ $user = $_SESSION['u_user'];
                                         onclick="insertLiquid()">
                                     <p class="m-0 w-100 align-self-center">Flüssigkeiten aktualisieren</p>
                                     <div class="align-self-center flex-shrink-1">
-                                                <span class="fa-stack fa-md">
-                                                    <i class="fas fa-circle fa-stack-2x icon-background"></i>
-                                                    <i class="fas fa-pencil-alt fa-stack-1x"></i>
-                                                </span>
+                                        <span class="fa-stack fa-md">
+                                            <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                            <i class="fas fa-redo-alt fa-stack-1x"></i>
+                                        </span>
                                     </div>
-                                </button>
                             </div>
                         </div>
                         <br>
                         <h3>Getränkeinhalt</h3>
                         <?php
-                             $liquids = getliquidsbyUser();
+                        $liquids = getliquidsbyUser();
                         ?>
                         <form>
                             <div class="row">
                                 <div class="col">
-                                    <label for="sel-beverage">Wähle dein Getränk:</label>
-                                    <select id="sel-beverage" name="beverage" class="form-control">
+                                    <label for="sel-beverage-liquids">Wähle dein Getränk:</label>
+                                    <select id="sel-beverage-liquids" name="beverage-liquids" class="form-control">
                                         <option disabled selected value> -- wähle dein Getränk --</option>
                                     </select>
                                 </div>
@@ -388,32 +405,18 @@ $user = $_SESSION['u_user'];
                             <br>
                             <div class="row">
                                 <div class="form-check form-check-inline w-100">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <input type="checkbox" aria-label="Checkbox for following text input">
-                                                </div>
-                                                <div class="input-group-text">
-                                                    <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[1] ?></label>
-                                                </div>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="100" aria-label="Text input with checkbox">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">ml</span>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="form-check form-check-inline w-100">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <input type="checkbox" aria-label="Checkbox for following text input">
                                             </div>
                                             <div class="input-group-text">
-                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[2] ?></label>
+                                                <label class="form-check-label" id="tick-1"
+                                                       for="inlineCheckbox1"><?php echo $liquids[1] ?></label>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="100" aria-label="Text input with checkbox">
+                                        <input type="text" class="form-control" id="input-1" placeholder="100"
+                                               aria-label="Text input with checkbox">
                                         <div class="input-group-append">
                                             <span class="input-group-text">ml</span>
                                         </div>
@@ -426,10 +429,12 @@ $user = $_SESSION['u_user'];
                                                 <input type="checkbox" aria-label="Checkbox for following text input">
                                             </div>
                                             <div class="input-group-text">
-                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[3] ?></label>
+                                                <label class="form-check-label" id="tick-2"
+                                                       for="inlineCheckbox1"><?php echo $liquids[2] ?></label>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="100" aria-label="Text input with checkbox">
+                                        <input type="text" class="form-control" id="input-2" placeholder="100"
+                                               aria-label="Text input with checkbox">
                                         <div class="input-group-append">
                                             <span class="input-group-text">ml</span>
                                         </div>
@@ -442,13 +447,46 @@ $user = $_SESSION['u_user'];
                                                 <input type="checkbox" aria-label="Checkbox for following text input">
                                             </div>
                                             <div class="input-group-text">
-                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[4] ?></label>
+                                                <label class="form-check-label" id="tick-3"
+                                                       for="inlineCheckbox1"><?php echo $liquids[3] ?></label>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="100" aria-label="Text input with checkbox">
+                                        <input type="text" class="form-control" id="input-3" placeholder="100"
+                                               aria-label="Text input with checkbox">
                                         <div class="input-group-append">
                                             <span class="input-group-text">ml</span>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-check form-check-inline w-100">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <input type="checkbox" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <div class="input-group-text">
+                                                <label class="form-check-label" id="tick-4"
+                                                       for="inlineCheckbox1"><?php echo $liquids[4] ?></label>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" id="input-4" placeholder="100"
+                                               aria-label="Text input with checkbox">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">ml</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-4 my-auto">
+                                        <button class="btn btn-block btnContainer d-flex"
+                                                onclick="updateBeverageById()">
+                                            <p class="m-0 w-100 align-self-center">Getränk aktualisieren</p>
+                                            <div class="align-self-center flex-shrink-1">
+                                                <span class="fa-stack fa-md">
+                                                    <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                    <i class="fas fa-redo-alt fa-stack-1x"></i>
+                                                </span>
+                                            </div>
                                     </div>
                                 </div>
                             </div>

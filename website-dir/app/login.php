@@ -70,7 +70,7 @@ include "classes/user.php";
                                 $query = mysqli_query($conn, "SELECT * FROM u_users WHERE u_email = '$email' AND u_password LIKE '$pwd';");
                                 if (mysqli_num_rows($query) == 1) {
                                     $data = mysqli_fetch_assoc($query);
-                                    $user_local = new user($data["u_id"], $data["u_forename"], $data["u_surname"], $data["u_email"]);
+                                    $user_local = new user(urldecode($data["u_id"]), urldecode($data["u_forename"]), urldecode($data["u_surname"]), urldecode($data["u_email"]));
                                     $_SESSION["u_user"] = $user_local;
                                     echo "<div class='w-100 d-flex flex-column align-items-center justify-content-center'>";
                                     echo "<div class='mx-auto my-3'><i class=\"fas fa-spinner fa-spin fa-4x\"></i></div>";
@@ -102,7 +102,7 @@ include "classes/user.php";
                                 $query = mysqli_query($conn, "SELECT * FROM u_users WHERE u_email = '$email' AND u_password LIKE '$pwd';");
                                 if (mysqli_num_rows($query) == 1) {
                                     $data = mysqli_fetch_assoc($query);
-                                    $user_local = new user($data["u_id"], $data["u_forename"], $data["u_surname"], $data["u_email"]);
+                                    $user_local = new user(urldecode($data["u_id"]), urldecode($data["u_forename"]), urldecode($data["u_surname"]), urldecode($data["u_email"]));
                                     $_SESSION["u_user"] = $user_local;
                                     echo "<div class='w-100 d-flex flex-column align-items-center justify-content-center'>";
                                     echo "<div class='mx-auto my-3'><i class=\"fas fa-spinner fa-spin fa-4x\"></i></div>";

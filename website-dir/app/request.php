@@ -92,7 +92,7 @@ function updateUserByID()
         $result = mysqli_stmt_get_result($stmt);
         if ($result->num_rows == 1) {
             $data = $result->fetch_assoc();
-            $user_local = new user($data["u_id"], $data["u_forename"], $data["u_surname"], $data["u_email"]);
+            $user_local = new user(urldecode($data["u_id"]), urldecode($data["u_forename"]), urldecode($data["u_surname"]), urldecode($data["u_email"]));
             $_SESSION["u_user"] = $user_local;
         }
     } catch (Exception $e) {
@@ -309,23 +309,22 @@ function updateBarmanFK()
     try {
         $mysqli = establishDB();
         $d_p_id = isset($_POST['d_p_id']) ? $_POST['d_p_id'] : null;
-        $sql = "UPDATE d_devices SET d_p_id = ? WHERE d_id = '1'";
+        $sql = "UPDATE d_devices SET d_p_id = ? WHERE d_id = ?;";
 
         if (!($stmt = $mysqli->prepare($sql))) {
             echo "Update BarmanFK:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
         }
 
-        if (!$stmt->bind_param("s", $d_p_id)) {
+        if (!$stmt->bind_param("ss", $d_p_id, $_SESSION["u_user"]->u_id)) {
             echo "Update BarmanFK:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
         }
 
         if (!$stmt->execute()) {
             echo "Update BarmanFK:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
         }
-
         $stmt->close();
     } catch (Exception $e) {
-        throw new Exception($e);
+        echo $e;
     }
 }
 
@@ -387,7 +386,10 @@ function getliquidsbyUser(){
             $array = array();
             $index = 1;
             while ($row = $result->fetch_assoc()) {
-                $array[$index] = $row["l_name"];
+                $temp = array();
+                $temp[0] = $row["l_id"];
+                $temp[1] = $row["l_name"];
+                $array[$index] = $temp;
                 $index++;
             }
             $stmt->close();

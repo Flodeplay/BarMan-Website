@@ -7,6 +7,7 @@ session_start();
 checkSession();
 /** @var user $user */
 $user = $_SESSION['u_user'];
+$liquids = getliquidsbyUser();
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -140,17 +141,13 @@ $user = $_SESSION['u_user'];
                         <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
                             "Geräte Verwaltung" machen.</p>
                         <h3>2. Profil Erstellen</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
-                            "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
                         <h3>3. Getränke hinzufügen</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
-                            "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
                         <h3>4. Flüssigkeiten verwalten</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
-                            "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
                         <h3>5. Getränke zu Flüssigkeiten hinzufügen</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
-                            "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
 
                     </div>
                 </div>
@@ -268,6 +265,8 @@ $user = $_SESSION['u_user'];
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="pl-5 pr-5">
                                 <h4 class="mt-4">Erstelle ein neues Profil:</h4>
                                 <div class="form-row">
 
@@ -314,6 +313,10 @@ $user = $_SESSION['u_user'];
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+                        </form>
+                        <form>
+                            <div class="pl-5 pr-5">
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="sel-beverage">Neues Getränk erstellen</label>
@@ -335,7 +338,6 @@ $user = $_SESSION['u_user'];
                             </div>
                         </form>
                     </div>
-                </div>
             </li>
             <li>
                 <div class="section-title">
@@ -354,24 +356,24 @@ $user = $_SESSION['u_user'];
                             <div class="col">
                                 <label>vorne links</label>
                                 <input type="text" class="form-control" id="inputFrontL"
-                                       placeholder="Flüssigkeit">
+                                       placeholder="<?php echo $liquids[1][1] ?>">
                             </div>
                             <div class="col">
                                 <label>vorne rechts</label>
                                 <input type="text" class="form-control" id="inputFrontR"
-                                       placeholder="Flüssigkeit">
+                                       placeholder="<?php echo $liquids[2][1] ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label>hinten links</label>
                                 <input type="text" class="form-control" id="inputBackL"
-                                       placeholder="Flüssigkeit">
+                                       placeholder="<?php echo $liquids[3][1] ?>">
                             </div>
                             <div class="col">
                                 <label>hinten rechts</label>
                                 <input type="text" class="form-control" id="inputBackR"
-                                       placeholder="Flüssigkeit">
+                                       placeholder="<?php echo $liquids[4][1] ?>">
                             </div>
                         </div>
                         <br>
@@ -429,12 +431,10 @@ $user = $_SESSION['u_user'];
                                                 <input type="checkbox" aria-label="Checkbox for following text input">
                                             </div>
                                             <div class="input-group-text">
-                                                <label class="form-check-label" id="tick-2"
-                                                       for="inlineCheckbox1"><?php echo $liquids[2] ?></label>
+                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[2][1] ?></label>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" id="input-2" placeholder="100"
-                                               aria-label="Text input with checkbox">
+                                        <input type="text" class="form-control" id="<?php echo $liquids[1][0] ?>" placeholder="100" aria-label="Text input with checkbox">
                                         <div class="input-group-append">
                                             <span class="input-group-text">ml</span>
                                         </div>
@@ -447,12 +447,10 @@ $user = $_SESSION['u_user'];
                                                 <input type="checkbox" aria-label="Checkbox for following text input">
                                             </div>
                                             <div class="input-group-text">
-                                                <label class="form-check-label" id="tick-3"
-                                                       for="inlineCheckbox1"><?php echo $liquids[3] ?></label>
+                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[3][1] ?></label>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" id="input-3" placeholder="100"
-                                               aria-label="Text input with checkbox">
+                                        <input type="text" class="form-control" id="<?php echo $liquids[1][0] ?>" placeholder="100" aria-label="Text input with checkbox">
                                         <div class="input-group-append">
                                             <span class="input-group-text">ml</span>
                                         </div>
@@ -465,12 +463,10 @@ $user = $_SESSION['u_user'];
                                                 <input type="checkbox" aria-label="Checkbox for following text input">
                                             </div>
                                             <div class="input-group-text">
-                                                <label class="form-check-label" id="tick-4"
-                                                       for="inlineCheckbox1"><?php echo $liquids[4] ?></label>
+                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[4][1] ?></label>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" id="input-4" placeholder="100"
-                                               aria-label="Text input with checkbox">
+                                        <input type="text" class="form-control" id="<?php echo $liquids[1][0] ?>" placeholder="100" aria-label="Text input with checkbox">
                                         <div class="input-group-append">
                                             <span class="input-group-text">ml</span>
                                         </div>

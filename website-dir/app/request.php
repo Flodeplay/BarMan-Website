@@ -8,32 +8,29 @@ checkSession();
 
 $action = isset($_POST['action']) ? $_POST['action'] : null;
 switch ($action) {
-    case "updateUserByID":
-        updateUserByID();
-        break;
-    case "checkDeviceConn":
-        checkDeviceConn();
-        break;
-    case "updateLiquidBy":
-        updateLiquidBy();
-        break;
-    case "readBeveragesByProfile":
-        readBeveragesByProfile();
-        break;
-    case "getProfiles":
-        getProfiles();
-        break;
     case "insertProfile":
         insertProfile();
         break;
     case "insertBeverage":
         insertBeverage();
         break;
-    case "updateBarmanFK":
-        updateBarmanFK();
+    case "insertLiquid":
+        insertLiquid();
+        break;
+    case "checkDeviceConn":
+        checkDeviceConn();
+        break;
+    case "readBeveragesByProfile":
+        readBeveragesByProfile();
         break;
     case "readProfilesByUser":
         readProfilesByUser();
+        break;
+    case "updateBarmanFK":
+        updateBarmanFK();
+        break;
+    case "updateUserByID":
+        updateUserByID();
         break;
 }
 
@@ -45,9 +42,9 @@ function updateUserByID()
         $mysqli = establishDB();
         $u_id = $user->u_id;
         $u_forename = (isset($_POST['u_forename']) && !empty($_POST['u_forename'])) ? $_POST['u_forename'] : $user->u_forename;
-        $u_surname = (isset($_POST['u_surname'])&& !empty($_POST['u_surname'])) ? $_POST['u_surname'] : $user->u_surname;
-        $u_email = (isset($_POST['u_email'])&& !empty($_POST['u_email'])) ? $_POST['u_email'] : $user->u_email;
-        if(isset($_POST['u_pwd'])&& !empty($_POST['u_pwd'])){
+        $u_surname = (isset($_POST['u_surname']) && !empty($_POST['u_surname'])) ? $_POST['u_surname'] : $user->u_surname;
+        $u_email = (isset($_POST['u_email']) && !empty($_POST['u_email'])) ? $_POST['u_email'] : $user->u_email;
+        if (isset($_POST['u_pwd']) && !empty($_POST['u_pwd'])) {
             $u_pwd = hash("sha384", $_POST['u_pwd'], FALSE);
             $sql = 'UPDATE u_users 
                     SET u_forename = ?, 
@@ -55,7 +52,7 @@ function updateUserByID()
                     u_email = ?, 
                     u_password = ?
                     WHERE u_id = ?;';
-        }else{
+        } else {
             $sql = 'UPDATE u_users 
                     SET u_forename = ?, 
                     u_surname = ?, 
@@ -67,12 +64,11 @@ function updateUserByID()
         if (!($stmt = $mysqli->prepare($sql))) {
             echo "Update User:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
         }
-        if(isset($_POST['u_pwd'])&& !empty($_POST['u_pwd'])){
+        if (isset($_POST['u_pwd']) && !empty($_POST['u_pwd'])) {
             if (!$stmt->bind_param("sssss", $u_forename, $u_surname, $u_email, $u_pwd, $u_id)) {
                 echo "Update User:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
             }
-        }
-        else{
+        } else {
             if (!$stmt->bind_param("ssss", $u_forename, $u_surname, $u_email, $u_id)) {
                 echo "Update User:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
             }
@@ -83,7 +79,7 @@ function updateUserByID()
             echo "Update User:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
         }
         $stmt->close();
-        $sql = "SELECT * FROM u_users WHERE u_id = ".$_SESSION["u_user"]->u_id.";";
+        $sql = "SELECT * FROM u_users WHERE u_id = " . $_SESSION["u_user"]->u_id . ";";
         if (!($stmt = $mysqli->prepare($sql))) {
             echo "Update User:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
         }
@@ -247,6 +243,59 @@ function insertBeverage()
 
         $stmtBeverages->close();
         $stmtLookup->close();
+    } catch (Exception $e) {
+        throw new Exception($e);
+    }
+}
+
+function insertLiquid()
+{
+    try {
+        $mysqli = establishDB();
+        $l_data = isset($_POST['l_data']) ? $_POST['l_data'] : null;
+        $l_u_id = $_SESSION['u_user']->u_id;
+        for ($i = 0; $i < 4; $i++) {
+            if (!empty($l_data[$i])) {
+                $containerNo = $i + 1;
+                $sql = "SELECT * FROM l_liquids WHERE l_u_id = '$l_u_id' AND l_containerNo = '$containerNo'";
+                $result = $mysqli->query($sql) or trigger_error("Query Failed! SQL: $sql - Error: " . mysqli_error($mysqli), E_USER_ERROR);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $sql = "UPDATE l_liquids SET l_name = ? WHERE l_u_id = ? AND l_containerNo = ?;";
+
+                        if (!($stmt = $mysqli->prepare($sql))) {
+                            echo "Update Liquid:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+                        }
+
+                        if (!$stmt->bind_param("sss", $l_data[$i], $l_u_id, $containerNo)) {
+                            echo "Update Liquid:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+                        }
+
+                        if (!$stmt->execute()) {
+                            echo "Update Liquid:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+                        }
+
+                        $stmt->close();
+                    }
+                } else {
+                    $sql = "INSERT INTO l_liquids (l_name, l_containerNo, l_u_id) VALUES (?, ?, ?);";
+
+                    if (!($stmt = $mysqli->prepare($sql))) {
+                        echo "Insert Liquid:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+                    }
+
+                    if (!$stmt->bind_param("sss", $l_data[$i], $containerNo, $l_u_id)) {
+                        echo "Insert Liquid:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+                    }
+
+                    if (!$stmt->execute()) {
+                        echo "Insert Liquid:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+                    }
+
+                    $stmt->close();
+                }
+            }
+        }
     } catch (Exception $e) {
         throw new Exception($e);
     }

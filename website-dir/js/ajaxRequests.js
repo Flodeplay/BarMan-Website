@@ -148,3 +148,23 @@ function createBarmanProfileFKUpdate(d_p_id) {
         }
     });
 }
+
+function createInsertLiquid(l_data) {
+    $.ajax({
+        url: "request.php",
+        method: "POST",
+        data: {
+            action: "insertLiquid",
+            l_data: l_data
+        },
+        success: function (response) {
+            if (response != "") {
+                console.error(response);
+                alertFailed(response);
+            }
+            else{
+                alertSuccess("Liquids successfully added to your Account!")
+            }
+        }
+    });
+}

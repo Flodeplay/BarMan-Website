@@ -100,18 +100,15 @@ function updateBarmanProfileFK() {
     createBarmanProfileFKUpdate(d_p_id);
 }
 
-function updateBeverages() {
-
+function insertLiquid() {
+    let l_data = [];
+    l_data[0] = readInput('inputFrontL');
+    l_data[1] = readInput('inputFrontR');
+    l_data[2] = readInput('inputBackL');
+    l_data[3] = readInput('inputBackR');
+    createInsertLiquid(l_data);
 }
 
 function readInput(id) {
     return encodeURIComponent($('#' + id).val());
-}
-
-function calculatePercentage(fullVolume, splitVolume) {
-    return (splitVolume * 100) / fullVolume;
-}
-
-function calculateVolume(fullVolume, splitPercentage) {
-    return (fullVolume * splitPercentage) / 100;
 }

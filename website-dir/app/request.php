@@ -32,6 +32,9 @@ switch ($action) {
     case "updateUserByID":
         updateUserByID();
         break;
+    case "getSelectedProfile":
+        getSelectedProfile();
+        break;
 }
 
 function updateUserByID()
@@ -353,6 +356,80 @@ function readProfilesByUser()
             }
         } else {
             echo "no result while fetching profiles for user " . $u_id;
+        }
+
+        $stmt->close();
+    } catch (Exception $e) {
+        echo $e;
+    }
+}
+function getliquidsbyUser(){
+    try{
+        $mysqli = establishDB();
+        $u_id = $_SESSION['u_user']->u_id;
+        $sql = 'SELECT * FROM l_liquids WHERE l_u_id = ? order by l_containerNo;';
+
+        if (!($stmt = $mysqli->prepare($sql))) {
+            echo "Read Profiles:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+        }
+
+        if (!$stmt->bind_param("s", $u_id)) {
+            echo "Read Profiles:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+
+        if (!$stmt->execute()) {
+            echo "Read Profiles:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result->num_rows > 0) {
+            $array = array();
+            $index = 1;
+            while ($row = $result->fetch_assoc()) {
+                $array[$index] = $row["l_name"];
+                $index++;
+            }
+            $stmt->close();
+            return $array;
+        } else {
+            echo "no result while fetching liquids for user " . $u_id;
+        }
+        $stmt->close();
+        return null;
+    } catch (Exception $e) {
+        throw $e;
+    }
+
+}
+function getSelectedProfile(){
+    try {
+        $mysqli = establishDB();
+        $u_id = $_SESSION['u_user']->u_id;
+        $sql = 'select p_title from u_users
+                    inner join d_devices dd on u_users.u_id = dd.d_u_id
+                    inner join p_profiles pp on dd.d_p_id = pp.p_id
+                WHERE u_id = ?;';
+
+        if (!($stmt = $mysqli->prepare($sql))) {
+            echo "Read Profiles:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+        }
+
+        if (!$stmt->bind_param("s", $u_id)) {
+            echo "Read Profiles:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+
+        if (!$stmt->execute()) {
+            echo "Read Profiles:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            echo $row["p_title"];
+        } else {
+            echo "";
         }
 
         $stmt->close();

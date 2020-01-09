@@ -85,15 +85,15 @@ $user = $_SESSION['u_user'];
                     <a class="nav-link" href="#">Profil</a>
                 </li>
             </ul>
-            <button class="btn btn-block btnContainer d-flex">
-                <p class="m-0 w-100 p-0 align-self-center" style="padding-left: 2px !important">Logout</p>
-                <div class="align-self-center flex-shrink-1">
-                    <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x icon-background"></i>
-                        <i class="fas fa-sign-out-alt fa-stack-1x"></i>
-                    </span>
-                </div>
-            </button>
+                    <a class="btn btnContainer d-flex" href="logout.php">
+                        <p class="m-0 mr-2 w-100 p-0 align-self-center" style="padding-left: 2px !important">Logout</p>
+                        <div class="align-self-center flex-shrink-1">
+                            <span class="fa-stack fa-sm">
+                                <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                <i class="fas fa-sign-out-alt fa-stack-1x"></i>
+                            </span>
+                        </div>
+                    </a>
         </div>
     </nav>
     <script>
@@ -136,9 +136,17 @@ $user = $_SESSION['u_user'];
                 <div class="section-content">
                     <div class="container">
                         <h2>Info Seite</h2>
-                        <br>
-                        <blockquote>Hier stehen Informationen ...</blockquote>
-                        <p>TODO/IDEA: add a flow diagram which describes the settings to the user</p>
+                        <h3>1. Gerät Koppeln</h3>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <h3>2. Profil Erstellen</h3>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <h3>3. Getränke hinzufügen</h3>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <h3>4. Flüssigkeiten verwalten</h3>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <h3>5. Getränke zu Flüssigkeiten hinzufügen</h3>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+
                     </div>
                 </div>
             </li>
@@ -365,6 +373,9 @@ $user = $_SESSION['u_user'];
                         </div>
                         <br>
                         <h3>Getränkeinhalt</h3>
+                        <?php
+                             $liquids = getliquidsbyUser();
+                        ?>
                         <form>
                             <div class="row">
                                 <div class="col">
@@ -376,55 +387,69 @@ $user = $_SESSION['u_user'];
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-4">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                               value="option1">
-                                        <label class="form-check-label" for="inlineCheckbox1">1</label>
+                                <div class="form-check form-check-inline w-100">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <input type="checkbox" aria-label="Checkbox for following text input">
+                                                </div>
+                                                <div class="input-group-text">
+                                                    <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[1] ?></label>
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="100" aria-label="Text input with checkbox">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">ml</span>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="form-check form-check-inline w-100">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <input type="checkbox" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <div class="input-group-text">
+                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[2] ?></label>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="100" aria-label="Text input with checkbox">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">ml</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-8">
-                                    <input type="text" class="form-control" id="amountFrontL"
-                                           placeholder="Menge">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-h" type="checkbox" id="inlineCheckbox2"
-                                               value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">2</label>
+                                <div class="form-check form-check-inline w-100">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <input type="checkbox" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <div class="input-group-text">
+                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[3] ?></label>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="100" aria-label="Text input with checkbox">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">ml</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-8">
-                                    <input type="text" class="form-control" id="amountFrontR"
-                                           placeholder="Menge">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                               value="option3">
-                                        <label class="form-check-label" for="inlineCheckbox3">3</label>
+                                <div class="form-check form-check-inline w-100">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <input type="checkbox" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <div class="input-group-text">
+                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[4] ?></label>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="100" aria-label="Text input with checkbox">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">ml</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <input type="text" class="form-control" id="amountBackL"
-                                           placeholder="Menge">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox4"
-                                               value="option4">
-                                        <label class="form-check-label" for="inlineCheckbox4">4</label>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <input type="text" class="form-control" id="amountBackR"
-                                           placeholder="Menge">
                                 </div>
                             </div>
                         </form>

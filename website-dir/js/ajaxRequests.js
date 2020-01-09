@@ -4,7 +4,7 @@ function alertSuccess(message) {
                     "</div>");
     $(".alertSuccess").show();
     setTimeout(function () {
-        $(".alertSuccess.profile").remove();
+        $(".alertSuccess").remove();
     }, 4000);
 }
 function alertFailed(message) {
@@ -13,7 +13,7 @@ function alertFailed(message) {
                     "</div>");
     $(".alertFailed").show();
     setTimeout(function () {
-        $(".alertFailed.device").remove();
+        $(".alertFailed").remove();
     }, 4000);
 }
 
@@ -82,12 +82,26 @@ function createProfilesByUserRead() {
             action: "readProfilesByUser"
         },
         success: function (response) {
-            document.getElementById('sel-profile').innerHTML = "<option disabled selected value> -- wähle dein Profil -- </option>";
-            document.getElementById('sel-profile').innerHTML += response;
+            items = response;
+            $.ajax({
+                url: "request.php",
+                method: "POST",
+                data: {
+                    action: "getSelectedProfile"
+                },
+                success: function (response) {
+                    console.log(response);
+                    if(response == ""){
+                        document.getElementById('sel-profile').innerHTML = "<option disabled selected value> -- wähle dein Profil -- </option>";
+                    }else{
+                        document.getElementById('sel-profile').innerHTML = "<option disabled selected value>"+response+"</option>";
+                    }
+                    document.getElementById('sel-profile').innerHTML += items;
+                }
+            });
         }
     });
 }
-
 function createProfileInsert(p_title) {
     $.ajax({
         url: "request.php",

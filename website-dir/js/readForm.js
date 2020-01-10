@@ -104,12 +104,29 @@ function updateBarmanProfileFK() {
 function updateBeverageById() {
     let b_id = $("#sel-beverage-liquids").val();
     let liquidArr = [];
+    let combinedAmount = 0;
     for (let i = 0; i < 4; i++) {
-        if (document.getElementById('tick-' + (i+1)).checked) {
-            liquidArr[i] = {"Name": document.getElementById('liq-' + (i+1)).innerText, "Amount": $('#input-' + (i+1)).val()};
+        if (document.getElementById('tick-' + (i + 1)).checked) {
+            let amount = parseInt($('#input-' + (i + 1)).val());
+            combinedAmount += amount;
+            liquidArr[i] = {"Amount": amount};
         }
     }
-    createUpdateBeverageById(b_id, liquidArr);
+    if (combinedAmount >= 20 && combinedAmount <= 400) {
+        createUpdateBeverageById(b_id, liquidArr);
+    } else {
+        if (combinedAmount < 20) {
+            alertFailed("Das Getränk muss mindestens 20ml beinhalten. " + combinedAmount + "ml sind nicht genug!");
+        }
+        if (combinedAmount > 400) {
+            alertFailed("Das Getränk darf maximal 400ml beinhalten. " + combinedAmount + "ml sind zu viel!");
+        }
+    }
+}
+
+function deleteBeverageById() {
+    let b_id = $("#sel-beverage").val();
+    createDeleteBeverageById(b_id);
 }
 
 function insertLiquid() {

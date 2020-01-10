@@ -38,6 +38,9 @@ switch ($action) {
     case "getSelectedProfile":
         getSelectedProfile();
         break;
+    case "deleteBeverageById":
+        deleteBeverageById();
+        break;
 }
 
 function updateUserByID()
@@ -179,7 +182,7 @@ function readBeveragesByProfile()
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo "<option value=\"" . urldecode($row['b_id']) . "\">" . urldecode($row['b_name']) . "</option>";
+                echo "<option value=\"" . urldecode($row['b_id']) . "\" class=\"beverage-" . urldecode($row['b_id']) . "\">" . urldecode($row['b_name']) . "</option>";
             }
         } else {
             echo "no result while fetching beverages for profile " . $p_id;
@@ -370,7 +373,7 @@ function updateBeveragesById()
 {
     try {
         $mysqli = establishDB();
-        $b_id = 3;//isset($_POST['b_id']) ? $_POST['b_id'] : null;
+        $b_id = isset($_POST['b_id']) ? $_POST['b_id'] : null;
         if (!empty($b_id)) {
             $l_data = isset($_POST['l_data']) ? $_POST['l_data'] : null;
             $sqlUpdate = "UPDATE bl_beverageliquids SET bl_liquid_volumen = ? WHERE bl_b_id = ? AND bl_l_id = ?;";
@@ -422,7 +425,7 @@ function getliquidsbyUser()
     try {
         $mysqli = establishDB();
         $u_id = $_SESSION['u_user']->u_id;
-        $sql = 'SELECT * FROM l_liquids WHERE l_u_id = ? order by l_containerNo;';
+        $sql = 'SELECT * FROM l_liquids WHERE l_u_id = ? ORDER BY l_containerNo;';
 
         if (!($stmt = $mysqli->prepare($sql))) {
             echo "Read Profiles:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
@@ -466,9 +469,9 @@ function getSelectedProfile()
     try {
         $mysqli = establishDB();
         $u_id = $_SESSION['u_user']->u_id;
-        $sql = 'select p_title from u_users
-                    inner join d_devices dd on u_users.u_id = dd.d_u_id
-                    inner join p_profiles pp on dd.d_p_id = pp.p_id
+        $sql = 'SELECT p_title FROM u_users
+                INNER JOIN d_devices dd ON u_users.u_id = dd.d_u_id
+                INNER JOIN p_profiles pp ON dd.d_p_id = pp.p_id
                 WHERE u_id = ?;';
 
         if (!($stmt = $mysqli->prepare($sql))) {
@@ -490,6 +493,30 @@ function getSelectedProfile()
             echo $row["p_title"];
         } else {
             echo "";
+        }
+
+        $stmt->close();
+    } catch (Exception $e) {
+        echo $e;
+    }
+}
+
+function deleteBeverageById() {
+    try {
+        $mysqli = establishDB();
+        $b_id = isset($_POST['b_id']) ? $_POST['b_id'] : null;
+        $sql = "DELETE FROM b_beverages WHERE b_id = ?";
+
+        if (!($stmt = $mysqli->prepare($sql))) {
+            echo "Delete Beverage:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+        }
+
+        if (!$stmt->bind_param("s", $b_id)) {
+            echo "Delete Beverage:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+        }
+
+        if (!$stmt->execute()) {
+            echo "Delete Beverage:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
         }
 
         $stmt->close();

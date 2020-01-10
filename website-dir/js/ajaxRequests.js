@@ -201,3 +201,23 @@ function createUpdateBeverageById(b_id, l_data) {
         }
     });
 }
+
+function createDeleteBeverageById(b_id) {
+    $.ajax({
+        url: "request.php",
+        method: "POST",
+        data: {
+            action: "deleteBeverageById",
+            b_id: b_id,
+        },
+        success: function (response) {
+            if (response != "") {
+                console.error(response);
+                alertFailed(response);
+            } else {
+                $(".beverage-" + b_id).remove();
+                alertSuccess("Das Getränk wurde erfolgreich gelöscht!")
+            }
+        }
+    });
+}

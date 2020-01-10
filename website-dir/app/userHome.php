@@ -306,7 +306,7 @@ $liquids = getliquidsbyUser();
                                     </div>
                                     <div class="form-group col-md-4 my-auto">
                                         <button class="btn btn-block btnContainer d-flex"
-                                                onclick="deleteBeverageByName()">
+                                                onclick="deleteBeverageById()">
                                             <p class="m-0 w-100 align-self-center">Getränk löschen</p>
                                             <div class="align-self-center flex-shrink-1">
                                                 <span class="fa-stack fa-md">

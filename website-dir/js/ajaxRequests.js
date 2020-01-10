@@ -1,16 +1,17 @@
 function alertSuccess(message) {
     $("body").append("<div class=\"alertSuccess alert alert-success\">\n" +
-                        "    <strong>Success!</strong> "+message+" \n" +
-                    "</div>");
+    "    <strong>Success!</strong> " + message + " \n" +
+    "</div>");
     $(".alertSuccess").show();
     setTimeout(function () {
         $(".alertSuccess").remove();
     }, 4000);
 }
+
 function alertFailed(message) {
     $("body").append("<div class=\"alertFailed alert alert-danger\">\n" +
-                    "    <strong>Failed!</strong> "+message+"\n" +
-                    "</div>");
+    "    <strong>Failed!</strong> " + message + "\n" +
+    "</div>");
     $(".alertFailed").show();
     setTimeout(function () {
         $(".alertFailed").remove();
@@ -50,7 +51,7 @@ function createDeviceConnCheck(deviceConnData) {
             if (response != "") {
                 console.log(response);
                 alertFailed("Bitte überprüfe nocheinmal deine Eingabe!");
-            }else{
+            } else {
                 alertSuccess("Dein Gerät ist jetzt mit deinem Account verbunden!")
             }
         }
@@ -90,11 +91,10 @@ function createProfilesByUserRead() {
                     action: "getSelectedProfile"
                 },
                 success: function (response) {
-                    console.log(response);
-                    if(response == ""){
+                    if (response == "") {
                         document.getElementById('sel-profile').innerHTML = "<option disabled selected value> -- wähle dein Profil -- </option>";
-                    }else{
-                        document.getElementById('sel-profile').innerHTML = "<option disabled selected value>"+response+"</option>";
+                    } else {
+                        document.getElementById('sel-profile').innerHTML = "<option disabled selected value>" + response + "</option>";
                     }
                     document.getElementById('sel-profile').innerHTML += items;
                 }
@@ -102,6 +102,7 @@ function createProfilesByUserRead() {
         }
     });
 }
+
 function createProfileInsert(p_title) {
     $.ajax({
         url: "request.php",
@@ -155,8 +156,7 @@ function createBarmanProfileFKUpdate(d_p_id) {
             if (response != "") {
                 console.error(response);
                 alertFailed(response);
-            }
-            else{
+            } else {
                 alertSuccess("Das Profil wurde erfolgreich als aktives Profil gesetzt!")
             }
         }
@@ -175,9 +175,8 @@ function createInsertLiquid(l_data) {
             if (response != "") {
                 console.error(response);
                 alertFailed(response);
-            }
-            else{
-                alertSuccess("Die Flüssigkeiten wurden erfolgreich deinem Account hinzugefügt!")
+            } else {
+                alertSuccess("Die Flüssigkeiten wurden erfolgreich aktualisiert!")
             }
         }
     });
@@ -196,8 +195,7 @@ function createUpdateBeverageById(b_id, l_data) {
             if (response != "") {
                 console.error(response);
                 alertFailed(response);
-            }
-            else{
+            } else {
                 alertSuccess("Das Getränk wurde erfolgreich aktualisiert!")
             }
         }

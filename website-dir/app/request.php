@@ -32,6 +32,9 @@ switch ($action) {
     case "updateUserByID":
         updateUserByID();
         break;
+    case "updateBeverageById":
+        updateBeveragesById();
+        break;
     case "getSelectedProfile":
         getSelectedProfile();
         break;
@@ -362,8 +365,50 @@ function readProfilesByUser()
         echo $e;
     }
 }
-function getliquidsbyUser(){
-    try{
+
+function updateBeveragesById()
+{
+    try {
+        $mysqli = establishDB();
+        $b_id = isset($_POST['b_id']) ? $_POST['b_id'] : null;
+        if (!empty($b_id)) {
+            $l_data = isset($_POST['l_data']) ? $_POST['l_data'] : null;
+            $sql = "UPDATE bl_beverageliquids SET bl_l_id = ?, bl_liquid_volumen = ? WHERE bl_b_id = ?;";
+            if (!($stmt = $mysqli->prepare($sql))) {
+                echo "Update Beverage liquid:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
+            }
+
+            foreach ($l_data as $liquid) {
+                $name = $liquid["Name"];
+                $vol = $liquid["Amount"];
+                $sql = "SELECT l_id FROM l_liquids WHERE l_name = '$name'";
+                $result = $mysqli->query($sql) or trigger_error("Query Failed! SQL: $sql - Error: " . mysqli_error($mysqli), E_USER_ERROR);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        if (!$stmt->bind_param("sss", $row["l_id"], $vol, $b_id)) {
+                            echo "Update Beverage liquid:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+                        }
+
+                        if (!$stmt->execute()) {
+                            echo "Update Beverage liquid:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+                        }
+
+                    }
+                    $stmt->close();
+                }
+            }
+        } else {
+            echo "Du hast kein Getränk ausgewählt, dem diese Flüssigkeiten hinzugefügt werden sollen!";
+        }
+    } catch
+    (Exception $e) {
+        echo $e;
+    }
+}
+
+function getliquidsbyUser()
+{
+    try {
         $mysqli = establishDB();
         $u_id = $_SESSION['u_user']->u_id;
         $sql = 'SELECT * FROM l_liquids WHERE l_u_id = ? order by l_containerNo;';
@@ -404,7 +449,9 @@ function getliquidsbyUser(){
     }
 
 }
-function getSelectedProfile(){
+
+function getSelectedProfile()
+{
     try {
         $mysqli = establishDB();
         $u_id = $_SESSION['u_user']->u_id;

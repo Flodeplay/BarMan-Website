@@ -141,13 +141,17 @@ $liquids = getliquidsbyUser();
                         <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
                             "Geräte Verwaltung" machen.</p>
                         <h3>2. Profil Erstellen</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
+                            "Geräte Verwaltung" machen.</p>
                         <h3>3. Getränke hinzufügen</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
+                            "Geräte Verwaltung" machen.</p>
                         <h3>4. Flüssigkeiten verwalten</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
+                            "Geräte Verwaltung" machen.</p>
                         <h3>5. Getränke zu Flüssigkeiten hinzufügen</h3>
-                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab "Geräte Verwaltung" machen.</p>
+                        <p>als erstes solltest du deinen BarMan mit deinem Konto koppeln. <br> Dies kannst du im Tab
+                            "Geräte Verwaltung" machen.</p>
 
                     </div>
                 </div>
@@ -396,98 +400,98 @@ $liquids = getliquidsbyUser();
                         $liquids = getliquidsbyUser();
                         ?>
                         <form>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="sel-beverage-liquids">Wähle dein Getränk:</label>
-                                    <select id="sel-beverage-liquids" name="beverage-liquids" class="form-control">
-                                        <option disabled selected value> -- wähle dein Getränk --</option>
-                                    </select>
-                                </div>
+                            <div class="row pl-3 pr-0 pb-4">
+                                <label for="sel-beverage-liquids">Wähle dein Getränk:</label>
+                                <select id="sel-beverage-liquids" name="beverage-liquids" class="form-control">
+                                    <option disabled selected value> -- wähle dein Getränk --</option>
+                                </select>
                             </div>
-                            <br>
-                            <div class="row">
-                                <div class="form-check form-check-inline w-100">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input type="checkbox" aria-label="Checkbox for following text input">
-                                            </div>
-                                            <div class="input-group-text">
-                                                <label class="form-check-label" id="tick-1"
-                                                       for="inlineCheckbox1"><?php echo $liquids[1] ?></label>
-                                            </div>
+                            <div class="row pl-3 pr-0">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="tick-1" aria-label="Checkbox for following text input">
                                         </div>
-                                        <input type="text" class="form-control" id="input-1" placeholder="100"
-                                               aria-label="Text input with checkbox">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">ml</span>
+                                        <div class="input-group-text">
+                                            <label class="form-check-label tick-info" id="liq-1"
+                                                   for="inlineCheckbox1"><?php echo $liquids[1][1] ?></label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-check form-check-inline w-100">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input type="checkbox" aria-label="Checkbox for following text input">
-                                            </div>
-                                            <div class="input-group-text">
-                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[2][1] ?></label>
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control" id="<?php echo $liquids[1][0] ?>" placeholder="100" aria-label="Text input with checkbox">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">ml</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-check form-check-inline w-100">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input type="checkbox" aria-label="Checkbox for following text input">
-                                            </div>
-                                            <div class="input-group-text">
-                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[3][1] ?></label>
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control" id="<?php echo $liquids[1][0] ?>" placeholder="100" aria-label="Text input with checkbox">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">ml</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-check form-check-inline w-100">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input type="checkbox" aria-label="Checkbox for following text input">
-                                            </div>
-                                            <div class="input-group-text">
-                                                <label class="form-check-label" for="inlineCheckbox1"><?php echo $liquids[4][1] ?></label>
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control" id="<?php echo $liquids[1][0] ?>" placeholder="100" aria-label="Text input with checkbox">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">ml</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-4 my-auto">
-                                        <button class="btn btn-block btnContainer d-flex"
-                                                onclick="updateBeverageById()">
-                                            <p class="m-0 w-100 align-self-center">Getränk aktualisieren</p>
-                                            <div class="align-self-center flex-shrink-1">
-                                                <span class="fa-stack fa-md">
-                                                    <i class="fas fa-circle fa-stack-2x icon-background"></i>
-                                                    <i class="fas fa-redo-alt fa-stack-1x"></i>
-                                                </span>
-                                            </div>
+                                    <input type="text" class="form-control" id="input-1" placeholder="100"
+                                           aria-label="Text input with checkbox">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">ml</span>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                            <div class="row pl-3 pr-0">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="tick-2" aria-label="Checkbox for following text input">
+                                        </div>
+                                        <div class="input-group-text">
+                                            <label class="form-check-label tick-info" id="liq-2"
+                                                   for="inlineCheckbox1"><?php echo $liquids[2][1] ?></label>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" id="input-2"
+                                           placeholder="100" aria-label="Text input with checkbox">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">ml</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pl-3 pr-0">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="tick-3" aria-label="Checkbox for following text input">
+                                        </div>
+                                        <div class="input-group-text">
+                                            <label class="form-check-label tick-info" id="liq-3"
+                                                   for="inlineCheckbox1"><?php echo $liquids[3][1] ?></label>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" id="input-3"
+                                           placeholder="100" aria-label="Text input with checkbox">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">ml</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pl-3 pr-0">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="tick-4" aria-label="Checkbox for following text input">
+                                        </div>
+                                        <div class="input-group-text">
+                                            <label class="form-check-label tick-info" id="liq-4"
+                                                   for="inlineCheckbox1"><?php echo $liquids[4][1] ?></label>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" id="input-4"
+                                           placeholder="100" aria-label="Text input with checkbox">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">ml</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 my-auto">
+                                <button class="btn btn-block btnContainer d-flex"
+                                        onclick="updateBeverageById()">
+                                    <p class="m-0 w-100 align-self-center">Getränk aktualisieren</p>
+                                    <div class="align-self-center flex-shrink-1">
+                                            <span class="fa-stack fa-md">
+                                                <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                <i class="fas fa-redo-alt fa-stack-1x"></i>
+                                            </span>
+                                    </div>
+                            </div>
                     </div>
+                    </form>
+                </div>
                 </div>
             </li>
             <li>

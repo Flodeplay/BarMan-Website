@@ -178,3 +178,8 @@ and (-webkit-max-device-pixel-ratio: 3) {
 .alert {
     display: none;
 }
+
+.tick-info {
+    min-width: 120px;
+    text-align: center;
+}

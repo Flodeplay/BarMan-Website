@@ -1,4 +1,5 @@
 function verifyUser(profileData) {
+    //[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*
     let verifyBool = true;
     let reg = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
     if (reg.test(profileData[2])) {
@@ -103,10 +104,11 @@ function updateBarmanProfileFK() {
 function updateBeverageById() {
     let b_id = $("#sel-beverage-liquids").val();
     let liquidArr = [];
-    liquidArr[0] = {"Name": readInput('tick-1'), "Amount": readInput('input-1')};
-    liquidArr[1] = {"Name": readInput('tick-2'), "Amount": readInput('input-1')};
-    liquidArr[2] = {"Name": readInput('tick-3'), "Amount": readInput('input-1')};
-    liquidArr[3] = {"Name": readInput('tick-4'), "Amount": readInput('input-1')};
+    for (let i = 0; i < 4; i++) {
+        if (document.getElementById('tick-' + (i+1)).checked) {
+            liquidArr[i] = {"Name": document.getElementById('liq-' + (i+1)).innerText, "Amount": $('#input-' + (i+1)).val()};
+        }
+    }
     createUpdateBeverageById(b_id, liquidArr);
 }
 

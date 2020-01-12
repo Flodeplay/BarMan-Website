@@ -63,7 +63,7 @@ function createBeveragesByProfileRead(p_id) {
         url: "request.php",
         method: "POST",
         data: {
-            action: "readBeveragesByProfile",
+            action: "getBeveragesByProfile",
             p_id: p_id
         },
         success: function (response) {
@@ -83,22 +83,8 @@ function createProfilesByUserRead() {
             action: "readProfilesByUser"
         },
         success: function (response) {
-            items = response;
-            $.ajax({
-                url: "request.php",
-                method: "POST",
-                data: {
-                    action: "getSelectedProfile"
-                },
-                success: function (response) {
-                    if (response == "") {
-                        document.getElementById('sel-profile').innerHTML = "<option disabled selected value> -- wähle dein Profil -- </option>";
-                    } else {
-                        document.getElementById('sel-profile').innerHTML = "<option disabled selected value>" + response + "</option>";
-                    }
-                    document.getElementById('sel-profile').innerHTML += items;
-                }
-            });
+            document.getElementById('sel-profile').innerHTML = "<option disabled selected value> -- wähle dein Profil -- </option>";
+            document.getElementById('sel-profile').innerHTML += response;
         }
     });
 }
@@ -176,7 +162,9 @@ function createInsertLiquid(l_data) {
                 console.error(response);
                 alertFailed(response);
             } else {
-                alertSuccess("Die Flüssigkeiten wurden erfolgreich aktualisiert!")
+                alertSuccess("Die Flüssigkeiten wurden erfolgreich aktualisiert!");
+                location.reload();
+                createProfilesByUserRead();
             }
         }
     });
@@ -196,7 +184,7 @@ function createUpdateBeverageById(b_id, l_data) {
                 console.error(response);
                 alertFailed(response);
             } else {
-                alertSuccess("Das Getränk wurde erfolgreich aktualisiert!")
+                alertSuccess("Das Getränk wurde erfolgreich aktualisiert!");
             }
         }
     });
@@ -216,7 +204,8 @@ function createDeleteBeverageById(b_id) {
                 alertFailed(response);
             } else {
                 $(".beverage-" + b_id).remove();
-                alertSuccess("Das Getränk wurde erfolgreich gelöscht!")
+                alertSuccess("Das Getränk wurde erfolgreich gelöscht!");
+
             }
         }
     });

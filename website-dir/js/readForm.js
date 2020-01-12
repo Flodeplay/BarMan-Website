@@ -58,7 +58,7 @@ function readProfilesByUser() {
 }
 
 function readBeveragesByProfile() {
-    let p_id = $("#sel-profile").val();
+    let p_id = document.getElementsByClassName("active-profile")[0].getAttribute( 'id' );
     createBeveragesByProfileRead(p_id);
 }
 

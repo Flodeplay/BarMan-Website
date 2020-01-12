@@ -176,14 +176,14 @@ $liquids = getliquidsbyUser();
                         <?php
                         try {
                             $mysqli = establishDB();
-                            $sql = 'SELECT d_key,p_title FROM d_devices
+                            $sql = 'SELECT d_key,p_title,p_id FROM d_devices
                                     left outer join p_profiles pp on d_devices.d_p_id = pp.p_id
                                     WHERE d_u_id = ' . $user->u_id . ';';
                             $result = $mysqli->query($sql);
                             if ($result->num_rows > 0) {
                                 $row = $result->fetch_assoc();
                                 echo "<h2>Verbundenes Gerät</h2>";
-                                echo "<blockquote>Key: " . $row['d_key'] . "<br>";
+                                echo "<blockquote class=\"active-profile\" id=" . $row['p_id'] . ">Key: " . $row['d_key'] . "<br>";
                                 if (!empty($row['p_title'])) {
                                     echo "Verbundenes Profil: " . $row['p_title'] . "</blockquote><br>";
                                 } else {
@@ -244,6 +244,7 @@ $liquids = getliquidsbyUser();
                         <h3>Profile</h3>
                         <script>
                             readProfilesByUser();
+                            readBeveragesByProfile();
                         </script>
                         <form>
                             <div class="pl-5 pr-5">
@@ -410,7 +411,8 @@ $liquids = getliquidsbyUser();
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" id="tick-1" aria-label="Checkbox for following text input">
+                                            <input type="checkbox" id="tick-1"
+                                                   aria-label="Checkbox for following text input">
                                         </div>
                                         <div class="input-group-text">
                                             <label class="form-check-label tick-info" id="liq-1"
@@ -428,7 +430,8 @@ $liquids = getliquidsbyUser();
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" id="tick-2" aria-label="Checkbox for following text input">
+                                            <input type="checkbox" id="tick-2"
+                                                   aria-label="Checkbox for following text input">
                                         </div>
                                         <div class="input-group-text">
                                             <label class="form-check-label tick-info" id="liq-2"
@@ -446,7 +449,8 @@ $liquids = getliquidsbyUser();
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" id="tick-3" aria-label="Checkbox for following text input">
+                                            <input type="checkbox" id="tick-3"
+                                                   aria-label="Checkbox for following text input">
                                         </div>
                                         <div class="input-group-text">
                                             <label class="form-check-label tick-info" id="liq-3"
@@ -464,7 +468,8 @@ $liquids = getliquidsbyUser();
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" id="tick-4" aria-label="Checkbox for following text input">
+                                            <input type="checkbox" id="tick-4"
+                                                   aria-label="Checkbox for following text input">
                                         </div>
                                         <div class="input-group-text">
                                             <label class="form-check-label tick-info" id="liq-4"

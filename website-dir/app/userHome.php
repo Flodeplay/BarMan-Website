@@ -1,5 +1,5 @@
 <?php
-error_reporting(5);
+error_reporting(0);
 include_once "request.php";
 include_once "funcs.inc.php";
 include_once "classes/user.php";
@@ -436,6 +436,7 @@ $liquids = getliquidsbyUser();
                                         <div class="input-group-text">
                                             <label class="form-check-label tick-info" id="liq-1"
                                                    for="inlineCheckbox1"><?php echo $liquids[1][1] ?></label>
+                                            <div class="liq-id" id="<?php echo $liquids[1][0] ?>"></div>
                                         </div>
                                     </div>
                                     <input type="text" class="form-control" id="input-1" placeholder="100"
@@ -455,6 +456,7 @@ $liquids = getliquidsbyUser();
                                         <div class="input-group-text">
                                             <label class="form-check-label tick-info" id="liq-2"
                                                    for="inlineCheckbox1"><?php echo $liquids[2][1] ?></label>
+                                            <div class="liq-id" id="<?php echo $liquids[2][0] ?>"></div>
                                         </div>
                                     </div>
                                     <input type="text" class="form-control" id="input-2"
@@ -474,6 +476,8 @@ $liquids = getliquidsbyUser();
                                         <div class="input-group-text">
                                             <label class="form-check-label tick-info" id="liq-3"
                                                    for="inlineCheckbox1"><?php echo $liquids[3][1] ?></label>
+                                            <div class="liq-id" id="<?php echo $liquids[3][0] ?>"></div>
+
                                         </div>
                                     </div>
                                     <input type="text" class="form-control" id="input-3"
@@ -493,6 +497,7 @@ $liquids = getliquidsbyUser();
                                         <div class="input-group-text">
                                             <label class="form-check-label tick-info" id="liq-4"
                                                    for="inlineCheckbox1"><?php echo $liquids[4][1] ?></label>
+                                            <div class="liq-id" id="<?php echo $liquids[4][0] ?>"></div>
                                         </div>
                                     </div>
                                     <input type="text" class="form-control" id="input-4"

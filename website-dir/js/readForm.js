@@ -103,7 +103,8 @@ function updateBeverageById() {
         if (document.getElementById('tick-' + (i + 1)).checked) {
             let amount = parseInt($('#input-' + (i + 1)).val());
             combinedAmount += amount;
-            liquidArr[i] = {"Amount": amount};
+            let id = document.getElementsByClassName("liq-id")[i].getAttribute('id');
+            liquidArr[i] = {"Amount": amount, "ID": id};
         }
     }
     if (combinedAmount >= 20 && combinedAmount <= 400) {

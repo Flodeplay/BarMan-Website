@@ -1,10 +1,9 @@
 <?php
-error_reporting(5);
+error_reporting(0);
 include_once "classes/user.php";
 require 'funcs.inc.php';
 session_start();
 checkSession();
-
 
 $action = isset($_POST['action']) ? $_POST['action'] : null;
 switch ($action) {
@@ -393,7 +392,7 @@ function updateBeveragesById()
 
             foreach ($l_data as $key => $liquid) {
                 if (!empty($liquid)) {
-                    $l_id = $key + 1;
+                    $l_id = $liquid["ID"];
                     $liquid_volume = $liquid["Amount"];
                     $sql = "SELECT * FROM bl_beverageliquids WHERE bl_l_id = '$l_id' AND bl_b_id = '$b_id'";
                     $result = $mysqli->query($sql) or trigger_error("Query Failed! SQL: $sql - Error: " . mysqli_error($mysqli), E_USER_ERROR);
@@ -410,6 +409,7 @@ function updateBeveragesById()
                         if (!$stmtInsert->bind_param("sss", $b_id, $l_id, $liquid_volume)) {
                             echo "Insert Beverage liquid:\r\nBinding parameters failed: (" . $stmtInsert->errno . ")\r\n" . $stmtInsert->error;
                         }
+                        //echo $b_id . ", " . $l_id . ", " . $liquid_volume;
                         if (!$stmtInsert->execute()) {
                             echo "Insert Beverage liquid:\r\nExecute failed: (" . $stmtInsert->errno . ")\r\n" . $stmtInsert->error;
                         }

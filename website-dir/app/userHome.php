@@ -185,9 +185,9 @@ $liquids = getliquidsbyUser();
                                 echo "<h2>Verbundenes Gerät</h2>";
                                 echo "<blockquote class=\"active-profile\" id=" . $row['p_id'] . ">Key: " . $row['d_key'] . "<br>";
                                 if (!empty($row['p_title'])) {
-                                    echo "<p id='selctedDeviceProfile'>Verbundenes Profil: " . $row['p_title'] . "</p></blockquote><br>";
+                                    echo "<p id='selectedDeviceProfile'>Verbundenes Profil: " . $row['p_title'] . "</p></blockquote><br>";
                                 } else {
-                                    echo "<p id='selctedDeviceProfile'>Verbundenes Profil: Du musst noch ein Profil festlegen</p></blockquote><br>";
+                                    echo "<p id='selectedDeviceProfile'>Verbundenes Profil: Du musst noch ein Profil festlegen</p></blockquote><br>";
                                 }
 
                             }

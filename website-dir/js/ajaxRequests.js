@@ -152,7 +152,8 @@ function createBarmanProfileFKUpdate(d_p_id) {
                     },
                     success: function (response) {
                         document.getElementById('selectedProfile').innerHTML = "Verbundenes Profil: "+response;
-                        document.getElementById('selctedDeviceProfile').innerHTML = "Verbundenes Profil: "+response;
+                        document.getElementById('selectedDeviceProfile').innerHTML = "Verbundenes Profil: "+response;
+                        location.reload();
                     }
                 });
             }

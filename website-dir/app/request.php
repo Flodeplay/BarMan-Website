@@ -320,13 +320,14 @@ function updateBarmanFK()
     try {
         $mysqli = establishDB();
         $d_p_id = isset($_POST['d_p_id']) ? $_POST['d_p_id'] : null;
-        $sql = "UPDATE d_devices SET d_p_id = ? WHERE d_u_id = ?;";
+        $u_id = $_SESSION["u_user"]->u_id;
+        $sql = "UPDATE d_devices SET d_p_id = ?, d_u_id = ? WHERE d_id = 1;";
 
         if (!($stmt = $mysqli->prepare($sql))) {
             echo "Update BarmanFK:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
         }
 
-        if (!$stmt->bind_param("ss", $d_p_id, $_SESSION["u_user"]->u_id)) {
+        if (!$stmt->bind_param("ss", $d_p_id, $u_id)) {
             echo "Update BarmanFK:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
         }
 
@@ -496,7 +497,7 @@ function getSelectedProfile()
 
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
-            echo $row["p_title"];
+            echo urldecode($row["p_title"]);
         } else {
             echo "";
         }

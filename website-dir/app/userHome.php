@@ -185,9 +185,9 @@ $liquids = getliquidsbyUser();
                                 echo "<h2>Verbundenes Gerät</h2>";
                                 echo "<blockquote class=\"active-profile\" id=" . $row['p_id'] . ">Key: " . $row['d_key'] . "<br>";
                                 if (!empty($row['p_title'])) {
-                                    echo "Verbundenes Profil: " . $row['p_title'] . "</blockquote><br>";
+                                    echo "<p id='selctedDeviceProfile'>Verbundenes Profil: " . $row['p_title'] . "</p></blockquote><br>";
                                 } else {
-                                    echo "Verbundenes Profil: Du musst noch ein Profil festlegen</blockquote><br>";
+                                    echo "<p id='selctedDeviceProfile'>Verbundenes Profil: Du musst noch ein Profil festlegen</p></blockquote><br>";
                                 }
 
                             }
@@ -249,9 +249,28 @@ $liquids = getliquidsbyUser();
                         <form>
                             <div class="pl-5 pr-5">
                                 <h4>Aktives Profil am BarMan:</h4>
+                                <?php
+                                try {
+                                    $mysqli = establishDB();
+                                    $sql = 'SELECT p_title,p_id FROM d_devices
+                                    left outer join p_profiles pp on d_devices.d_p_id = pp.p_id
+                                    WHERE d_u_id = ' . $user->u_id . ';';
+                                    $result = $mysqli->query($sql);
+                                    if ($result->num_rows > 0) {
+                                        $row = $result->fetch_assoc();
+                                        if (!empty($row['p_title'])) {
+                                            echo "<p id='selectedProfile'>Verbundenes Profil: " . $row['p_title'] . "</p><br>";
+                                        } else {
+                                            echo "<p id='selectedProfile'>Verbundenes Profil: Du musst noch ein Profil festlegen</p><br>";
+                                        }
+                                    }
+                                } catch (Exception $e) {
+                                    echo $e;
+                                }
+                                ?>
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
-                                        <label for="sel-profile">Wähle aktives Profil für deinen BarMan:</label>
+                                        <h4>Wähle aktives Profil für deinen BarMan:</h4>
                                         <select id="sel-profile" name="profile" class="form-control"
                                                 onchange="readBeveragesByProfile()">
                                             <option disabled selected value> -- wähle dein Profil --</option>

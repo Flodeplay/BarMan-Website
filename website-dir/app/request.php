@@ -315,7 +315,7 @@ function updateBarmanFK()
     try {
         $mysqli = establishDB();
         $d_p_id = isset($_POST['d_p_id']) ? $_POST['d_p_id'] : null;
-        $sql = "UPDATE d_devices SET d_p_id = ? WHERE d_id = ?;";
+        $sql = "UPDATE d_devices SET d_p_id = ? WHERE d_u_id = ?;";
 
         if (!($stmt = $mysqli->prepare($sql))) {
             echo "Update BarmanFK:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;

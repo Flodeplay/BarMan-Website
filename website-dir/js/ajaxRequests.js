@@ -143,7 +143,18 @@ function createBarmanProfileFKUpdate(d_p_id) {
                 console.error(response);
                 alertFailed(response);
             } else {
-                alertSuccess("Das Profil wurde erfolgreich als aktives Profil gesetzt!")
+                alertSuccess("Das Profil wurde erfolgreich als aktives Profil gesetzt!");
+                $.ajax({
+                    url: "request.php",
+                    method: "POST",
+                    data: {
+                        action: "getSelectedProfile",
+                    },
+                    success: function (response) {
+                        document.getElementById('selectedProfile').innerHTML = "Verbundenes Profil: "+response;
+                        document.getElementById('selctedDeviceProfile').innerHTML = "Verbundenes Profil: "+response;
+                    }
+                });
             }
         }
     });

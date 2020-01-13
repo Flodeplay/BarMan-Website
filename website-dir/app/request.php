@@ -101,6 +101,7 @@ function updateUserByID()
             $user_local = new user(urldecode($data["u_id"]), urldecode($data["u_forename"]), urldecode($data["u_surname"]), urldecode($data["u_email"]));
             $_SESSION["u_user"] = $user_local;
         }
+        $mysqli->close();
     } catch (Exception $e) {
         throw new Exception($e);
     }
@@ -151,8 +152,8 @@ function checkDeviceConn()
         } else {
             echo "no result while fetching device data for device. Device key or pin incorrect.";
         }
-    } catch
-    (Exception $e) {
+        $mysqli->close();
+    } catch (Exception $e) {
         echo $e;
     }
 }
@@ -189,6 +190,7 @@ function getBeveragesByProfile()
         }
 
         $stmt->close();
+        $mysqli->close();
     } catch (Exception $e) {
         echo $e;
     }
@@ -215,6 +217,7 @@ function insertProfile()
         }
 
         $stmt->close();
+        $mysqli->close();
     } catch (Exception $e) {
         throw new Exception($e);
     }
@@ -252,6 +255,7 @@ function insertBeverage()
 
         $stmtBeverages->close();
         $stmtLookup->close();
+        $mysqli->close();
     } catch (Exception $e) {
         throw new Exception($e);
     }
@@ -305,6 +309,7 @@ function insertLiquid()
                 }
             }
         }
+        $mysqli->close();
     } catch (Exception $e) {
         throw new Exception($e);
     }
@@ -362,8 +367,8 @@ function readProfilesByUser()
         } else {
             echo "no result while fetching profiles for user " . $u_id;
         }
-
         $stmt->close();
+        $mysqli->close();
     } catch (Exception $e) {
         echo $e;
     }
@@ -415,8 +420,8 @@ function updateBeveragesById()
         } else {
             echo "Du hast kein Getränk ausgewählt, dem diese Flüssigkeiten hinzugefügt werden sollen!";
         }
-    } catch
-    (Exception $e) {
+        $mysqli->close();
+    } catch (Exception $e) {
         echo $e;
     }
 }
@@ -458,11 +463,11 @@ function getliquidsbyUser()
             echo "no result while fetching liquids for user " . $u_id;
         }
         $stmt->close();
+        $mysqli->close();
         return null;
     } catch (Exception $e) {
         throw $e;
     }
-
 }
 
 function getSelectedProfile()
@@ -495,14 +500,15 @@ function getSelectedProfile()
         } else {
             echo "";
         }
-
         $stmt->close();
+        $mysqli->close();
     } catch (Exception $e) {
         echo $e;
     }
 }
 
-function deleteBeverageById() {
+function deleteBeverageById()
+{
     try {
         $mysqli = establishDB();
         $b_id = isset($_POST['b_id']) ? $_POST['b_id'] : null;
@@ -521,6 +527,7 @@ function deleteBeverageById() {
         }
 
         $stmt->close();
+        $mysqli->close();
     } catch (Exception $e) {
         echo $e;
     }

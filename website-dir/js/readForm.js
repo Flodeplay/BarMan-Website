@@ -44,21 +44,15 @@ function checkDeviceConn() {
     }
 }
 
-/*
-function updateLiquids() {
-    let liquidData = readLiquids();
-    if (verifyDeviceConn(liquidData)) {
-        createLiquidUpdate(liquidData);
-    }
-}
-*/
-
 function readProfilesByUser() {
     createProfilesByUserRead();
 }
 
 function readBeveragesByProfile() {
-    let p_id = document.getElementsByClassName("active-profile")[0].getAttribute( 'id' );
+    let p_id;
+    if (document.getElementsByClassName("active-profile")[0] != undefined) {
+        p_id = document.getElementsByClassName("active-profile")[0].getAttribute('id');
+    }
     createBeveragesByProfileRead(p_id);
 }
 

@@ -381,43 +381,26 @@ function updateBeveragesById()
         $b_id = isset($_POST['b_id']) ? $_POST['b_id'] : null;
         if (!empty($b_id)) {
             $l_data = isset($_POST['l_data']) ? $_POST['l_data'] : null;
-            $sqlUpdate = "UPDATE bl_beverageliquids SET bl_liquid_volumen = ? WHERE bl_b_id = ? AND bl_l_id = ?;";
-            $sqlInsert = "INSERT INTO bl_beverageliquids (bl_b_id, bl_l_id, bl_liquid_volumen) VALUES (?, ?, ?);";
-            if (!($stmtUpdate = $mysqli->prepare($sqlUpdate))) {
-                echo "Update Beverage liquid:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
-            }
-            if (!($stmtInsert = $mysqli->prepare($sqlInsert))) {
+            $sql = "INSERT INTO bl_beverageliquids (bl_b_id, bl_l_id, bl_liquid_volumen) VALUES (?, ?, ?);";
+            if (!($stmt = $mysqli->prepare($sql))) {
                 echo "Insert Beverage liquid:\r\nPrepare failed: (" . $mysqli->errno . ")\r\n" . $mysqli->error;
             }
 
+            $sql = "DELETE FROM bl_beverageliquids WHERE bl_b_id = '$b_id';";
+            $mysqli->query($sql);
             foreach ($l_data as $key => $liquid) {
                 if (!empty($liquid)) {
                     $l_id = $liquid["ID"];
                     $liquid_volume = $liquid["Amount"];
-                    $sql = "SELECT * FROM bl_beverageliquids WHERE bl_l_id = '$l_id' AND bl_b_id = '$b_id'";
-                    $result = $mysqli->query($sql) or trigger_error("Query Failed! SQL: $sql - Error: " . mysqli_error($mysqli), E_USER_ERROR);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            if (!$stmtUpdate->bind_param("sss", $liquid_volume, $b_id, $l_id)) {
-                                echo "Update Beverage liquid:\r\nBinding parameters failed: (" . $stmtUpdate->errno . ")\r\n" . $stmtUpdate->error;
-                            }
-                            if (!$stmtUpdate->execute()) {
-                                echo "Update Beverage liquid:\r\nExecute failed: (" . $stmtUpdate->errno . ")\r\n" . $stmtUpdate->error;
-                            }
-                        }
-                    } else {
-                        if (!$stmtInsert->bind_param("sss", $b_id, $l_id, $liquid_volume)) {
-                            echo "Insert Beverage liquid:\r\nBinding parameters failed: (" . $stmtInsert->errno . ")\r\n" . $stmtInsert->error;
-                        }
-                        //echo $b_id . ", " . $l_id . ", " . $liquid_volume;
-                        if (!$stmtInsert->execute()) {
-                            echo "Insert Beverage liquid:\r\nExecute failed: (" . $stmtInsert->errno . ")\r\n" . $stmtInsert->error;
-                        }
+                    if (!$stmt->bind_param("sss", $b_id, $l_id, $liquid_volume)) {
+                        echo "Insert Beverage liquid:\r\nBinding parameters failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
+                    }
+                    if (!$stmt->execute()) {
+                        echo "Insert Beverage liquid:\r\nExecute failed: (" . $stmt->errno . ")\r\n" . $stmt->error;
                     }
                 }
             }
-            $stmtUpdate->close();
-            $stmtInsert->close();
+            $stmt->close();
         } else {
             echo "Du hast kein Getränk ausgewählt, dem diese Flüssigkeiten hinzugefügt werden sollen!";
         }

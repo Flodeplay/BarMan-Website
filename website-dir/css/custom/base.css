@@ -1,0 +1,71 @@
+/*noinspection CssUnknownTarget*/
+@import url('https://fonts.googleapis.com/css?family=Lato:300,900');
+
+* {
+    font-family: 'Lato', serif;
+}
+/* Disables scrolling
+body {
+    overflow: hidden;
+}
+ */
+.row {
+    margin: 0;
+}
+input:focus, select:focus {
+    border-color: #00C2B3 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0,194,179,0.3) !important;
+}
+.input-wrong {
+    border: #87014f 1.5px solid !important;
+    color: #87014f !important;
+}
+
+.input-wrong + label {
+    color: #87014f !important;
+}
+
+.btnContainer {
+    background-color: #87014f;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    /*font-weight: bold;*/
+    letter-spacing: 1px;
+}
+.btnContainer:hover {
+    background-color: #00C2B3;
+    -webkit-transition: background-color 400ms linear;
+    -ms-transition: background-color 400ms linear;
+    transition: background-color 400ms linear;
+}
+.btnContainer p,.btnContainer span {
+    color: white;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+/*
+.btnContainer button {
+    border-radius: 50%;
+    border: none !important;
+    background-color: #87014f;
+}
+.btnContainer button:hover {
+    background-color: white;
+    color: #42CC3D;
+}
+*/
+.btnContainer .icon-background {
+    color: #00C2B3;
+}
+.btnContainer i {
+    color: #ffffff;
+}
+
+@media (max-width: 812px) {
+    .display-1, .display-2, .display-3, .display-4 {
+        font-size: 2.5rem !important;
+    }
+}

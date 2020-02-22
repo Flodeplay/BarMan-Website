@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="form-outer p-4 pt-5">
+    <div id="error-message" class="text-danger"></div>
+    <form name="login" action="../app/login.php" method="post" class="form" onsubmit="return checkLogin()">
+            <div class="form-group">
+                <label for="inputForename" class="register-input">Vorname</label>
+                <input type="text" name="forename" class="form-control register-input" id="inputForename" placeholder="Max">
+            </div>
+            <div class="form-group">
+                <label for="inputSurname" class="register-input">Nachname</label>
+                <input type="text" name="surname" class="form-control register-input" id="inputSurname" placeholder="Mustermann">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">E-Mail</label>
+                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+            </div>
+            <div class="form-group">
+                <label for="inputPwd">Passwort</label>
+                <input type="password" name="pwd" class="form-control" id="inputPwd" pattern=".{6,}" placeholder="your password">
+            </div>
+        <div class="login-buttons row align-items-center justify-content-between mt-3">
+            <button type="button" class="btn btn-block btnContainer d-flex col-12 col-lg-5 my-2 change-login">
+                <span class="m-0 w-100 align-self-center">Brauchst du ein Konto?</span>
+            </button>
+            <button type="submit" name="submit" value="login" class="btn btn-block btnContainer login-input col-12 col-lg-5 my-2">
+                <div class="d-flex w-100">
+                    <p class="m-0 w-100 align-self-center">Anmelden</p>
+                    <div class="align-self-center flex-shrink-1">
+                                            <span class="fa-stack fa-md">
+                                                <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                <i class="fas fa-check fa-stack-1x"></i>
+                                            </span>
+                    </div>
+                </div>
+            </button>
+            <button type="submit" name="submit" value="reg" class="btn btn-block btnContainer register-input col-12 col-lg-5 my-2 ">
+                <div class="d-flex w-100">
+                    <p class="m-0 w-100 align-self-center">Registrieren</p>
+                    <div class="align-self-center flex-shrink-1">
+                                            <span class="fa-stack fa-md">
+                                                <i class="fas fa-circle fa-stack-2x icon-background"></i>
+                                                <i class="fas fa-check fa-stack-1x"></i>
+                                            </span>
+                    </div>
+                </div>
+            </button>
+    </form>
+</div>
+<script src="../js/login.js"></script>

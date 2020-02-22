@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+    /*   border: 1px solid black; */
+}
+
+body {
+    /*background-color: #343a40 !important;*/
+    /*background: linear-gradient(to bottom, #343a40 -10%, #87014f 100%);*/
+    /*background: linear-gradient(to top, #343a40 10%, #87014f 160%);*/
+    background: linear-gradient(to bottom, #000000 -15%, #87014f 40%);
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.jumbotron blockquote {
+    width: 60%;
+    padding-left: 10px;
+}
+
+section ul {
+    display: flex;
+    min-height: 100vh;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    transition: all .7s ease;
+    box-shadow: 0px -4px 20px 0px #343a40;
+}
+
+.ulScrolled {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    transition: all .7s ease;
+}
+
+section li {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    padding: 20px;
+    /*background: #E74C3C;*/
+    background: #65013b;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+section li:hover {
+    /*background: #e53f2e;*/
+    background: #87014F;
+}
+
+section li.active {
+    flex: 5;
+    background: #f2f2f2;
+    cursor: default;
+}
+
+section li.active h2 {
+    color: #65013b;
+}
+
+/* solution without headline when active */
+section li.active .section-title {
+    display: none;
+}
+
+section li.active .section-content {
+    flex: 4;
+
+    /* solution without headline when active */
+    display: flex;
+
+    opacity: 1;
+    transform: scaleX(1);
+    color: #65013b;
+    padding: 10px;
+}
+
+section li .section-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+}
+
+section li .section-title h2 {
+    margin: 0;
+    transform: rotate(-90deg);
+    white-space: nowrap;
+}
+
+section li .section-content {
+    flex: 1;
+    /*display: flex;*/
+
+    /* solution without headline when active */
+    display: none;
+    font-size: 15px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: all .25s .1s ease-out;
+}
+
+section li blockquote {
+    color: #2E4147;
+}
+
+.form-group {
+    margin-bottom: 8px !important;
+}
+
+#infoSite {
+    pointer-events: none;
+}
+
+/**
+    TODO: MEDIA QUERIES
+ */
+/* ---- iPhone 6+,7+,8+ Landscape and Portrait ---- */
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-max-device-pixel-ratio: 3) {
+    .horizontal-list ul {
+        display: block;
+        min-height: 0;
+        max-height: none;
+    }
+
+    p {
+        font-size: 50%;
+        display: none;
+    }
+
+    .horizontal-list li.active p {
+        font-size: 100%;
+        display: flex;
+    }
+
+    .horizontal-list li .section-title h2 {
+        transform: none;
+    }
+
+    /*
+    li.active h2 {
+         transform: rotate(-90deg);
+     }
+     */
+    .horizontal-list li .section-content {
+        transition: none;
+    }
+
+    .horizontal-list li.active .section-content {
+        transform: none;
+        padding: 0;
+    }
+}
+
+.alertSuccess, .alertFailed {
+    position: fixed;
+    bottom: 5px;
+    left: 2%;
+    width: 96%;
+}
+
+.alert {
+    display: none;
+}
+
+.tick-info {
+    min-width: 120px;
+    text-align: center;
+}
